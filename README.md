@@ -1,5 +1,7 @@
 # SimToFly — Complete Drone Autonomy Guide
 
+![Cover Image](/assets/images/cover_image.png)
+
 <p align="center">
   <b>From Simulation to Flight</b><br>
   Your complete path to autonomous drones with ROS2 and ArduPilot

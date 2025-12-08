@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Large files (add videos to assets/videos but keep small)
+*.mp4
+*.mov
+*.avi
+
+# Build artifacts
+site/

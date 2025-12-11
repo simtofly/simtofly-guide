@@ -1273,7 +1273,7 @@
 </ul>
 <hr />
 <h2 id="what-is-sitl">🤔 What is SITL?<a class="headerlink" href="#what-is-sitl" title="Permanent link">&para;</a></h2>
-<p><strong>SITL</strong> = **S**oftware **I**n **T**he **L**oop</p>
+<p><strong>SITL</strong> = Software In The Loop</p>
 <p>Think of SITL as a <strong>virtual drone</strong> that runs entirely on your computer:
 - No physical hardware needed
 - Same ArduPilot firmware as real drone
@@ -1287,7 +1287,7 @@
 <hr />
 <h2 id="clone-ardupilot-repository">📥 Clone ArduPilot Repository<a class="headerlink" href="#clone-ardupilot-repository" title="Permanent link">&para;</a></h2>
 <h3 id="navigate-to-workspace">Navigate to Workspace<a class="headerlink" href="#navigate-to-workspace" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/
 </span></code></pre></div>
 <h3 id="clone-ardupilot-source">Clone ArduPilot Source<a class="headerlink" href="#clone-ardupilot-source" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ArduPilot/ardupilot.git
@@ -1305,29 +1305,31 @@
 <p>✅ <strong>Success:</strong> Clone completes without errors</p>
 <hr />
 <h3 id="verify-clone">Verify Clone<a class="headerlink" href="#verify-clone" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ls
 </span></code></pre></div>
-<p><strong>Expected output:</strong> You should see directories like:
+<p><strong>Expected output:</strong> You should see directories like:</p>
+<p><img alt="Ardupilot Directories" src="/docs/phase-1-simulation/images/1.3_ardu_clone.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ArduCopter  ArduPlane  ArduSub  libraries  Tools  ...
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>✅ <strong>Success:</strong> ArduPilot directories visible</p>
 <hr />
 <h2 id="install-ardupilot-dependencies">🔧 Install ArduPilot Dependencies<a class="headerlink" href="#install-ardupilot-dependencies" title="Permanent link">&para;</a></h2>
 <h3 id="run-installation-script">Run Installation Script<a class="headerlink" href="#run-installation-script" title="Permanent link">&para;</a></h3>
 <p>ArduPilot provides a script that installs everything needed:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Tools/environment_install/install-prereqs-ubuntu.sh<span class="w"> </span>-y
 </span></code></pre></div></p>
 <p><strong>What this does:</strong> Installs compilers, libraries, and tools ArduPilot needs.</p>
 <p><strong>This takes:</strong> 10-20 minutes (downloads ~2GB of packages).</p>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
+<p><img alt="Install ArduPilot Dependencies" src="/docs/phase-1-simulation/images/1.3_ardu_dep.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>---------- Installing prerequisites for SITL ----------
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>...
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Installing packages...
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>...
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Finished installing prerequisites
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>✅ <strong>Success:</strong> Script completes with "Finished installing prerequisites"</p>
 <hr />
 <h3 id="reload-your-profile">Reload Your Profile<a class="headerlink" href="#reload-your-profile" title="Permanent link">&para;</a></h3>
@@ -1340,22 +1342,24 @@
 <hr />
 <h2 id="initialize-submodules">📦 Initialize Submodules<a class="headerlink" href="#initialize-submodules" title="Permanent link">&para;</a></h2>
 <p>ArduPilot uses additional code libraries called submodules.</p>
-<h3 id="configure-git-for-submodules">Configure Git for Submodules<a class="headerlink" href="#configure-git-for-submodules" title="Permanent link">&para;</a></h3>
-<p>If you're behind a firewall or have git protocol issues, run this first:
+<h3 id="configure-git-for-submodules-if-needed">⚠️ Configure Git for Submodules (If Needed)<a class="headerlink" href="#configure-git-for-submodules-if-needed" title="Permanent link">&para;</a></h3>
+<p><strong>Most users can skip this step.</strong> Only needed if you have git protocol issues or are behind a firewall.</p>
+<p>** ⚠️ If submodule update fails in the next step, come back here and run: ⚠️**</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>url.https://.insteadOf<span class="w"> </span>git://
-</span></code></pre></div></p>
-<p><strong>What this does:</strong> Uses HTTPS instead of git protocol (more reliable).</p>
+</span></code></pre></div>
+<p>Then retry the submodule update command.</p>
 <hr />
 <h3 id="checkout-stable-version">Checkout Stable Version<a class="headerlink" href="#checkout-stable-version" title="Permanent link">&para;</a></h3>
 <p>We'll use ArduCopter 4.5.7 (current stable as of December 2024):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>Copter-4.5.7
 </span></code></pre></div></p>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
+<p><img alt="ArduPilot Checkout" src="/docs/phase-1-simulation/images/1.3_ardu_swich.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Note: switching to &#39;Copter-4.5.7&#39;.
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>...
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>HEAD is now at xxxxxxx ArduCopter: release 4.5.7
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>✅ <strong>Success:</strong> Switched to Copter-4.5.7</p>
 <hr />
 <h3 id="update-submodules">Update Submodules<a class="headerlink" href="#update-submodules" title="Permanent link">&para;</a></h3>
@@ -1375,7 +1379,7 @@
 <h2 id="first-sitl-launch">🚁 First SITL Launch<a class="headerlink" href="#first-sitl-launch" title="Permanent link">&para;</a></h2>
 <h3 id="initial-parameter-setup">Initial Parameter Setup<a class="headerlink" href="#initial-parameter-setup" title="Permanent link">&para;</a></h3>
 <p>The first time you run SITL, it needs to set default parameters:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sim_vehicle.py<span class="w"> </span>-w
 </span></code></pre></div></p>
 <p><strong>Important flags:</strong>
@@ -1404,21 +1408,22 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>which<span class="w"> </span>sim_vehicle.py
 </span></code></pre></div></p>
 <p><strong>Expected output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>/home/your-username/simtofly_ws/ardupilot/ardupilot/Tools/autotest/sim_vehicle.py
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>/home/your-username/simtofly_ws/ardupilot/Tools/autotest/sim_vehicle.py
 </span></code></pre></div></p>
 <p><strong>If command not found:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:$HOME/simtofly_ws/ardupilot/ardupilot/Tools/autotest&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:$HOME/simtofly_ws/ardupilot/Tools/autotest&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div></p>
 <hr />
 <h2 id="test-sitl-launch">✅ Test SITL Launch<a class="headerlink" href="#test-sitl-launch" title="Permanent link">&para;</a></h2>
 <h3 id="launch-sitl-simulator">Launch SITL Simulator<a class="headerlink" href="#launch-sitl-simulator" title="Permanent link">&para;</a></h3>
 <p>Now let's launch SITL properly:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter
 </span></code></pre></div></p>
 <p><strong>What this does:</strong> Starts ArduCopter SITL simulator.</p>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
+<p><img alt="Launch SITL Simulator" src="/docs/phase-1-simulation/images/1.3_sitl_first.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Starting SITL...
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Waiting for heartbeat from 127.0.0.1:5760
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>...
@@ -1427,7 +1432,7 @@
 </span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>APM: ArduCopter V4.5.7
 </span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>...
 </span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>Received 500 parameters
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>You should see a prompt:</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>STABILIZE&gt;
 </span></code></pre></div></p>
@@ -1453,6 +1458,7 @@
 <p><strong>Expected response:</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>DISARMED
 </span></code></pre></div></p>
+<p><img alt="Test Basic Commands" src="/docs/phase-1-simulation/images/1.3_sitl_test_cmd.png" /></p>
 <p>✅ <strong>Success:</strong> Commands work, SITL responds</p>
 <hr />
 <h3 id="exit-sitl">Exit SITL<a class="headerlink" href="#exit-sitl" title="Permanent link">&para;</a></h3>
@@ -1463,7 +1469,7 @@
 <h2 id="verification-checklist">📋 Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
 <p>Before moving to next section, verify:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ ArduPilot cloned to <code>~/simtofly_ws/ardupilot/ardupilot/</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ ArduPilot cloned to <code>~/simtofly_ws/ardupilot/</code></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Dependencies installed (install-prereqs script completed)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Submodules initialized (no errors)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Checked out Copter-4.5.7</li>
@@ -1494,7 +1500,7 @@
 <hr />
 <h2 id="common-questions">❓ Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
 <h3 id="q-why-copter-457-specifically">Q: Why Copter-4.5.7 specifically?<a class="headerlink" href="#q-why-copter-457-specifically" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> This is the latest stable release as of December 2024. It's well-tested and widely used. You can use newer versions when they're released, but this tutorial is verified with 4.5.7.</p>
+<p><strong>A:</strong> This is the latest stable release as of December 2025. It's well-tested and widely used. You can use newer versions when they're released, but this tutorial is verified with 4.5.7.</p>
 <h3 id="q-can-i-use-a-different-vehicle-type">Q: Can I use a different vehicle type?<a class="headerlink" href="#q-can-i-use-a-different-vehicle-type" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> Yes! ArduPilot supports:
 - <code>ArduCopter</code> — Multirotor drones (what we use)
@@ -1518,7 +1524,7 @@
 <h3 id="error-command-not-found-sim_vehiclepy">Error: "command not found: sim_vehicle.py"<a class="headerlink" href="#error-command-not-found-sim_vehiclepy" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> sim_vehicle.py not in PATH</p>
 <p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:$HOME/simtofly_ws/ardupilot/ardupilot/Tools/autotest&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:$HOME/simtofly_ws/ardupilot/Tools/autotest&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div></p>
 <p>Then try launching again.</p>
@@ -1548,14 +1554,14 @@
 <h3 id="sitl-launches-but-no-received-parameters-message">SITL launches but no "Received parameters" message<a class="headerlink" href="#sitl-launches-but-no-received-parameters-message" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> First launch without <code>-w</code> flag</p>
 <p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>sim_vehicle.py<span class="w"> </span>-w
 </span></code></pre></div></p>
 <p>Wait for parameters, then Ctrl+C and relaunch normally.</p>
 <hr />
 <h3 id="permission-denied-errors-during-installation">"Permission denied" errors during installation<a class="headerlink" href="#permission-denied-errors-during-installation" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Trying to install in system directories</p>
-<p><strong>Solution:</strong> Make sure you're in <code>~/simtofly_ws/ardupilot/</code> (your home directory), not <code>/opt/</code> or <code>/usr/</code>.</p>
+<p><strong>Solution:</strong> Make sure you're in <code>~/simtofly_ws/</code> (your home directory), not <code>/opt/</code> or <code>/usr/</code>.</p>
 <hr />
 <h3 id="build-is-very-slow">Build is very slow<a class="headerlink" href="#build-is-very-slow" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Limited CPU cores or running in VM</p>

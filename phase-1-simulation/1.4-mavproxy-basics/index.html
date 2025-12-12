@@ -1357,7 +1357,7 @@
 <h2 id="launch-sitl-with-map-and-console">🗺️ Launch SITL with Map and Console<a class="headerlink" href="#launch-sitl-with-map-and-console" title="Permanent link">&para;</a></h2>
 <h3 id="basic-sitl-launch-with-visualization">Basic SITL Launch with Visualization<a class="headerlink" href="#basic-sitl-launch-with-visualization" title="Permanent link">&para;</a></h3>
 <p>Instead of just text output, let's open map and console windows:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
 </span></code></pre></div></p>
 <p><strong>Command breakdown:</strong>
@@ -1603,7 +1603,7 @@ This is where you type commands.</p>
 <p>Let's do a complete flight sequence:</p>
 <h3 id="step-by-step-flight">Step-by-Step Flight<a class="headerlink" href="#step-by-step-flight" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 1. Start SITL with map</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># 2. Change to GUIDED mode</span>
@@ -1645,10 +1645,10 @@ This is where you type commands.</p>
 <hr />
 <h3 id="add-custom-location">Add Custom Location<a class="headerlink" href="#add-custom-location" title="Permanent link">&para;</a></h3>
 <p><strong>Create location entry:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;custom=YOUR_LAT,YOUR_LONG,ALT,HEADING&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/Tools/autotest/locations.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;custom=YOUR_LAT,YOUR_LONG,ALT,HEADING&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
 </span></code></pre></div></p>
 <p><strong>Example (replace with your coordinates):</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;myfield=37.7749,-122.4194,50,0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/Tools/autotest/locations.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;myfield=37.7749,-122.4194,50,0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
 </span></code></pre></div></p>
 <p><strong>Format:</strong>
 - Name = your location identifier

@@ -699,7 +699,7 @@
   <a href="#install-gazebo-harmonic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        �� Install Gazebo Harmonic
+        📦 Install Gazebo Harmonic
       
     </span>
   </a>
@@ -711,6 +711,17 @@
     <span class="md-ellipsis">
       
         🔌 Install ArduPilot Gazebo Plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Configure Environment Variables
       
     </span>
   </a>
@@ -806,10 +817,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#troubleshooting-plugin-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🐛 Troubleshooting
+        🐛 Troubleshooting Plugin Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 Additional Troubleshooting
       
     </span>
   </a>
@@ -1141,7 +1163,7 @@
   <a href="#install-gazebo-harmonic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        �� Install Gazebo Harmonic
+        📦 Install Gazebo Harmonic
       
     </span>
   </a>
@@ -1153,6 +1175,17 @@
     <span class="md-ellipsis">
       
         🔌 Install ArduPilot Gazebo Plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Configure Environment Variables
       
     </span>
   </a>
@@ -1248,10 +1281,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#troubleshooting-plugin-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🐛 Troubleshooting
+        🐛 Troubleshooting Plugin Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 Additional Troubleshooting
       
     </span>
   </a>
@@ -1306,7 +1350,7 @@
 <li>✅ Control drone with 3D feedback</li>
 <li>✅ Verify physics simulation works</li>
 </ul>
-<p><strong>Time:</strong> 60-90 minutes</p>
+<p><strong>Time:</strong> 30-70 minutes</p>
 <hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before starting, you must have completed:</p>
@@ -1321,11 +1365,13 @@
 <hr />
 <h2 id="what-is-gazebo">🤔 What is Gazebo?<a class="headerlink" href="#what-is-gazebo" title="Permanent link">&para;</a></h2>
 <p><strong>Gazebo</strong> = Advanced 3D robot simulator</p>
-<p>It provides:
-- <strong>Realistic physics</strong> — Gravity, inertia, collisions
-- <strong>3D visualization</strong> — See your drone in realistic environment
-- <strong>Sensor simulation</strong> — Camera, GPS, IMU, lidar
-- <strong>Environmental factors</strong> — Wind, lighting, terrain</p>
+<p>It provides:</p>
+<ul>
+<li><strong>Realistic physics</strong> — Gravity, inertia, collisions</li>
+<li><strong>3D visualization</strong> — See your drone in realistic environment</li>
+<li><strong>Sensor simulation</strong> — Camera, GPS, IMU, lidar</li>
+<li><strong>Environmental factors</strong> — Wind, lighting, terrain</li>
+</ul>
 <p><strong>Why add Gazebo to SITL?</strong></p>
 <p>SITL alone:</p>
 <ul>
@@ -1342,129 +1388,185 @@
 </ul>
 <p><strong>Later (Phase 2):</strong> We'll add ROS2 sensors in Gazebo.</p>
 <hr />
-<h2 id="install-gazebo-harmonic">�� Install Gazebo Harmonic<a class="headerlink" href="#install-gazebo-harmonic" title="Permanent link">&para;</a></h2>
+<h2 id="install-gazebo-harmonic">📦 Install Gazebo Harmonic<a class="headerlink" href="#install-gazebo-harmonic" title="Permanent link">&para;</a></h2>
 <h3 id="why-gazebo-harmonic">Why Gazebo Harmonic?<a class="headerlink" href="#why-gazebo-harmonic" title="Permanent link">&para;</a></h3>
-<p><strong>Gazebo Harmonic</strong> (released 2024) is recommended by ArduPilot:
-- Latest stable release
-- Best Ubuntu 22.04 support
-- Active development and updates</p>
-<p><strong>Alternative:</strong> Gazebo Garden (LTS) — Also works, but Harmonic is newer.</p>
-<p><strong>Official guide:</strong> https://gazebosim.org/docs/harmonic/install_ubuntu/</p>
+<p><strong>Gazebo Harmonic</strong> (released 2024) is the recommended version:</p>
+<ul>
+<li>Latest LTS (Long Term Support) release</li>
+<li>Best Ubuntu 22.04 support</li>
+<li>Officially supported by ArduPilot</li>
+<li>Active development and updates</li>
+</ul>
+<p><strong>Official documentation:</strong> https://gazebosim.org/docs/harmonic/install_ubuntu</p>
+<hr />
+<h3 id="install-required-tools">Install Required Tools<a class="headerlink" href="#install-required-tools" title="Permanent link">&para;</a></h3>
+<p>First, ensure required tools are installed:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>lsb-release<span class="w"> </span>gnupg<span class="w"> </span>-y
+</span></code></pre></div></p>
+<p><strong>What these are:</strong></p>
+<ul>
+<li><code>curl</code> — Download files from internet</li>
+<li><code>lsb-release</code> — Detect Ubuntu version</li>
+<li><code>gnupg</code> — Verify package signatures</li>
+</ul>
 <hr />
 <h3 id="add-gazebo-repository">Add Gazebo Repository<a class="headerlink" href="#add-gazebo-repository" title="Permanent link">&para;</a></h3>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://packages.osrfoundation.org/gazebo.gpg<span class="w"> </span>-O<span class="w"> </span>/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/gazebo-stable.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<p><strong>Add Gazebo GPG key:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>curl<span class="w"> </span>https://packages.osrfoundation.org/gazebo.gpg<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
 </span></code></pre></div></p>
-<p><strong>What this does:</strong> Adds official Gazebo package repository.</p>
+<p><strong>Add repository to sources list:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-stable </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/gazebo-stable.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span></code></pre></div></p>
+<p><strong>What this does:</strong> Adds official Gazebo Harmonic repository to your system.</p>
 <hr />
 <h3 id="update-package-list">Update Package List<a class="headerlink" href="#update-package-list" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </span></code></pre></div>
 <hr />
 <h3 id="install-gazebo-harmonic_1">Install Gazebo Harmonic<a class="headerlink" href="#install-gazebo-harmonic_1" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gz-harmonic<span class="w"> </span>-y
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gz-harmonic<span class="w"> </span>-y
 </span></code></pre></div>
 <p><strong>What this installs:</strong> Complete Gazebo Harmonic suite.</p>
 <p><strong>This takes:</strong> 5-10 minutes (downloads ~1-2GB).</p>
 <p><strong>Expected output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Reading package lists... Done
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Building dependency tree... Done
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>...
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Setting up gz-harmonic...
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Reading package lists... Done
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Building dependency tree... Done
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>...
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Setting up gz-harmonic...
 </span></code></pre></div></p>
 <p>✅ <strong>Success:</strong> Installation completes without errors</p>
 <hr />
 <h3 id="verify-gazebo-installation">Verify Gazebo Installation<a class="headerlink" href="#verify-gazebo-installation" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>--version
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>--version
 </span></code></pre></div>
 <p><strong>Expected output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Gazebo Sim, version 8.x.x
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Gazebo Sim, version 8.x.x
 </span></code></pre></div></p>
 <p>✅ <strong>Success:</strong> Shows Gazebo Sim version 8.x (Harmonic)</p>
 <hr />
 <h3 id="test-gazebo-launch">Test Gazebo Launch<a class="headerlink" href="#test-gazebo-launch" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gz<span class="w"> </span>sim
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>shapes.sdf
 </span></code></pre></div>
-<p><strong>What happens:</strong>
-- Gazebo window opens
-- Shows empty world
-- May take 10-20 seconds first launch</p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Gazebo window opens</li>
+<li>Shows world with various 3D shapes</li>
+<li>Select empty world</li>
+<li>May take 10-20 seconds on first launch</li>
+</ul>
 <p><strong>If window opens:</strong> ✅ Gazebo installed correctly</p>
 <p><strong>Close Gazebo:</strong> File → Exit (or Ctrl+C in terminal)</p>
 <hr />
 <h2 id="install-ardupilot-gazebo-plugin">🔌 Install ArduPilot Gazebo Plugin<a class="headerlink" href="#install-ardupilot-gazebo-plugin" title="Permanent link">&para;</a></h2>
 <h3 id="what-is-the-plugin">What is the Plugin?<a class="headerlink" href="#what-is-the-plugin" title="Permanent link">&para;</a></h3>
-<p>The <strong>ArduPilot Gazebo plugin</strong> connects:
-- ArduPilot SITL ↔ Gazebo simulator
-- Sends motor commands from ArduPilot to Gazebo
-- Sends sensor data from Gazebo to ArduPilot</p>
+<p>The <strong>ArduPilot Gazebo plugin</strong> connects:</p>
+<ul>
+<li>ArduPilot SITL ↔ Gazebo simulator</li>
+<li>Sends motor commands from ArduPilot to Gazebo</li>
+<li>Sends sensor data from Gazebo to ArduPilot</li>
+</ul>
 <p><strong>Without plugin:</strong> SITL and Gazebo can't communicate.</p>
-<p><strong>Official guide:</strong> https://ardupilot.org/dev/docs/ros2-gazebo.html</p>
+<p><strong>Official repository:</strong> https://github.com/ArduPilot/ardupilot_gazebo</p>
 <hr />
 <h3 id="install-dependencies">Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgz-sim8-dev<span class="w"> </span>rapidjson-dev<span class="w"> </span>-y
+<p>ArduPilot Gazebo plugin requires these packages:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgz-sim8-dev<span class="w"> </span>rapidjson-dev<span class="w"> </span>-y
 </span></code></pre></div>
-<p><strong>What these are:</strong>
-- <code>libgz-sim8-dev</code> — Gazebo development libraries
-- <code>rapidjson-dev</code> — JSON parsing (for plugin)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libopencv-dev<span class="w"> </span>libgstreamer1.0-dev<span class="w"> </span>libgstreamer-plugins-base1.0-dev<span class="w"> </span>gstreamer1.0-plugins-bad<span class="w"> </span>gstreamer1.0-libav<span class="w"> </span>gstreamer1.0-gl<span class="w"> </span>-y
+</span></code></pre></div></p>
+<p><strong>What these are:</strong></p>
+<ul>
+<li><code>libgz-sim8-dev</code> — Gazebo Harmonic development libraries</li>
+<li><code>rapidjson-dev</code> — JSON parsing library (for communication)</li>
+<li><code>libopencv-dev</code> — Computer vision library (required for camera sensors)</li>
+<li><code>libgstreamer*</code> — Video streaming libraries (required for plugin compilation)</li>
+</ul>
+<p><strong>This takes:</strong> 5-10 minutes</p>
+<p><strong>Expected output:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Reading package lists... Done
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Building dependency tree... Done
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>...
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Setting up libopencv-dev...
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Setting up libgstreamer1.0-dev...
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>...
+</span></code></pre></div></p>
+<p>✅ <strong>Success:</strong> All packages installed without errors</p>
 <hr />
 <h3 id="clone-ardupilot-gazebo-plugin">Clone ArduPilot Gazebo Plugin<a class="headerlink" href="#clone-ardupilot-gazebo-plugin" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ArduPilot/ardupilot_gazebo.git
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ArduPilot/ardupilot_gazebo.git
 </span></code></pre></div>
 <p><strong>This takes:</strong> 1-2 minutes.</p>
+<p><strong>Expected output:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Cloning into &#39;ardupilot_gazebo&#39;...
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>remote: Enumerating objects: ...
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>...
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Resolving deltas: 100% (xxx/xxx), done.
+</span></code></pre></div></p>
+<p>✅ <strong>Success:</strong> Repository cloned</p>
 <hr />
 <h3 id="build-the-plugin">Build the Plugin<a class="headerlink" href="#build-the-plugin" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot_gazebo
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>make<span class="w"> </span>-j4
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot_gazebo
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>make<span class="w"> </span>-j4
 </span></code></pre></div>
-<p><strong>Command breakdown:</strong>
-- <code>cmake ..</code> — Configure build system
-- <code>-DCMAKE_BUILD_TYPE=RelWithDebInfo</code> — Optimized build with debug info
-- <code>make -j4</code> — Build using 4 CPU cores</p>
+<p><strong>Command breakdown:</strong></p>
+<ul>
+<li><code>mkdir build &amp;&amp; cd build</code> — Create build directory</li>
+<li><code>cmake ..</code> — Configure build system</li>
+<li><code>-DCMAKE_BUILD_TYPE=RelWithDebInfo</code> — Optimized build with debug info</li>
+<li><code>make -j4</code> — Build using 4 CPU cores</li>
+</ul>
 <p><strong>This takes:</strong> 5-10 minutes.</p>
 <p><strong>Expected output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>-- Configuring done
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>-- Generating done
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>-- Build files written to: .../build
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>...
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>[100%] Built target ArduPilotPlugin
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>-- The C compiler identification is GNU 11.x.x
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>-- The CXX compiler identification is GNU 11.x.x
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>...
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>-- Compiling against Gazebo Harmonic
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>-- RapidJSON found. Headers: /usr/include
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>-- OpenCV found
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>...
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>[ 25%] Building CXX object ...
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>[ 50%] Building CXX object ...
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>[ 75%] Building CXX object ...
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>[100%] Built target ArduPilotPlugin
 </span></code></pre></div></p>
-<p>✅ <strong>Success:</strong> Shows "Built target ArduPilotPlugin"</p>
+<p>✅ <strong>Success:</strong> Shows "[100%] Built target ArduPilotPlugin"</p>
 <hr />
-<h3 id="configure-environment-variables">Configure Environment Variables<a class="headerlink" href="#configure-environment-variables" title="Permanent link">&para;</a></h3>
-<p>Add plugin to Gazebo's search path:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/simtofly_ws/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<h2 id="configure-environment-variables">⚙️ Configure Environment Variables<a class="headerlink" href="#configure-environment-variables" title="Permanent link">&para;</a></h2>
+<h3 id="add-plugin-to-gazebos-search-path">Add Plugin to Gazebo's Search Path<a class="headerlink" href="#add-plugin-to-gazebos-search-path" title="Permanent link">&para;</a></h3>
+<p>Gazebo needs to know where to find the plugin and models.</p>
+<p><strong>Add environment variables:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/simtofly_ws/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_RESOURCE_PATH=$HOME/simtofly_ws/ardupilot_gazebo/models:$HOME/simtofly_ws/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_RESOURCE_PATH=$HOME/simtofly_ws/ardupilot_gazebo/models:$HOME/simtofly_ws/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span></code></pre></div></p>
 <p><strong>What these do:</strong>
-- First line: Tells Gazebo where to find the plugin
-- Second line: Tells Gazebo where to find drone models and worlds</p>
+- First line: Tells Gazebo where to find the ArduPilot plugin
+- Second line: Tells Gazebo where to find drone models and simulation worlds</p>
 <hr />
 <h3 id="apply-changes">Apply Changes<a class="headerlink" href="#apply-changes" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div>
 <hr />
 <h3 id="verify-environment-variables">Verify Environment Variables<a class="headerlink" href="#verify-environment-variables" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_SYSTEM_PLUGIN_PATH</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_RESOURCE_PATH</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_SYSTEM_PLUGIN_PATH</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_RESOURCE_PATH</span>
 </span></code></pre></div>
-<p><strong>Expected output:</strong> Should show paths to your plugin directories.</p>
+<p><strong>Expected output:</strong> Should show paths to your plugin and models directories.</p>
 <p>✅ <strong>Success:</strong> Paths displayed correctly</p>
 <hr />
 <h2 id="launch-sitl-with-gazebo">🚁 Launch SITL with Gazebo<a class="headerlink" href="#launch-sitl-with-gazebo" title="Permanent link">&para;</a></h2>
 <h3 id="start-gazebo-first">Start Gazebo First<a class="headerlink" href="#start-gazebo-first" title="Permanent link">&para;</a></h3>
 <p>Open <strong>Terminal 1:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_runway.sdf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_runway.sdf
 </span></code></pre></div></p>
 <p><strong>Command breakdown:</strong>
 - <code>gz sim</code> — Launch Gazebo simulator
-- <code>-v4</code> — Verbose output (helpful for debugging)
+- <code>-v4</code> — Verbose output (helpful for troubleshooting)
 - <code>-r</code> — Run simulation immediately (not paused)
 - <code>iris_runway.sdf</code> — Quadcopter on runway world</p>
 <p><strong>This takes:</strong> 10-20 seconds to load.</p>
@@ -1475,25 +1577,25 @@
 <p>✅ <strong>Success:</strong> See drone in Gazebo world</p>
 <hr />
 <h3 id="start-sitl">Start SITL<a class="headerlink" href="#start-sitl" title="Permanent link">&para;</a></h3>
-<p>Open <strong>Terminal 2</strong> (keep Gazebo running):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>-f<span class="w"> </span>gazebo-iris<span class="w"> </span>--model<span class="w"> </span>JSON<span class="w"> </span>--map<span class="w"> </span>--console
+<p>Open <strong>Terminal 2</strong> (keep Gazebo running in Terminal 1):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>-f<span class="w"> </span>gazebo-iris<span class="w"> </span>--model<span class="w"> </span>JSON<span class="w"> </span>--map<span class="w"> </span>--console
 </span></code></pre></div></p>
 <p><strong>Command breakdown:</strong>
-- <code>-v ArduCopter</code> — Vehicle type
+- <code>-v ArduCopter</code> — Vehicle type (multirotor)
 - <code>-f gazebo-iris</code> — Use Gazebo with iris model
 - <code>--model JSON</code> — Use JSON protocol for communication
 - <code>--map</code> — Open map window
 - <code>--console</code> — Open console window</p>
 <p><strong>This takes:</strong> 10-15 seconds.</p>
 <p><strong>Expected output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Starting SITL...
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Waiting for JSON sensor data...
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Received sensor data from Gazebo
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>...
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>APM: ArduCopter V4.5.7
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>...
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>STABILIZE&gt;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Starting SITL...
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Waiting for JSON sensor data...
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Received sensor data from Gazebo
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>...
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>APM: ArduCopter V4.5.7 (...)
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>...
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>STABILIZE&gt;
 </span></code></pre></div></p>
 <p>✅ <strong>Success:</strong> Shows "Received sensor data from Gazebo" and <code>STABILIZE&gt;</code> prompt</p>
 <hr />
@@ -1501,7 +1603,7 @@
 <p><strong>In Gazebo window:</strong>
 - Drone should be sitting on runway
 - Propellers visible</p>
-<p><strong>In SITL console:</strong>
+<p><strong>In SITL console window:</strong>
 - Shows flight mode (STABILIZE)
 - GPS status should be good</p>
 <p><strong>In map window:</strong>
@@ -1511,9 +1613,9 @@
 <h2 id="test-flight-in-gazebo">🎮 Test Flight in Gazebo<a class="headerlink" href="#test-flight-in-gazebo" title="Permanent link">&para;</a></h2>
 <h3 id="arm-and-takeoff">Arm and Takeoff<a class="headerlink" href="#arm-and-takeoff" title="Permanent link">&para;</a></h3>
 <p>In SITL terminal (Terminal 2):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mode<span class="w"> </span>GUIDED
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>arm<span class="w"> </span>throttle
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>takeoff<span class="w"> </span><span class="m">10</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mode<span class="w"> </span>GUIDED
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>arm<span class="w"> </span>throttle
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>takeoff<span class="w"> </span><span class="m">10</span>
 </span></code></pre></div></p>
 <p><strong>Watch in Gazebo:</strong>
 - Propellers start spinning
@@ -1525,69 +1627,79 @@
 <hr />
 <h3 id="navigate-in-gazebo">Navigate in Gazebo<a class="headerlink" href="#navigate-in-gazebo" title="Permanent link">&para;</a></h3>
 <p><strong>Move forward (North):</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>guided<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-10
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>guided<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-10
 </span></code></pre></div></p>
 <p><strong>Watch in Gazebo:</strong>
 - Drone tilts forward
 - Moves to new position
 - Realistic flight dynamics</p>
+<p><strong>Wait for movement to complete</strong> (~10 seconds)</p>
 <hr />
 <h3 id="land">Land<a class="headerlink" href="#land" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>land
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>land
 </span></code></pre></div>
 <p><strong>Watch in Gazebo:</strong>
 - Drone descends smoothly
 - Touches down on runway
-- Propellers stop spinning</p>
+- Propellers stop spinning
+- Automatically disarms</p>
 <p>✅ <strong>Success:</strong> Complete flight in 3D simulation</p>
 <hr />
 <h2 id="understanding-gazebo-interface">🎨 Understanding Gazebo Interface<a class="headerlink" href="#understanding-gazebo-interface" title="Permanent link">&para;</a></h2>
 <h3 id="main-window-elements">Main Window Elements<a class="headerlink" href="#main-window-elements" title="Permanent link">&para;</a></h3>
 <p><strong>Top toolbar:</strong>
-- Play/Pause button — Control simulation time
-- Real-time factor — Simulation speed (1.0 = real-time)
-- Step button — Advance one frame</p>
-<p><strong>Left panel:</strong>
+- <strong>Play/Pause button</strong> — Control simulation time
+- <strong>Real-time factor</strong> — Simulation speed (1.0 = real-time)
+- <strong>Step button</strong> — Advance one frame at a time</p>
+<p><strong>Left panel (Entity Tree):</strong>
 - World tree — List of objects in simulation
-- Entity details — Properties of selected object</p>
-<p><strong>3D viewport:</strong>
+- Entity details — Properties of selected object
+- Can select drone, runway, lights, etc.</p>
+<p><strong>3D viewport (Center):</strong>
 - Main visualization area
-- Use mouse to navigate:
-  - <strong>Left-drag:</strong> Rotate view
-  - <strong>Middle-drag:</strong> Pan view
-  - <strong>Scroll:</strong> Zoom in/out
-  - <strong>Shift+Left-drag:</strong> Look around</p>
-<p><strong>Right panel:</strong>
-- Component inspector — Details of selected entity
+- Shows drone, environment, physics</p>
+<p><strong>Right panel (Component Inspector):</strong>
+- Details of selected entity
 - Can modify properties during simulation</p>
 <hr />
+<h3 id="camera-controls">Camera Controls<a class="headerlink" href="#camera-controls" title="Permanent link">&para;</a></h3>
+<p>Use mouse to navigate the view:</p>
+<ul>
+<li><strong>Left-drag:</strong> Rotate view around point</li>
+<li><strong>Middle-drag:</strong> Pan view (move camera position)</li>
+<li><strong>Right-drag:</strong> Zoom in/out</li>
+<li><strong>Scroll wheel:</strong> Zoom in/out</li>
+<li><strong>Shift + Left-drag:</strong> Look around (first-person style)</li>
+</ul>
+<hr />
 <h3 id="useful-view-controls">Useful View Controls<a class="headerlink" href="#useful-view-controls" title="Permanent link">&para;</a></h3>
-<p><strong>Reset camera view:</strong>
-- Click on drone in left panel
-- Press 'R' to focus camera on drone</p>
-<p><strong>Toggle wireframe:</strong>
-- View → Wireframe</p>
+<p><strong>Reset camera to drone:</strong>
+1. Click on drone in left panel (Entity Tree)
+2. Press <code>R</code> key — Camera focuses on drone</p>
+<p><strong>Toggle wireframe mode:</strong>
+- View → Wireframe (shows 3D mesh structure)</p>
 <p><strong>Show/hide panels:</strong>
-- Window → Entity Tree
-- Window → Component Inspector</p>
+- Window → Entity Tree (toggle left panel)
+- Window → Component Inspector (toggle right panel)</p>
 <hr />
 <h2 id="different-gazebo-worlds">🌍 Different Gazebo Worlds<a class="headerlink" href="#different-gazebo-worlds" title="Permanent link">&para;</a></h2>
 <h3 id="available-worlds">Available Worlds<a class="headerlink" href="#available-worlds" title="Permanent link">&para;</a></h3>
 <p>The plugin includes several environments:</p>
-<p><strong>iris_runway.sdf</strong> — Drone on runway (default)
+<p><strong>iris_runway.sdf</strong> — Drone on runway (default, fast loading)<br />
 <strong>iris_maze.sdf</strong> — Indoor maze environment<br />
-<strong>iris_warehouse.sdf</strong> — Indoor warehouse</p>
+<strong>iris_warehouse.sdf</strong> — Indoor warehouse with obstacles</p>
 <hr />
 <h3 id="launch-different-world">Launch Different World<a class="headerlink" href="#launch-different-world" title="Permanent link">&para;</a></h3>
 <p><strong>Example: Launch in warehouse:</strong></p>
 <p><strong>Terminal 1:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_warehouse.sdf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_warehouse.sdf
 </span></code></pre></div></p>
+<p><strong>⏳ Note:</strong> The warehouse world may take <strong>3-5 minutes</strong> to load on first launch. It downloads 3D models from the internet, so ensure you have a <strong>stable internet connection</strong>. The Gazebo window may appear frozen during download — this is normal. Subsequent launches will be much faster as models are cached locally.</p>
 <p><strong>Terminal 2:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ardupilot/ArduCopter
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>-f<span class="w"> </span>gazebo-iris<span class="w"> </span>--model<span class="w"> </span>JSON<span class="w"> </span>--map<span class="w"> </span>--console
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>-f<span class="w"> </span>gazebo-iris<span class="w"> </span>--model<span class="w"> </span>JSON<span class="w"> </span>--map<span class="w"> </span>--console
 </span></code></pre></div></p>
-<p>Try different worlds to test various scenarios!</p>
+<p><strong>Try different worlds to test various flight scenarios!</strong></p>
 <hr />
 <h2 id="verification-checklist">📋 Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
 <p>Before moving to next section, verify:</p>
@@ -1607,7 +1719,9 @@
 <h2 id="what-you-accomplished">🎯 What You Accomplished<a class="headerlink" href="#what-you-accomplished" title="Permanent link">&para;</a></h2>
 <ul>
 <li>✅ Installed Gazebo Harmonic simulator</li>
+<li>✅ Installed all required dependencies</li>
 <li>✅ Built ArduPilot Gazebo plugin from source</li>
+<li>✅ Configured environment for plugin</li>
 <li>✅ Connected SITL to Gazebo</li>
 <li>✅ Launched drone in 3D environment</li>
 <li>✅ Performed flight with realistic physics</li>
@@ -1619,115 +1733,212 @@
 <p>Continue to <strong><a href="../1.6-first-mission/">1.6 First Autonomous Mission</a></strong> where we'll:
 - Create waypoint mission file
 - Load mission into SITL
-- Execute autonomous flight
+- Execute autonomous flight in Gazebo
 - Analyze flight logs
-- Complete Phase 1</p>
+- Complete Phase 1 successfully</p>
 <hr />
 <h2 id="common-questions">❓ Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
 <h3 id="q-gazebo-garden-vs-gazebo-harmonic">Q: Gazebo Garden vs Gazebo Harmonic?<a class="headerlink" href="#q-gazebo-garden-vs-gazebo-harmonic" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> Both work with ArduPilot:
-- <strong>Harmonic</strong> (recommended) — Latest stable, best support
-- <strong>Garden</strong> — LTS release, more conservative choice</p>
-<p>Stick with Harmonic unless you have specific issues.</p>
+- <strong>Harmonic</strong> (recommended) — Latest LTS release, best support
+- <strong>Garden</strong> — Older release, still supported</p>
+<p>Stick with Harmonic unless you have specific compatibility needs.</p>
 <hr />
-<h3 id="q-why-build-plugin-from-source-instead-of-apt">Q: Why build plugin from source instead of apt?<a class="headerlink" href="#q-why-build-plugin-from-source-instead-of-apt" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> The ArduPilot Gazebo plugin isn't in Ubuntu repositories. Building from source ensures latest version and compatibility.</p>
+<h3 id="q-why-build-plugin-from-source-instead-of-using-packages">Q: Why build plugin from source instead of using packages?<a class="headerlink" href="#q-why-build-plugin-from-source-instead-of-using-packages" title="Permanent link">&para;</a></h3>
+<p><strong>A:</strong> The ArduPilot Gazebo plugin isn't available in Ubuntu repositories. Building from source ensures you get the latest version with all features and bug fixes.</p>
 <hr />
-<h3 id="q-gazebo-is-very-slowlaggy">Q: Gazebo is very slow/laggy<a class="headerlink" href="#q-gazebo-is-very-slowlaggy" title="Permanent link">&para;</a></h3>
+<h3 id="q-gazebo-is-very-slow-or-laggy">Q: Gazebo is very slow or laggy<a class="headerlink" href="#q-gazebo-is-very-slow-or-laggy" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> Solutions:
 - Close other applications
 - Reduce Gazebo quality: Edit → Physics → Real time factor
 - Use simpler worlds (iris_runway instead of warehouse)
 - Allocate more RAM to VM (if using VM)
-- Consider native Ubuntu instead of VM</p>
+- Lower graphics settings
+- Consider native Ubuntu instead of VM for better performance</p>
 <hr />
 <h3 id="q-can-i-use-gazebo-with-px4-instead-of-ardupilot">Q: Can I use Gazebo with PX4 instead of ArduPilot?<a class="headerlink" href="#q-can-i-use-gazebo-with-px4-instead-of-ardupilot" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> Yes! Gazebo supports multiple autopilots. This tutorial focuses on ArduPilot, but Gazebo works with PX4, Betaflight, etc.</p>
+<p><strong>A:</strong> Yes! Gazebo supports multiple autopilots. This tutorial focuses on ArduPilot, but Gazebo works with PX4, Betaflight, and others.</p>
 <hr />
 <h3 id="q-how-do-i-add-custom-models-to-gazebo">Q: How do I add custom models to Gazebo?<a class="headerlink" href="#q-how-do-i-add-custom-models-to-gazebo" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> Advanced topic — Place models in <code>~/simtofly_ws/ardupilot_gazebo/models/</code> and they'll be available. We'll cover this in advanced tutorials.</p>
+<p><strong>A:</strong> Advanced topic — Place models in <code>~/simtofly_ws/ardupilot_gazebo/models/</code> and they'll be available. We'll cover custom models in advanced tutorials.</p>
 <hr />
-<h2 id="troubleshooting">🐛 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="q-the-warehouse-world-wont-load">Q: The warehouse world won't load<a class="headerlink" href="#q-the-warehouse-world-wont-load" title="Permanent link">&para;</a></h3>
+<p><strong>A:</strong> This world downloads models from internet:
+- Ensure stable internet connection
+- First load takes 3-5 minutes (downloading models)
+- Gazebo window may freeze — wait patiently
+- Check terminal for download progress
+- Cached after first load (faster next time)</p>
+<hr />
+<h2 id="troubleshooting-plugin-build">🐛 Troubleshooting Plugin Build<a class="headerlink" href="#troubleshooting-plugin-build" title="Permanent link">&para;</a></h2>
+<h3 id="error-could-not-find-opencv">Error: "Could not find OpenCV" ⚠️<a class="headerlink" href="#error-could-not-find-opencv" title="Permanent link">&para;</a></h3>
+<p><strong>Full error message:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>CMake Error at CMakeLists.txt:86 (find_package):
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  By not providing &quot;FindOpenCV.cmake&quot; in CMAKE_MODULE_PATH this project has
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  asked CMake to find a package configuration file provided by &quot;OpenCV&quot;, but
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>  CMake did not find one.
+</span></code></pre></div></p>
+<p><strong>Cause:</strong> Missing OpenCV and GStreamer dependencies.</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libopencv-dev<span class="w"> </span>libgstreamer1.0-dev<span class="w"> </span>libgstreamer-plugins-base1.0-dev<span class="w"> </span>gstreamer1.0-plugins-bad<span class="w"> </span>gstreamer1.0-libav<span class="w"> </span>gstreamer1.0-gl<span class="w"> </span>-y
+</span></code></pre></div></p>
+<p><strong>Then clean and rebuild:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot_gazebo/build
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>*
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>make<span class="w"> </span>-j4
+</span></code></pre></div></p>
+<hr />
+<h3 id="error-could-not-find-gz-sim8">Error: "Could not find gz-sim8" ⚠️<a class="headerlink" href="#error-could-not-find-gz-sim8" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Gazebo Harmonic not installed or dependencies missing.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><strong>Verify Gazebo installed:</strong></li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>--version
+</span></code></pre></div>
+<p>Should show: <code>Gazebo Sim, version 8.x.x</code></p>
+<p>If not, Gazebo installation failed. Repeat Gazebo installation steps above.</p>
+<ol>
+<li>
+<p><strong>Install missing dependencies:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgz-sim8-dev<span class="w"> </span>rapidjson-dev<span class="w"> </span>-y
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Clean and rebuild:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot_gazebo/build
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>*
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>make<span class="w"> </span>-j4
+</span></code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h3 id="error-wrong-gazebo-version">Error: Wrong Gazebo Version ⚠️<a class="headerlink" href="#error-wrong-gazebo-version" title="Permanent link">&para;</a></h3>
+<p><strong>Check installed version:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>gz-sim
+</span></code></pre></div></p>
+<p><strong>Should show:</strong> <code>gz-sim8</code> (Harmonic)</p>
+<p><strong>If shows <code>gz-sim7</code> (Garden):</strong></p>
+<p>You installed Garden instead of Harmonic. Uninstall and reinstall:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>gz-garden<span class="w"> </span>-y
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>-y
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gz-harmonic<span class="w"> </span>-y
+</span></code></pre></div></p>
+<p>Then retry plugin build from "Install Dependencies" section.</p>
+<hr />
+<h3 id="build-is-very-slow">Build is Very Slow ⚠️<a class="headerlink" href="#build-is-very-slow" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Limited CPU cores or VM with low resources.</p>
+<p><strong>Solutions:</strong>
+- Be patient (first build takes 5-10 minutes)
+- Use fewer build threads: <code>make -j2</code> instead of <code>make -j4</code>
+- Close other applications
+- Allocate more RAM/CPU to VM if applicable
+- Subsequent builds will be much faster</p>
+<hr />
+<h2 id="additional-troubleshooting">🐛 Additional Troubleshooting<a class="headerlink" href="#additional-troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="gazebo-window-doesnt-open">Gazebo window doesn't open<a class="headerlink" href="#gazebo-window-doesnt-open" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Missing graphics libraries or GPU drivers</p>
 <p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgl1-mesa-glx<span class="w"> </span>libglu1-mesa<span class="w"> </span>-y
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgl1-mesa-glx<span class="w"> </span>libglu1-mesa<span class="w"> </span>-y
 </span></code></pre></div></p>
 <p>Restart computer, try again.</p>
 <hr />
 <h3 id="failed-to-load-plugin-in-gazebo">"Failed to load plugin" in Gazebo<a class="headerlink" href="#failed-to-load-plugin-in-gazebo" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> Plugin not in Gazebo's search path</p>
-<p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Verify environment variable</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_SYSTEM_PLUGIN_PATH</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Should show path to your plugin</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># If empty, re-add:</span>
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/simtofly_ws/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<p><strong>Cause:</strong> Plugin not in Gazebo's search path or environment variables not set</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><strong>Verify environment variable:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$GZ_SIM_SYSTEM_PLUGIN_PATH</span>
+</span></code></pre></div></li>
+</ol>
+<p>Should show path to your plugin build directory.</p>
+<ol>
+<li>
+<p><strong>If empty, re-add:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/simtofly_ws/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div></p>
-<p>Restart Gazebo.</p>
+</li>
+<li>
+<p><strong>Restart Gazebo</strong></p>
+</li>
+</ol>
 <hr />
 <h3 id="sitl-doesnt-connect-to-gazebo">SITL doesn't connect to Gazebo<a class="headerlink" href="#sitl-doesnt-connect-to-gazebo" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Gazebo not running, or wrong model specified</p>
-<p><strong>Solution:</strong>
-1. <strong>Start Gazebo first</strong> (Terminal 1)
-2. Wait for world to fully load
-3. <strong>Then start SITL</strong> (Terminal 2)
-4. Verify <code>-f gazebo-iris</code> flag used</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><strong>Start Gazebo first</strong> (Terminal 1) and wait for world to fully load</li>
+<li><strong>Then start SITL</strong> (Terminal 2)</li>
+<li><strong>Verify <code>-f gazebo-iris</code> flag is used</strong></li>
+<li><strong>Check for "Received sensor data from Gazebo" message</strong></li>
+</ol>
 <hr />
 <h3 id="could-not-find-iris_runwaysdf">"Could not find iris_runway.sdf"<a class="headerlink" href="#could-not-find-iris_runwaysdf" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> GZ_SIM_RESOURCE_PATH not set</p>
+<p><strong>Cause:</strong> GZ_SIM_RESOURCE_PATH not set correctly</p>
 <p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_RESOURCE_PATH=$HOME/simtofly_ws/ardupilot_gazebo/models:$HOME/simtofly_ws/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GZ_SIM_RESOURCE_PATH=$HOME/simtofly_ws/ardupilot_gazebo/models:$HOME/simtofly_ws/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div></p>
-<hr />
-<h3 id="build-errors-when-compiling-plugin">Build errors when compiling plugin<a class="headerlink" href="#build-errors-when-compiling-plugin" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> Missing dependencies</p>
-<p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgz-sim8-dev<span class="w"> </span>rapidjson-dev<span class="w"> </span>cmake<span class="w"> </span>build-essential<span class="w"> </span>-y
-</span></code></pre></div></p>
-<p>Clean and rebuild:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot_gazebo/build
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>*
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>make<span class="w"> </span>-j4
-</span></code></pre></div></p>
+<p>Close and reopen terminal.</p>
 <hr />
 <h3 id="drone-falls-through-ground-in-gazebo">Drone falls through ground in Gazebo<a class="headerlink" href="#drone-falls-through-ground-in-gazebo" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> Physics not initialized properly</p>
+<p><strong>Cause:</strong> Physics not initialized properly or simulation running too fast</p>
 <p><strong>Solution:</strong>
 - Restart Gazebo
-- Wait 2-3 seconds before launching SITL
-- Check real-time factor (should be ~1.0)</p>
+- Wait 2-3 seconds after Gazebo launches before starting SITL
+- Check real-time factor is ~1.0 (not 10x or higher)
+- Reduce system load (close other applications)</p>
 <hr />
 <h3 id="json-sensor-timeout-error-in-sitl">"JSON sensor timeout" error in SITL<a class="headerlink" href="#json-sensor-timeout-error-in-sitl" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> SITL can't receive data from Gazebo</p>
-<p><strong>Solution:</strong>
-1. Verify Gazebo is running first
-2. Check drone model loaded in Gazebo
-3. Restart both Gazebo and SITL in correct order</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><strong>Verify Gazebo is running first</strong> with drone model loaded</li>
+<li><strong>Check terminal for errors</strong> in Gazebo window</li>
+<li><strong>Restart both Gazebo and SITL</strong> in correct order:</li>
+<li>First: Gazebo (wait for full load)</li>
+<li>Second: SITL</li>
+</ol>
 <hr />
 <h3 id="gazebo-crashes-on-launch">Gazebo crashes on launch<a class="headerlink" href="#gazebo-crashes-on-launch" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> GPU/graphics driver issues (common in VMs)</p>
-<p><strong>Solution:</strong>
-- Update graphics drivers
-- Try software rendering:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">1</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_runway.sdf
-</span></code></pre></div>
-- Consider native Ubuntu for better GPU support</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>
+<p><strong>Update graphics drivers:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Try software rendering:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>-r<span class="w"> </span>iris_runway.sdf
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>For VMs:</strong> Enable 3D acceleration in VM settings</p>
+</li>
+<li>
+<p><strong>Consider native Ubuntu</strong> for better GPU support</p>
+</li>
+</ol>
 <hr />
 <h2 id="additional-resources">📚 Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p><strong>Official Documentation:</strong>
 - Gazebo Harmonic: https://gazebosim.org/docs/harmonic
-- ArduPilot Gazebo: https://ardupilot.org/dev/docs/ros2-gazebo.html
+- ArduPilot Gazebo Plugin: https://github.com/ArduPilot/ardupilot_gazebo
+- ArduPilot SITL with Gazebo: https://ardupilot.org/dev/docs/sitl-with-gazebo.html
 - Gazebo Tutorials: https://gazebosim.org/docs/harmonic/tutorials</p>
 <p><strong>Community:</strong>
 - ArduPilot Forums: https://discuss.ardupilot.org/
-- Gazebo Community: https://community.gazebosim.org/</p>
+- Gazebo Community: https://community.gazebosim.org/
+- ArduPilot Discord: https://ardupilot.org/discord</p>
 <hr />
 <p><a href="../1.4-mavproxy-basics/">← Back: 1.4 MAVProxy Basics</a> | <a href="../1.6-first-mission/">Next: 1.6 First Autonomous Mission →</a></p>
 

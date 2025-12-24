@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../images/simtofly_logo_w.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -701,10 +701,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-navigation-commands" class="md-nav__link">
+  <a href="#basic-navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 Basic Navigation Commands
+        🧭 Basic Navigation
       
     </span>
   </a>
@@ -1182,10 +1182,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-navigation-commands" class="md-nav__link">
+  <a href="#basic-navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 Basic Navigation Commands
+        🧭 Basic Navigation
       
     </span>
   </a>
@@ -1325,7 +1325,7 @@
 <li>✅ Understand flight modes</li>
 <li>✅ Arm and disarm the vehicle</li>
 <li>✅ Perform takeoff and landing</li>
-<li>✅ Basic navigation commands</li>
+<li>✅ Basic navigation using map</li>
 <li>✅ Monitor telemetry data</li>
 </ul>
 <p><strong>Time:</strong> 60-90 minutes</p>
@@ -1342,33 +1342,41 @@
 <hr />
 <h2 id="what-is-mavproxy">🤔 What is MAVProxy?<a class="headerlink" href="#what-is-mavproxy" title="Permanent link">&para;</a></h2>
 <p><strong>MAVProxy</strong> = MAVLink Proxy and Command Shell</p>
-<p>It's a <strong>command-line ground control station</strong> that lets you:
-- Control drone through typed commands
-- Monitor telemetry in real-time
-- Load and execute missions
-- Visualize drone position on map</p>
-<p><strong>Why MAVProxy?</strong>
-- Lightweight and fast
-- Perfect for learning fundamentals
-- Scriptable and automatable
-- Works over SSH (no GUI needed)</p>
+<p>It's a <strong>command-line ground control station</strong> that lets you:</p>
+<ul>
+<li>Control drone through typed commands</li>
+<li>Monitor telemetry in real-time</li>
+<li>Load and execute missions</li>
+<li>Visualize drone position on map</li>
+</ul>
+<p><strong>Why MAVProxy?</strong></p>
+<ul>
+<li>Lightweight and fast</li>
+<li>Perfect for learning fundamentals</li>
+<li>Scriptable and automatable</li>
+<li>Works over SSH (no GUI needed)</li>
+</ul>
 <p><strong>Later we'll use:</strong> ROS2 for advanced control, but MAVProxy teaches the basics.</p>
 <hr />
 <h2 id="launch-sitl-with-map-and-console">🗺️ Launch SITL with Map and Console<a class="headerlink" href="#launch-sitl-with-map-and-console" title="Permanent link">&para;</a></h2>
 <h3 id="basic-sitl-launch-with-visualization">Basic SITL Launch with Visualization<a class="headerlink" href="#basic-sitl-launch-with-visualization" title="Permanent link">&para;</a></h3>
-<p>Instead of just text output, let's open map and console windows:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
-</span></code></pre></div></p>
-<p><strong>Command breakdown:</strong>
-- <code>-v ArduCopter</code> — Vehicle type (multirotor)
-- <code>--map</code> — Opens map window
-- <code>--console</code> — Opens console window</p>
+<p>Instead of just text output, let's open map and console windows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
+</span></code></pre></div>
+<p><strong>Note:</strong> We can run <code>sim_vehicle.py</code> from any directory because we added it to PATH in Section 1.3.</p>
+<p><strong>Command breakdown:</strong></p>
+<ul>
+<li><code>-v ArduCopter</code> — Vehicle type (multirotor)</li>
+<li><code>--map</code> — Opens map window</li>
+<li><code>--console</code> — Opens console window</li>
+</ul>
 <p><strong>This takes:</strong> 10-20 seconds to launch all windows.</p>
-<p><strong>Expected windows:</strong>
-1. <strong>Terminal</strong> — SITL output and MAVProxy prompt
-2. <strong>Map window</strong> — Shows drone position on OpenStreetMap
-3. <strong>Console window</strong> — Shows telemetry data (altitude, speed, etc.)</p>
+<p><strong>Expected windows:</strong></p>
+<ol>
+<li><strong>Terminal</strong> — SITL output and MAVProxy prompt</li>
+<li><strong>Map window</strong> — Shows drone position on OpenStreetMap</li>
+<li><strong>Console window</strong> — Shows telemetry data (altitude, speed, etc.)</li>
+</ol>
 <p>✅ <strong>Success:</strong> All three windows open, see <code>STABILIZE&gt;</code> prompt</p>
 <hr />
 <h3 id="understanding-the-windows">Understanding the Windows<a class="headerlink" href="#understanding-the-windows" title="Permanent link">&para;</a></h3>
@@ -1376,21 +1384,30 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>STABILIZE&gt; 
 </span></code></pre></div>
 This is where you type commands.</p>
-<p><strong>Map window:</strong>
-- Blue icon = Drone position
-- Green line = Drone heading
-- Can zoom in/out (mouse wheel)</p>
-<p><strong>Console window:</strong>
-- Shows real-time data:
-  - Mode, Armed status
-  - Altitude, Speed
-  - GPS status, Battery
-  - Heading, Attitude</p>
+<p><strong>Map window:</strong></p>
+<ul>
+<li>Blue icon = Drone position</li>
+<li>Green line = Drone heading</li>
+<li>Can zoom in/out (mouse wheel)</li>
+<li>Right-click for commands</li>
+</ul>
+<p><strong>Console window:</strong></p>
+<ul>
+<li>
+<p>Shows real-time data:</p>
+</li>
+<li>
+<p>Mode, Armed status</p>
+</li>
+<li>Altitude, Speed</li>
+<li>GPS status, Battery</li>
+<li>Heading, Attitude</li>
+</ul>
 <hr />
 <h3 id="cant-see-windows-headlessssh-users">Can't See Windows? (Headless/SSH Users)<a class="headerlink" href="#cant-see-windows-headlessssh-users" title="Permanent link">&para;</a></h3>
-<p>If you're on SSH without display:
+<p>If you're on SSH without display:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>Skip map/console</strong> — Control via terminal only (works fine for learning).</p>
 <hr />
 <h2 id="understanding-flight-modes">🎮 Understanding Flight Modes<a class="headerlink" href="#understanding-flight-modes" title="Permanent link">&para;</a></h2>
@@ -1413,7 +1430,7 @@ This is where you type commands.</p>
 <tr>
 <td><strong>GUIDED</strong></td>
 <td>Computer control via commands</td>
-<td>Autonomous commands (takeoff, goto)</td>
+<td>Autonomous commands (takeoff, land)</td>
 </tr>
 <tr>
 <td><strong>AUTO</strong></td>
@@ -1424,6 +1441,11 @@ This is where you type commands.</p>
 <td><strong>LOITER</strong></td>
 <td>Hold position using GPS</td>
 <td>Pause and hover in place</td>
+</tr>
+<tr>
+<td><strong>CIRCLE</strong></td>
+<td>Fly in circular pattern</td>
+<td>Practice autonomous flight</td>
 </tr>
 <tr>
 <td><strong>RTL</strong></td>
@@ -1437,17 +1459,21 @@ This is where you type commands.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>For this tutorial, we'll use:</strong>
-- <code>GUIDED</code> — For commanded takeoff/landing/movement
-- <code>STABILIZE</code> — Default starting mode</p>
+<p><strong>For this tutorial, we'll use:</strong></p>
+<ul>
+<li><code>GUIDED</code> — For takeoff and landing</li>
+<li><code>LOITER</code> — Hold position</li>
+<li><code>CIRCLE</code> — Fly in circles</li>
+<li><code>RTL</code> — Return home</li>
+</ul>
 <hr />
 <h3 id="check-current-mode">Check Current Mode<a class="headerlink" href="#check-current-mode" title="Permanent link">&para;</a></h3>
-<p>At MAVProxy prompt:
+<p>At MAVProxy prompt:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mode
-</span></code></pre></div></p>
-<p><strong>Expected output:</strong>
+</span></code></pre></div>
+<p><strong>Expected output:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>STABILIZE
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
 <h3 id="change-mode">Change Mode<a class="headerlink" href="#change-mode" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mode<span class="w"> </span>GUIDED
@@ -1460,10 +1486,12 @@ This is where you type commands.</p>
 <hr />
 <h2 id="arming-and-takeoff">✈️ Arming and Takeoff<a class="headerlink" href="#arming-and-takeoff" title="Permanent link">&para;</a></h2>
 <h3 id="pre-arm-checks">Pre-Arm Checks<a class="headerlink" href="#pre-arm-checks" title="Permanent link">&para;</a></h3>
-<p>Before arming, ArduPilot performs safety checks:
-- GPS lock (SITL has instant GPS)
-- Battery sufficient
-- No critical errors</p>
+<p>Before arming, ArduPilot performs safety checks:</p>
+<ul>
+<li>GPS lock (SITL has instant GPS)</li>
+<li>Battery sufficient</li>
+<li>No critical errors</li>
+</ul>
 <p>In SITL, these pass automatically.</p>
 <hr />
 <h3 id="arm-the-vehicle">Arm the Vehicle<a class="headerlink" href="#arm-the-vehicle" title="Permanent link">&para;</a></h3>
@@ -1477,164 +1505,200 @@ This is where you type commands.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ARMED
 </span></code></pre></div></p>
 <p><strong>Console window:</strong> Shows "ARMED" status</p>
-<p><strong>What happens:</strong>
-- Motors would spin up (if real drone)
-- Vehicle ready to fly
-- LEDs change (on real hardware)</p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Motors would spin up (if real drone)</li>
+<li>Vehicle ready to fly</li>
+<li>LEDs change (on real hardware)</li>
+</ul>
 <p>✅ <strong>Success:</strong> Status shows ARMED</p>
 <hr />
 <h3 id="important-30-second-rule">Important: 30-Second Rule<a class="headerlink" href="#important-30-second-rule" title="Permanent link">&para;</a></h3>
 <p><strong>After arming, you have 30 seconds to takeoff.</strong></p>
-<p>If you don't send takeoff command within 30 seconds:
-- Vehicle automatically disarms (safety feature)
-- You'll see: <code>DISARMED</code></p>
+<p>If you don't send takeoff command within 30 seconds:</p>
+<ul>
+<li>Vehicle automatically disarms (safety feature)</li>
+<li>You'll see: <code>DISARMED</code></li>
+</ul>
 <p><strong>This prevents:</strong> Leaving motors armed indefinitely.</p>
 <hr />
 <h3 id="takeoff-command">Takeoff Command<a class="headerlink" href="#takeoff-command" title="Permanent link">&para;</a></h3>
 <p><strong>Immediately after arming:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>takeoff<span class="w"> </span><span class="m">10</span>
 </span></code></pre></div></p>
-<p><strong>Command breakdown:</strong>
-- <code>takeoff</code> — Takeoff command
-- <code>10</code> — Target altitude in meters</p>
-<p><strong>Expected behavior:</strong>
-- Drone climbs to 10 meters
-- Console shows altitude increasing
-- Map shows altitude number changing</p>
+<p><strong>Command breakdown:</strong></p>
+<ul>
+<li><code>takeoff</code> — Takeoff command</li>
+<li><code>10</code> — Target altitude in meters</li>
+</ul>
+<p><strong>Expected behavior:</strong></p>
+<ul>
+<li>Drone climbs to 10 meters</li>
+<li>Console shows altitude increasing</li>
+<li>Map shows altitude number changing</li>
+</ul>
 <p><strong>This takes:</strong> 10-20 seconds to reach altitude.</p>
 <p><strong>Watch console window:</strong> Altitude (Alt) climbs to ~10m</p>
 <p>✅ <strong>Success:</strong> Altitude reaches 10 meters, drone hovers</p>
 <hr />
-<h2 id="basic-navigation-commands">🧭 Basic Navigation Commands<a class="headerlink" href="#basic-navigation-commands" title="Permanent link">&para;</a></h2>
-<h3 id="understanding-coordinates">Understanding Coordinates<a class="headerlink" href="#understanding-coordinates" title="Permanent link">&para;</a></h3>
-<p>The drone uses:
-- <strong>NED frame</strong> — North, East, Down (relative to start position)
-- Start position = (0, 0, 0)
-- North = positive X
-- East = positive Y
-- Down = positive Z (altitude is negative Z)</p>
+<h2 id="basic-navigation">🧭 Basic Navigation<a class="headerlink" href="#basic-navigation" title="Permanent link">&para;</a></h2>
+<h3 id="navigate-using-map-easiest-method">Navigate Using Map (Easiest Method)<a class="headerlink" href="#navigate-using-map-easiest-method" title="Permanent link">&para;</a></h3>
+<p>After takeoff, the easiest way to move the drone:</p>
+<ol>
+<li><strong>Right-click on the map</strong> where you want drone to go</li>
+<li><strong>Select "Fly to here"</strong> from the menu</li>
+<li><strong>Drone automatically flies</strong> to that position and holds</li>
+</ol>
+<p><strong>Practice:</strong></p>
+<ul>
+<li>Click different locations on the map</li>
+<li>Watch drone move in real-time</li>
+<li>Observe drone icon following your commands</li>
+<li>Map updates position continuously</li>
+</ul>
+<p>✅ <strong>This is the recommended way for beginners!</strong></p>
 <hr />
-<h3 id="move-to-position">Move to Position<a class="headerlink" href="#move-to-position" title="Permanent link">&para;</a></h3>
-<p><strong>Command format:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>guided<span class="w"> </span>NORTH<span class="w"> </span>EAST<span class="w"> </span>DOWN
-</span></code></pre></div></p>
-<p><strong>Example — Move 20m North, 10m East, maintain 10m altitude:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>guided<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>-10
-</span></code></pre></div></p>
-<p><strong>What happens:</strong>
-- Drone flies to (20N, 10E, 10m altitude)
-- Map shows movement
-- Takes 10-20 seconds</p>
-<p>✅ <strong>Success:</strong> Drone moves to new position</p>
+<h3 id="hold-position-loiter-mode">Hold Position (LOITER Mode)<a class="headerlink" href="#hold-position-loiter-mode" title="Permanent link">&para;</a></h3>
+<p><strong>To pause and hover in place:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mode<span class="w"> </span>LOITER
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span></code></pre></div>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Drone holds current GPS position</li>
+<li>Maintains altitude (with rc 3 1500)</li>
+<li>No drift (GPS position lock)</li>
+</ul>
+<p><strong>Use this to:</strong></p>
+<ul>
+<li>Pause during flight</li>
+<li>Hold position while you plan next move</li>
+<li>Emergency "stop and hover"</li>
+</ul>
+<p><strong>Note:</strong> The <code>rc 3 1500</code> command sets throttle to maintain altitude in LOITER mode.</p>
 <hr />
-<h3 id="try-different-positions">Try Different Positions<a class="headerlink" href="#try-different-positions" title="Permanent link">&para;</a></h3>
-<p><strong>Move 30m East:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>guided<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">30</span><span class="w"> </span>-10
+<h3 id="practice-fly-in-circles">Practice: Fly in Circles<a class="headerlink" href="#practice-fly-in-circles" title="Permanent link">&para;</a></h3>
+<p><strong>Make drone fly in circular pattern:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mode<span class="w"> </span>GUIDED
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>arm<span class="w"> </span>throttle
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>takeoff<span class="w"> </span><span class="m">15</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Set throttle to maintain altitude</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># Switch to CIRCLE mode</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>mode<span class="w"> </span>CIRCLE
+</span></code></pre></div>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Drone flies in circles around current center point</li>
+<li>Radius: 10 meters (default)</li>
+<li>Maintains 15m altitude (thanks to rc 3 1500)</li>
+<li>Direction: Clockwise</li>
+</ul>
+<p><strong>Watch the map:</strong> Drone traces circular path</p>
+<p><strong>Return home:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mode<span class="w"> </span>RTL
 </span></code></pre></div></p>
-<p><strong>Move back to start position:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>guided<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-10
-</span></code></pre></div></p>
-<p><strong>Each command:</strong> Drone flies to that position and holds.</p>
-<hr />
-<h3 id="change-altitude">Change Altitude<a class="headerlink" href="#change-altitude" title="Permanent link">&para;</a></h3>
-<p><strong>Climb to 20 meters:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>guided<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-20
-</span></code></pre></div></p>
-<p><strong>Descend to 5 meters:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>guided<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-5
-</span></code></pre></div></p>
-<p><strong>Note:</strong> Always use negative Z for altitude (NED convention).</p>
+<p><strong>Note:</strong> The <code>rc 3 1500</code> command is necessary to maintain altitude in CIRCLE and LOITER modes. Without it, drone will lose altitude.</p>
 <hr />
 <h2 id="landing">🛬 Landing<a class="headerlink" href="#landing" title="Permanent link">&para;</a></h2>
 <h3 id="land-command">Land Command<a class="headerlink" href="#land-command" title="Permanent link">&para;</a></h3>
 <p>When ready to land:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>land
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>land
 </span></code></pre></div></p>
-<p><strong>What happens:</strong>
-- Drone descends at controlled rate
-- Automatically disarms when on ground
-- Mode changes to LAND</p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Drone descends at controlled rate</li>
+<li>Automatically disarms when on ground</li>
+<li>Mode changes to LAND</li>
+</ul>
 <p><strong>This takes:</strong> 10-30 seconds depending on altitude.</p>
 <p><strong>Console window:</strong> Watch altitude decrease to 0</p>
 <p>✅ <strong>Success:</strong> Altitude reaches 0, status shows DISARMED</p>
 <hr />
 <h3 id="alternative-rtl-return-to-launch">Alternative: RTL (Return to Launch)<a class="headerlink" href="#alternative-rtl-return-to-launch" title="Permanent link">&para;</a></h3>
 <p><strong>Return and land at start position:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mode<span class="w"> </span>RTL
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mode<span class="w"> </span>RTL
 </span></code></pre></div></p>
-<p><strong>What happens:</strong>
-- Drone flies back to start position
-- Climbs to RTL altitude (15m default)
-- Descends and lands at home</p>
+<p><strong>What happens:</strong></p>
+<ul>
+<li>Drone flies back to start position</li>
+<li>Climbs to RTL altitude (15m default)</li>
+<li>Descends and lands at home</li>
+</ul>
 <p><strong>Useful for:</strong> Emergency return or end of mission.</p>
 <hr />
 <h2 id="reading-telemetry">📊 Reading Telemetry<a class="headerlink" href="#reading-telemetry" title="Permanent link">&para;</a></h2>
 <h3 id="console-window-data">Console Window Data<a class="headerlink" href="#console-window-data" title="Permanent link">&para;</a></h3>
-<p><strong>Key information displayed:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Mode: GUIDED
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Armed: True
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Alt: 10.5m
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Spd: 2.3m/s
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Hdg: 45°
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>GPS: 3D Fix (10 sats)
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Bat: 12.6V (100%)
-</span></code></pre></div></p>
-<p><strong>What each means:</strong>
-- <strong>Mode</strong> — Current flight mode
-- <strong>Armed</strong> — Motors armed/disarmed
-- <strong>Alt</strong> — Altitude above ground
-- <strong>Spd</strong> — Ground speed
-- <strong>Hdg</strong> — Heading (0° = North)
-- <strong>GPS</strong> — GPS status and satellite count
-- <strong>Bat</strong> — Battery voltage and percentage</p>
+<p><strong>Key information displayed:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Mode: GUIDED
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Armed: True
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Alt: 10.5m
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Spd: 2.3m/s
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Hdg: 45°
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>GPS: 3D Fix (10 sats)
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Bat: 12.6V (100%)
+</span></code></pre></div>
+<p><strong>What each means:</strong></p>
+<ul>
+<li><strong>Mode</strong> — Current flight mode</li>
+<li><strong>Armed</strong> — Motors armed/disarmed</li>
+<li><strong>Alt</strong> — Altitude above ground</li>
+<li><strong>Spd</strong> — Ground speed</li>
+<li><strong>Hdg</strong> — Heading (0° = North)</li>
+<li><strong>GPS</strong> — GPS status and satellite count</li>
+<li><strong>Bat</strong> — Battery voltage and percentage</li>
+</ul>
 <hr />
 <h3 id="mavproxy-status-commands">MAVProxy Status Commands<a class="headerlink" href="#mavproxy-status-commands" title="Permanent link">&para;</a></h3>
 <p><strong>Get GPS position:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>status<span class="w"> </span>GPS_RAW_INT
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>status<span class="w"> </span>GPS_RAW_INT
 </span></code></pre></div></p>
 <p><strong>Get attitude (roll, pitch, yaw):</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>status<span class="w"> </span>ATTITUDE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>status<span class="w"> </span>ATTITUDE
 </span></code></pre></div></p>
 <p><strong>Get battery status:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>status<span class="w"> </span>SYS_STATUS
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>status<span class="w"> </span>SYS_STATUS
 </span></code></pre></div></p>
 <hr />
 <h2 id="complete-flight-example">🎯 Complete Flight Example<a class="headerlink" href="#complete-flight-example" title="Permanent link">&para;</a></h2>
 <p>Let's do a complete flight sequence:</p>
 <h3 id="step-by-step-flight">Step-by-Step Flight<a class="headerlink" href="#step-by-step-flight" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 1. Start SITL with map</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># 2. Change to GUIDED mode</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>mode<span class="w"> </span>GUIDED
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="c1"># 3. Arm the vehicle</span>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>arm<span class="w"> </span>throttle
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="c1"># 4. Takeoff to 10 meters</span>
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>takeoff<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="c1"># Wait for altitude to reach 10m (watch console)</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="c1"># 5. Move North 20 meters</span>
-</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>guided<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-10
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="c1"># Wait for movement to complete (watch map)</span>
-</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
-</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="c1"># 6. Move East 20 meters</span>
-</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>guided<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span><span class="w"> </span>-10
-</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
-</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="c1"># 7. Move back to start</span>
-</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>guided<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-10
-</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>
-</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a><span class="c1"># 8. Land</span>
-</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>land
-</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>
-</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="c1"># Wait for landing to complete</span>
-</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>
-</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="c1"># 9. Exit SITL</span>
-</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>Ctrl+C
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 1. Start SITL with map</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># 2. Change to GUIDED mode</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>mode<span class="w"> </span>GUIDED
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># 3. Arm the vehicle</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>arm<span class="w"> </span>throttle
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1"># 4. Takeoff to 10 meters</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>takeoff<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="c1"># Wait for altitude to reach 10m (watch console)</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1"># 5. Navigate using map</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="c1"># Right-click on map and select &quot;Fly to here&quot;</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="c1"># Watch drone move to selected position</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="c1"># 6. Try LOITER mode</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>mode<span class="w"> </span>LOITER
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="c1"># 7. Try CIRCLE mode</span>
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>mode<span class="w"> </span>CIRCLE
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>
+</span><span id="__span-20-26"><a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="c1"># Watch drone fly in circles</span>
+</span><span id="__span-20-27"><a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>
+</span><span id="__span-20-28"><a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a><span class="c1"># 8. Return to launch</span>
+</span><span id="__span-20-29"><a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>mode<span class="w"> </span>RTL
+</span><span id="__span-20-30"><a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>
+</span><span id="__span-20-31"><a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a><span class="c1"># Wait for drone to return and land</span>
+</span><span id="__span-20-32"><a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a>
+</span><span id="__span-20-33"><a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a><span class="c1"># 9. Exit SITL</span>
+</span><span id="__span-20-34"><a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a>Ctrl+C
 </span></code></pre></div>
 <p><strong>Complete this sequence</strong> to verify everything works.</p>
 <p>✅ <strong>Success:</strong> Drone completes full flight, lands safely</p>
@@ -1645,20 +1709,22 @@ This is where you type commands.</p>
 <hr />
 <h3 id="add-custom-location">Add Custom Location<a class="headerlink" href="#add-custom-location" title="Permanent link">&para;</a></h3>
 <p><strong>Create location entry:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;custom=YOUR_LAT,YOUR_LONG,ALT,HEADING&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;custom=YOUR_LAT,YOUR_LONG,ALT,HEADING&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
 </span></code></pre></div></p>
 <p><strong>Example (replace with your coordinates):</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;myfield=37.7749,-122.4194,50,0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;myfield=37.7749,-122.4194,50,0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/simtofly_ws/ardupilot/Tools/autotest/locations.txt
 </span></code></pre></div></p>
-<p><strong>Format:</strong>
-- Name = your location identifier
-- LAT = latitude (decimal degrees)
-- LONG = longitude (decimal degrees)
-- ALT = altitude MSL (meters)
-- HEADING = initial heading (0 = North)</p>
+<p><strong>Format:</strong></p>
+<ul>
+<li>Name = your location identifier</li>
+<li>LAT = latitude (decimal degrees)</li>
+<li>LONG = longitude (decimal degrees)</li>
+<li>ALT = altitude MSL (meters)</li>
+<li>HEADING = initial heading (0 = North)</li>
+</ul>
 <hr />
 <h3 id="launch-at-custom-location">Launch at Custom Location<a class="headerlink" href="#launch-at-custom-location" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console<span class="w"> </span>-L<span class="w"> </span>myfield
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console<span class="w"> </span>-L<span class="w"> </span>myfield
 </span></code></pre></div>
 <p>Replace <code>myfield</code> with your location name.</p>
 <p><strong>Map window:</strong> Shows your custom location.</p>
@@ -1668,11 +1734,13 @@ This is where you type commands.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can launch SITL with <code>--map --console</code></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Map and console windows open</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can change flight modes (GUIDED, STABILIZE)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can change flight modes (GUIDED, LOITER, CIRCLE)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can arm vehicle (<code>arm throttle</code>)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can takeoff to specific altitude</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can move to different positions</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can land safely</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can navigate using map "Fly to here"</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can use LOITER to hold position</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can use CIRCLE to fly in circles</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Can land safely with RTL or land command</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Understand telemetry data in console</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Completed full flight sequence</li>
 </ul>
@@ -1684,24 +1752,30 @@ This is where you type commands.</p>
 <li>✅ Understood different flight modes</li>
 <li>✅ Armed and disarmed vehicle</li>
 <li>✅ Performed takeoff to target altitude</li>
-<li>✅ Navigated drone to different positions</li>
-<li>✅ Landed safely</li>
+<li>✅ Navigated drone using map interface</li>
+<li>✅ Used LOITER mode to hold position</li>
+<li>✅ Used CIRCLE mode for autonomous flight</li>
+<li>✅ Landed safely using RTL</li>
 <li>✅ Read and understood telemetry data</li>
 <li>✅ Completed full autonomous flight sequence</li>
 </ul>
 <hr />
 <h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Continue to <strong><a href="../1.5-gazebo-simulation/">1.5 Gazebo Simulation</a></strong> where we'll:
-- Install Gazebo Garden 3D simulator
-- Connect Gazebo to SITL
-- See realistic drone physics
-- Visualize sensors and environment</p>
+<p>Continue to <strong><a href="../1.5-gazebo-simulation/">1.5 Gazebo Simulation</a></strong> where we'll:</p>
+<ul>
+<li>Install Gazebo Harmonic 3D simulator</li>
+<li>Connect Gazebo to SITL</li>
+<li>See realistic drone physics</li>
+<li>Visualize sensors and environment</li>
+</ul>
 <hr />
 <h2 id="common-questions">❓ Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
 <h3 id="q-why-use-guided-mode-instead-of-stabilize">Q: Why use GUIDED mode instead of STABILIZE?<a class="headerlink" href="#q-why-use-guided-mode-instead-of-stabilize" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> 
-- <strong>GUIDED</strong> — Accepts autonomous commands (takeoff, goto, land)
-- <strong>STABILIZE</strong> — Manual RC control only (no autonomous commands)</p>
+<p><strong>A:</strong> </p>
+<ul>
+<li><strong>GUIDED</strong> — Accepts autonomous commands (takeoff, land)</li>
+<li><strong>STABILIZE</strong> — Manual RC control only (no autonomous commands)</li>
+</ul>
 <p>For autonomous missions, always use GUIDED or AUTO.</p>
 <hr />
 <h3 id="q-what-if-i-forget-to-takeoff-within-30-seconds">Q: What if I forget to takeoff within 30 seconds?<a class="headerlink" href="#q-what-if-i-forget-to-takeoff-within-30-seconds" title="Permanent link">&para;</a></h3>
@@ -1710,58 +1784,71 @@ This is where you type commands.</p>
 <h3 id="q-can-i-control-multiple-drones-in-sitl">Q: Can I control multiple drones in SITL?<a class="headerlink" href="#q-can-i-control-multiple-drones-in-sitl" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> Yes! Use multiple SITL instances on different ports. We'll cover this in advanced topics.</p>
 <hr />
-<h3 id="q-why-does-the-drone-drift-after-reaching-position">Q: Why does the drone drift after reaching position?<a class="headerlink" href="#q-why-does-the-drone-drift-after-reaching-position" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> In SITL with no wind, it shouldn't drift. If it does:
-- Check you're in GUIDED or LOITER mode
-- STABILIZE mode won't hold position</p>
+<h3 id="q-how-do-i-make-drone-hold-position">Q: How do I make drone hold position?<a class="headerlink" href="#q-how-do-i-make-drone-hold-position" title="Permanent link">&para;</a></h3>
+<p><strong>A:</strong> Use one of these modes:</p>
+<ul>
+<li><strong>LOITER</strong> with <code>rc 3 1500</code> — Holds current GPS position</li>
+<li><strong>Map "Fly to here"</strong> in GUIDED mode — Holds at clicked position</li>
+<li><strong>STABILIZE</strong> won't hold position (manual control only)</li>
+</ul>
+<hr />
+<h3 id="q-why-do-circle-and-loiter-need-rc-3-1500">Q: Why do CIRCLE and LOITER need rc 3 1500?<a class="headerlink" href="#q-why-do-circle-and-loiter-need-rc-3-1500" title="Permanent link">&para;</a></h3>
+<p><strong>A:</strong> These modes need throttle input to maintain altitude. Without it, the drone will lose altitude. The <code>rc 3 1500</code> command sets throttle to middle position (hover).</p>
 <hr />
 <h3 id="q-how-do-i-stop-a-command-mid-flight">Q: How do I stop a command mid-flight?<a class="headerlink" href="#q-how-do-i-stop-a-command-mid-flight" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> Send a new command (overrides previous) or change mode:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mode<span class="w"> </span>LOITER<span class="w">  </span><span class="c1"># Stops and holds position</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>mode<span class="w"> </span>LOITER<span class="w">  </span><span class="c1"># Stops and holds position</span>
 </span></code></pre></div></p>
 <hr />
 <h2 id="troubleshooting">🐛 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="map-window-doesnt-open">Map window doesn't open<a class="headerlink" href="#map-window-doesnt-open" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Missing Python packages</p>
 <p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>wxPython<span class="w"> </span>matplotlib
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>wxPython<span class="w"> </span>matplotlib
 </span></code></pre></div></p>
 <p>Relaunch SITL.</p>
 <hr />
 <h3 id="bad-mode-error-when-changing-modes">"Bad mode" error when changing modes<a class="headerlink" href="#bad-mode-error-when-changing-modes" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Mode name typo</p>
-<p><strong>Solution:</strong> Mode names are case-sensitive. Use:
-- <code>GUIDED</code> (not "guided")
-- <code>STABILIZE</code> (not "stabilize")</p>
+<p><strong>Solution:</strong> Mode names are case-sensitive. Use:</p>
+<ul>
+<li><code>GUIDED</code> (not "guided")</li>
+<li><code>STABILIZE</code> (not "stabilize")</li>
+<li><code>LOITER</code> (not "loiter")</li>
+</ul>
 <hr />
 <h3 id="arm-command-rejected-prearm-need-3d-fix">Arm command rejected "PreArm: Need 3D Fix"<a class="headerlink" href="#arm-command-rejected-prearm-need-3d-fix" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> GPS not initialized (rare in SITL)</p>
 <p><strong>Solution:</strong> Wait 5-10 seconds, try arming again. SITL gets instant GPS fix.</p>
 <hr />
-<h3 id="drone-wont-move-with-guided-command">Drone won't move with guided command<a class="headerlink" href="#drone-wont-move-with-guided-command" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> Not in GUIDED mode</p>
-<p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>mode<span class="w"> </span>GUIDED
-</span></code></pre></div>
-Then send guided command again.</p>
-<hr />
 <h3 id="console-shows-negative-altitude">Console shows negative altitude<a class="headerlink" href="#console-shows-negative-altitude" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Normal! NED frame uses negative Z for up.</p>
-<p><strong>Solution:</strong> Nothing to fix. Just remember:
-- Altitude 10m = Z of -10
-- Ground level = Z of 0</p>
+<p><strong>Solution:</strong> Nothing to fix. Just remember:</p>
+<ul>
+<li>Altitude 10m = Z of -10</li>
+<li>Ground level = Z of 0</li>
+</ul>
 <hr />
 <h3 id="takeoff-command-does-nothing">Takeoff command does nothing<a class="headerlink" href="#takeoff-command-does-nothing" title="Permanent link">&para;</a></h3>
-<p><strong>Cause:</strong> 
-1. Not armed
-2. Not in GUIDED mode
-3. Already in air</p>
-<p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>mode<span class="w"> </span>GUIDED
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>arm<span class="w"> </span>throttle
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>takeoff<span class="w"> </span><span class="m">10</span>
-</span></code></pre></div></p>
+<p><strong>Cause:</strong> </p>
+<ol>
+<li>Not armed</li>
+<li>Not in GUIDED mode</li>
+<li>Already in air</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>mode<span class="w"> </span>GUIDED
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>arm<span class="w"> </span>throttle
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>takeoff<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
 <p>In this exact order.</p>
+<hr />
+<h3 id="drone-loses-altitude-in-circle-or-loiter-mode">Drone loses altitude in CIRCLE or LOITER mode<a class="headerlink" href="#drone-loses-altitude-in-circle-or-loiter-mode" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Missing <code>rc 3 1500</code> command</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span></code></pre></div></p>
+<p>Then switch to CIRCLE or LOITER mode.</p>
 <hr />
 <h3 id="failed-to-change-mode-message">"Failed to change mode" message<a class="headerlink" href="#failed-to-change-mode-message" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Some modes require certain conditions (e.g., GPS lock for LOITER)</p>
@@ -1894,10 +1981,10 @@ Then send guided command again.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

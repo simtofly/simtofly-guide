@@ -1309,21 +1309,21 @@
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ls
 </span></code></pre></div>
 <p><strong>Expected output:</strong> You should see directories like:</p>
-<p><img alt="Ardupilot Directories" src="../../docs/phase-1-simulation/images/1.3_ardu_clone.png" /></p>
+<p><img alt="Ardupilot Directories" src="../images/1.3_ardu_clone.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ArduCopter  ArduPlane  ArduSub  libraries  Tools  ...
 </span></code></pre></div>
 <p>✅ <strong>Success:</strong> ArduPilot directories visible</p>
 <hr />
 <h2 id="install-ardupilot-dependencies">🔧 Install ArduPilot Dependencies<a class="headerlink" href="#install-ardupilot-dependencies" title="Permanent link">&para;</a></h2>
 <h3 id="run-installation-script">Run Installation Script<a class="headerlink" href="#run-installation-script" title="Permanent link">&para;</a></h3>
-<p>ArduPilot provides a script that installs everything needed:
+<p>ArduPilot provides a script that installs everything needed:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Tools/environment_install/install-prereqs-ubuntu.sh<span class="w"> </span>-y
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>What this does:</strong> Installs compilers, libraries, and tools ArduPilot needs.</p>
 <p><strong>This takes:</strong> 10-20 minutes (downloads ~2GB of packages).</p>
 <p><strong>Expected output:</strong></p>
-<p><img alt="Install ArduPilot Dependencies" src="../../docs/phase-1-simulation/images/1.3_ardu_dep.png" /></p>
+<p><img alt="Install ArduPilot Dependencies" src="../images/1.3_ardu_dep.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>---------- Installing prerequisites for SITL ----------
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>...
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Installing packages...
@@ -1355,7 +1355,7 @@
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>Copter-4.5.7
 </span></code></pre></div></p>
 <p><strong>Expected output:</strong></p>
-<p><img alt="ArduPilot Checkout" src="../../docs/phase-1-simulation/images/1.3_ardu_swich.png" /></p>
+<p><img alt="ArduPilot Checkout" src="../images/1.3_ardu_swich.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Note: switching to &#39;Copter-4.5.7&#39;.
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>...
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>HEAD is now at xxxxxxx ArduCopter: release 4.5.7
@@ -1382,14 +1382,18 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sim_vehicle.py<span class="w"> </span>-w
 </span></code></pre></div></p>
-<p><strong>Important flags:</strong>
-- <code>-w</code> = Wipe parameters and start fresh</p>
-<p><strong>What this does:</strong> 
-- Builds SITL for the first time
-- Sets default ArduCopter parameters
-- Creates configuration files</p>
+<p><strong>Important flags:</strong></p>
+<ul>
+<li><code>-w</code> = Wipe parameters and start fresh</li>
+</ul>
+<p><strong>What this does:</strong> </p>
+<ul>
+<li>Builds SITL for the first time</li>
+<li>Sets default ArduCopter parameters</li>
+<li>Creates configuration files</li>
+</ul>
 <p><strong>This takes:</strong> 2-5 minutes (first build is slow).</p>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Building ArduCopter...
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>...
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Configuring for SITL...
@@ -1398,7 +1402,7 @@
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>...
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Received 500 parameters
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>...
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>Wait until you see:</strong> <code>Received XXX parameters</code> (where XXX is around 500-600)</p>
 <p><strong>Then:</strong> Press Ctrl+C to exit</p>
 <p>✅ <strong>Success:</strong> Parameters received, SITL built successfully</p>
@@ -1423,7 +1427,7 @@
 </span></code></pre></div></p>
 <p><strong>What this does:</strong> Starts ArduCopter SITL simulator.</p>
 <p><strong>Expected output:</strong></p>
-<p><img alt="Launch SITL Simulator" src="../../docs/phase-1-simulation/images/1.3_sitl_first.png" /></p>
+<p><img alt="Launch SITL Simulator" src="../images/1.3_sitl_first.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Starting SITL...
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Waiting for heartbeat from 127.0.0.1:5760
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>...
@@ -1458,7 +1462,7 @@
 <p><strong>Expected response:</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>DISARMED
 </span></code></pre></div></p>
-<p><img alt="Test Basic Commands" src="../../docs/phase-1-simulation/images/1.3_sitl_test_cmd.png" /></p>
+<p><img alt="Test Basic Commands" src="../images/1.3_sitl_test_cmd.png" /></p>
 <p>✅ <strong>Success:</strong> Commands work, SITL responds</p>
 <hr />
 <h3 id="exit-sitl">Exit SITL<a class="headerlink" href="#exit-sitl" title="Permanent link">&para;</a></h3>
@@ -1492,33 +1496,41 @@
 </ul>
 <hr />
 <h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Continue to <strong><a href="../1.4-mavproxy-basics/">1.4 MAVProxy Command Line</a></strong> where we'll:
-- Understand flight modes
-- Control drone via commands
-- Perform takeoff and landing
-- Navigate with basic movements</p>
+<p>Continue to <strong><a href="../1.4-mavproxy-basics/">1.4 MAVProxy Command Line</a></strong> where we'll:</p>
+<ul>
+<li>Understand flight modes</li>
+<li>Control drone via commands</li>
+<li>Perform takeoff and landing</li>
+<li>Navigate with basic movements</li>
+</ul>
 <hr />
 <h2 id="common-questions">❓ Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
 <h3 id="q-why-copter-457-specifically">Q: Why Copter-4.5.7 specifically?<a class="headerlink" href="#q-why-copter-457-specifically" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> This is the latest stable release as of December 2025. It's well-tested and widely used. You can use newer versions when they're released, but this tutorial is verified with 4.5.7.</p>
 <h3 id="q-can-i-use-a-different-vehicle-type">Q: Can I use a different vehicle type?<a class="headerlink" href="#q-can-i-use-a-different-vehicle-type" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> Yes! ArduPilot supports:
-- <code>ArduCopter</code> — Multirotor drones (what we use)
-- <code>ArduPlane</code> — Fixed-wing aircraft
-- <code>ArduSub</code> — Underwater vehicles
-- <code>Rover</code> — Ground vehicles</p>
+<p><strong>A:</strong> Yes! ArduPilot supports:</p>
+<ul>
+<li><code>ArduCopter</code> — Multirotor drones (what we use)</li>
+<li><code>ArduPlane</code> — Fixed-wing aircraft</li>
+<li><code>ArduSub</code> — Underwater vehicles</li>
+<li><code>Rover</code> — Ground vehicles</li>
+</ul>
 <p>Replace <code>ArduCopter</code> with your vehicle type in commands.</p>
 <h3 id="q-whats-the-difference-between-w-and-normal-launch">Q: What's the difference between <code>-w</code> and normal launch?<a class="headerlink" href="#q-whats-the-difference-between-w-and-normal-launch" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> 
-- <code>-w</code> flag: Wipes parameters, sets defaults (use first time only)
-- Normal launch: Uses saved parameters (use after first time)</p>
+<p><strong>A:</strong> </p>
+<ul>
+<li><code>-w</code> flag: Wipes parameters, sets defaults (use first time only)</li>
+<li>Normal launch: Uses saved parameters (use after first time)</li>
+</ul>
 <h3 id="q-do-i-need-to-be-in-arducopter-directory-to-launch">Q: Do I need to be in ArduCopter directory to launch?<a class="headerlink" href="#q-do-i-need-to-be-in-arducopter-directory-to-launch" title="Permanent link">&para;</a></h3>
 <p><strong>A:</strong> No, if <code>sim_vehicle.py</code> is in your PATH. But starting there is good practice.</p>
 <h3 id="q-how-much-disk-space-does-ardupilot-use">Q: How much disk space does ArduPilot use?<a class="headerlink" href="#q-how-much-disk-space-does-ardupilot-use" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> 
-- Source code: ~2 GB
-- Built SITL: ~3 GB
-- Total: ~5 GB</p>
+<p><strong>A:</strong> </p>
+<ul>
+<li>Source code: ~2 GB</li>
+<li>Built SITL: ~3 GB</li>
+<li>Total: ~5 GB</li>
+</ul>
 <hr />
 <h2 id="troubleshooting">🐛 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="error-command-not-found-sim_vehiclepy">Error: "command not found: sim_vehicle.py"<a class="headerlink" href="#error-command-not-found-sim_vehiclepy" title="Permanent link">&para;</a></h3>
@@ -1565,11 +1577,13 @@
 <hr />
 <h3 id="build-is-very-slow">Build is very slow<a class="headerlink" href="#build-is-very-slow" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Limited CPU cores or running in VM</p>
-<p><strong>Solution:</strong>
-- Be patient (first build takes time)
-- Close other applications
-- Subsequent builds will be faster
-- Consider native Ubuntu instead of VM for better performance</p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>Be patient (first build takes time)</li>
+<li>Close other applications</li>
+<li>Subsequent builds will be faster</li>
+<li>Consider native Ubuntu instead of VM for better performance</li>
+</ul>
 <hr />
 <p><a href="../1.2-environment-setup/">← Back: 1.2 Environment Setup</a> | <a href="../1.4-mavproxy-basics/">Next: 1.4 MAVProxy Basics →</a></p>
 

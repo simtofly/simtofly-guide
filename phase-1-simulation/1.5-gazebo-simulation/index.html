@@ -1441,7 +1441,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>--version
 </span></code></pre></div>
 <p><strong>Expected output:</strong></p>
-<p><img alt="Verify Gazebo Installation" src="/docs/phase-1-simulation/images/1.5_gz_verification.png" /></p>
+<p><img alt="Verify Gazebo Installation" src="../images/1.5_gz_verification.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Gazebo Sim, version 8.x.x
 </span></code></pre></div>
 <p>✅ <strong>Success:</strong> Shows Gazebo Sim version 8.x (Harmonic)</p>
@@ -1449,7 +1449,7 @@
 <h3 id="test-gazebo-launch">Test Gazebo Launch<a class="headerlink" href="#test-gazebo-launch" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gz<span class="w"> </span>sim<span class="w"> </span>-v4<span class="w"> </span>shapes.sdf
 </span></code></pre></div>
-<p><img alt="Start Gazebo First" src="/docs/phase-1-simulation/images/1.5_gz_first_open.png" /></p>
+<p><img alt="Start Gazebo First" src="../images/1.5_gz_first_open.png" /></p>
 <p><strong>What happens:</strong></p>
 <ul>
 <li>Gazebo window opens</li>
@@ -1607,7 +1607,7 @@
 <p>✅ <strong>Success:</strong> Shows "Received sensor data from Gazebo" and <code>STABILIZE&gt;</code> prompt</p>
 <hr />
 <h3 id="verify-connection">Verify Connection<a class="headerlink" href="#verify-connection" title="Permanent link">&para;</a></h3>
-<p><img alt="Launch SITL with Gazebo" src="/docs/phase-1-simulation/images/1.5_gz_with_SITL.png" /></p>
+<p><img alt="Launch SITL with Gazebo" src="../images/1.5_gz_with_SITL.png" /></p>
 <p><strong>In Gazebo window:</strong>
 - Drone should be sitting on runway
 - Propellers visible</p>
@@ -1676,7 +1676,7 @@
 - Climbs to 10 meters
 - Physics looks realistic (smooth acceleration)</p>
 <p><strong>This takes:</strong> 10-20 seconds to reach altitude.</p>
-<p><img alt="Test Flight in Gazebo" src="/docs/phase-1-simulation/images/1.5_gz_with_SITL_test.png" /></p>
+<p><img alt="Test Flight in Gazebo" src="../images/1.5_gz_with_SITL_test.png" /></p>
 <p>✅ <strong>Success:</strong> Drone flies in Gazebo, hovers at 10m</p>
 <hr />
 <h3 id="navigate-in-gazebo">Navigate in Gazebo<a class="headerlink" href="#navigate-in-gazebo" title="Permanent link">&para;</a></h3>
@@ -1711,7 +1711,7 @@
 <p>✅ <strong>Success:</strong> Complete flight in 3D simulation</p>
 <hr />
 <h2 id="understanding-gazebo-interface">🎨 Understanding Gazebo Interface<a class="headerlink" href="#understanding-gazebo-interface" title="Permanent link">&para;</a></h2>
-<p><img alt="Gazebo Interface" src="/docs/phase-1-simulation/images/1.5_gz_interface.png" /></p>
+<p><img alt="Gazebo Interface" src="../images/1.5_gz_interface.png" /></p>
 <h3 id="main-window-elements">Main Window Elements<a class="headerlink" href="#main-window-elements" title="Permanent link">&para;</a></h3>
 <p><strong>Top Left Toolbar:</strong></p>
 <ul>
@@ -1771,8 +1771,8 @@
 <p><strong>Terminal 2:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ardupilot/ArduCopter
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>-f<span class="w"> </span>gazebo-iris<span class="w"> </span>--model<span class="w"> </span>JSON<span class="w"> </span>--map<span class="w"> </span>--console
-</span></code></pre></div>
-<img alt="Launch in warehouse" src="/docs/phase-1-simulation/images/1.5_gz_with_SITL_warehouse.png" /></p>
+</span></code></pre></div></p>
+<p><img alt="Launch in warehouse" src="../images/1.5_gz_with_SITL_warehouse.png" /></p>
 <p><strong>Try different worlds to test various flight scenarios!</strong></p>
 <hr />
 <h2 id="verification-checklist">📋 Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
@@ -1804,18 +1804,22 @@
 </ul>
 <hr />
 <h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Continue to <strong><a href="../1.6-first-mission/">1.6 First Autonomous Mission</a></strong> where we'll:
-- Create waypoint mission file
-- Load mission into SITL
-- Execute autonomous flight in Gazebo
-- Analyze flight logs
-- Complete Phase 1 successfully</p>
+<p>Continue to <strong><a href="../1.6-first-mission/">1.6 First Autonomous Mission</a></strong> where we'll:</p>
+<ul>
+<li>Create waypoint mission file</li>
+<li>Load mission into SITL</li>
+<li>Execute autonomous flight in Gazebo</li>
+<li>Analyze flight logs</li>
+<li>Complete Phase 1 successfully</li>
+</ul>
 <hr />
 <h2 id="common-questions">❓ Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
 <h3 id="q-gazebo-garden-vs-gazebo-harmonic">Q: Gazebo Garden vs Gazebo Harmonic?<a class="headerlink" href="#q-gazebo-garden-vs-gazebo-harmonic" title="Permanent link">&para;</a></h3>
-<p><strong>A:</strong> Both work with ArduPilot:
-- <strong>Harmonic</strong> (recommended) — Latest LTS release, best support
-- <strong>Garden</strong> — Older release, still supported</p>
+<p><strong>A:</strong> Both work with ArduPilot:</p>
+<ul>
+<li><strong>Harmonic</strong> (recommended) — Latest LTS release, best support</li>
+<li><strong>Garden</strong> — Older release, still supported</li>
+</ul>
 <p>Stick with Harmonic unless you have specific compatibility needs.</p>
 <hr />
 <h3 id="q-why-build-plugin-from-source-instead-of-using-packages">Q: Why build plugin from source instead of using packages?<a class="headerlink" href="#q-why-build-plugin-from-source-instead-of-using-packages" title="Permanent link">&para;</a></h3>
@@ -1906,12 +1910,14 @@
 <hr />
 <h3 id="build-is-very-slow">Build is Very Slow ⚠️<a class="headerlink" href="#build-is-very-slow" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Limited CPU cores or VM with low resources.</p>
-<p><strong>Solutions:</strong>
-- Be patient (first build takes 5-10 minutes)
-- Use fewer build threads: <code>make -j2</code> instead of <code>make -j4</code>
-- Close other applications
-- Allocate more RAM/CPU to VM if applicable
-- Subsequent builds will be much faster</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Be patient (first build takes 5-10 minutes)</li>
+<li>Use fewer build threads: <code>make -j2</code> instead of <code>make -j4</code></li>
+<li>Close other applications</li>
+<li>Allocate more RAM/CPU to VM if applicable</li>
+<li>Subsequent builds will be much faster</li>
+</ul>
 <hr />
 <h2 id="additional-troubleshooting">🐛 Additional Troubleshooting<a class="headerlink" href="#additional-troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="gazebo-window-doesnt-open">Gazebo window doesn't open<a class="headerlink" href="#gazebo-window-doesnt-open" title="Permanent link">&para;</a></h3>
@@ -1962,11 +1968,13 @@
 <hr />
 <h3 id="drone-falls-through-ground-in-gazebo">Drone falls through ground in Gazebo<a class="headerlink" href="#drone-falls-through-ground-in-gazebo" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> Physics not initialized properly or simulation running too fast</p>
-<p><strong>Solution:</strong>
-- Restart Gazebo
-- Wait 2-3 seconds after Gazebo launches before starting SITL
-- Check real-time factor is ~1.0 (not 10x or higher)
-- Reduce system load (close other applications)</p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>Restart Gazebo</li>
+<li>Wait 2-3 seconds after Gazebo launches before starting SITL</li>
+<li>Check real-time factor is ~1.0 (not 10x or higher)</li>
+<li>Reduce system load (close other applications)</li>
+</ul>
 <hr />
 <h3 id="json-sensor-timeout-error-in-sitl">"JSON sensor timeout" error in SITL<a class="headerlink" href="#json-sensor-timeout-error-in-sitl" title="Permanent link">&para;</a></h3>
 <p><strong>Cause:</strong> SITL can't receive data from Gazebo</p>
@@ -2004,15 +2012,19 @@
 </ol>
 <hr />
 <h2 id="additional-resources">📚 Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
-<p><strong>Official Documentation:</strong>
-- Gazebo Harmonic: https://gazebosim.org/docs/harmonic
-- ArduPilot Gazebo Plugin: https://github.com/ArduPilot/ardupilot_gazebo
-- ArduPilot SITL with Gazebo: https://ardupilot.org/dev/docs/sitl-with-gazebo.html
-- Gazebo Tutorials: https://gazebosim.org/docs/harmonic/tutorials</p>
-<p><strong>Community:</strong>
-- ArduPilot Forums: https://discuss.ardupilot.org/
-- Gazebo Community: https://community.gazebosim.org/
-- ArduPilot Discord: https://ardupilot.org/discord</p>
+<p><strong>Official Documentation:</strong></p>
+<ul>
+<li>Gazebo Harmonic: https://gazebosim.org/docs/harmonic</li>
+<li>ArduPilot Gazebo Plugin: https://github.com/ArduPilot/ardupilot_gazebo</li>
+<li>ArduPilot SITL with Gazebo: https://ardupilot.org/dev/docs/sitl-with-gazebo.html</li>
+<li>Gazebo Tutorials: https://gazebosim.org/docs/harmonic/tutorials</li>
+</ul>
+<p><strong>Community:</strong></p>
+<ul>
+<li>ArduPilot Forums: https://discuss.ardupilot.org/</li>
+<li>Gazebo Community: https://community.gazebosim.org/</li>
+<li>ArduPilot Discord: https://ardupilot.org/discord</li>
+</ul>
 <hr />
 <p><a href="../1.4-mavproxy-basics/">← Back: 1.4 MAVProxy Basics</a> | <a href="../1.6-first-mission/">Next: 1.6 First Autonomous Mission →</a></p>
 

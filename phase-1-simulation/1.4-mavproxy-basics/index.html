@@ -1360,54 +1360,80 @@
 <hr />
 <h2 id="launch-sitl-with-map-and-console">🗺️ Launch SITL with Map and Console<a class="headerlink" href="#launch-sitl-with-map-and-console" title="Permanent link">&para;</a></h2>
 <h3 id="basic-sitl-launch-with-visualization">Basic SITL Launch with Visualization<a class="headerlink" href="#basic-sitl-launch-with-visualization" title="Permanent link">&para;</a></h3>
-<p>Instead of just text output, let's open map and console windows:</p>
+<p>Instead of just text output, let's open map and console windows:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
-</span></code></pre></div>
+</span></code></pre></div></p>
 <p><strong>Note:</strong> We can run <code>sim_vehicle.py</code> from any directory because we added it to PATH in Section 1.3.</p>
-<p><strong>Command breakdown:</strong></p>
-<ul>
-<li><code>-v ArduCopter</code> — Vehicle type (multirotor)</li>
-<li><code>--map</code> — Opens map window</li>
-<li><code>--console</code> — Opens console window</li>
-</ul>
+<p><strong>Command breakdown:</strong>
+- <code>-v ArduCopter</code> — Vehicle type (multirotor)
+- <code>--map</code> — Opens map window
+- <code>--console</code> — Opens console window</p>
 <p><strong>This takes:</strong> 10-20 seconds to launch all windows.</p>
-<p><strong>Expected windows:</strong></p>
-<ol>
-<li><strong>Terminal</strong> — SITL output and MAVProxy prompt</li>
-<li><strong>Map window</strong> — Shows drone position on OpenStreetMap</li>
-<li><strong>Console window</strong> — Shows telemetry data (altitude, speed, etc.)</li>
-</ol>
-<p>✅ <strong>Success:</strong> All three windows open, see <code>STABILIZE&gt;</code> prompt</p>
+<hr />
+<h3 id="expected-windows">Expected Windows<a class="headerlink" href="#expected-windows" title="Permanent link">&para;</a></h3>
+<p><img alt="SITL Launch Windows" src="../images/1.4_sitl_launch.png" /></p>
+<p><strong>Four windows will open:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Top-Left</strong></td>
+<td>MAVProxy 2D Map</td>
+<td>Shows drone position on satellite/terrain map with grid overlay</td>
+</tr>
+<tr>
+<td><strong>Top-Right</strong></td>
+<td>SITL Main Terminal</td>
+<td>Command input (MAVProxy prompt), system messages</td>
+</tr>
+<tr>
+<td><strong>Bottom-Left</strong></td>
+<td>MAVProxy Console</td>
+<td>Real-time telemetry (GPS, altitude, speed, battery, flight mode)</td>
+</tr>
+<tr>
+<td><strong>Bottom-Right</strong></td>
+<td>ArduCopter Console</td>
+<td>ArduCopter initialization messages and system logs</td>
+</tr>
+</tbody>
+</table>
+<p>✅ <strong>Success:</strong> All four windows open, see <code>STABILIZE&gt;</code> prompt in main terminal</p>
 <hr />
 <h3 id="understanding-the-windows">Understanding the Windows<a class="headerlink" href="#understanding-the-windows" title="Permanent link">&para;</a></h3>
-<p><strong>Terminal (MAVProxy prompt):</strong>
+<p><strong>SITL Main Terminal (Top-Right):</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>STABILIZE&gt; 
 </span></code></pre></div>
-This is where you type commands.</p>
-<p><strong>Map window:</strong></p>
-<ul>
-<li>Blue icon = Drone position</li>
-<li>Green line = Drone heading</li>
-<li>Can zoom in/out (mouse wheel)</li>
-<li>Right-click for commands</li>
-</ul>
-<p><strong>Console window:</strong></p>
-<ul>
-<li>
-<p>Shows real-time data:</p>
-</li>
-<li>
-<p>Mode, Armed status</p>
-</li>
-<li>Altitude, Speed</li>
-<li>GPS status, Battery</li>
-<li>Heading, Attitude</li>
-</ul>
+- <strong>Purpose:</strong> Enter commands here
+- <strong>Shows:</strong> MAVProxy prompt, system messages, command responses</p>
+<hr />
+<p><strong>MAVProxy 2D Map (Top-Left):</strong>
+- <strong>Drone icon:</strong> Green marker showing position
+- <strong>Heading:</strong> Arrow indicates drone orientation
+- <strong>Controls:</strong> Zoom (mouse wheel), pan (drag), right-click for commands</p>
+<hr />
+<p><strong>MAVProxy Console (Bottom-Left):</strong>
+- <strong>Real-time data displayed:</strong>
+  - Mode, Armed status
+  - Altitude, Speed
+  - GPS status, Satellite count
+  - Battery voltage, percentage
+  - Heading, Attitude</p>
+<hr />
+<p><strong>ArduCopter Console (Bottom-Right):</strong>
+- <strong>Shows:</strong> System initialization, parameter loading, validation messages
+- <strong>Use:</strong> Monitor for errors or warnings during startup</p>
 <hr />
 <h3 id="cant-see-windows-headlessssh-users">Can't See Windows? (Headless/SSH Users)<a class="headerlink" href="#cant-see-windows-headlessssh-users" title="Permanent link">&para;</a></h3>
-<p>If you're on SSH without display:</p>
+<p>If you're on SSH without display:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter
-</span></code></pre></div>
+</span></code></pre></div></p>
 <p><strong>Skip map/console</strong> — Control via terminal only (works fine for learning).</p>
 <hr />
 <h2 id="understanding-flight-modes">🎮 Understanding Flight Modes<a class="headerlink" href="#understanding-flight-modes" title="Permanent link">&para;</a></h2>
@@ -1472,15 +1498,17 @@ This is where you type commands.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mode
 </span></code></pre></div>
 <p><strong>Expected output:</strong></p>
+<p><img alt="Check Current Mode" src="../images/1.4_mode.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>STABILIZE
 </span></code></pre></div>
 <hr />
 <h3 id="change-mode">Change Mode<a class="headerlink" href="#change-mode" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mode<span class="w"> </span>GUIDED
 </span></code></pre></div>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
+<p><img alt="Change Mode" src="../images/1.4_mode_guided.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>GUIDED&gt; 
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>Notice the prompt changes to show current mode.</p>
 <p>✅ <strong>Success:</strong> Mode changed, prompt shows <code>GUIDED&gt;</code></p>
 <hr />
@@ -1501,9 +1529,10 @@ This is where you type commands.</p>
 <p><strong>Then arm:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>arm<span class="w"> </span>throttle
 </span></code></pre></div></p>
-<p><strong>Expected output:</strong>
+<p><strong>Expected output:</strong></p>
+<p><img alt="Arm the Vehicle" src="../images/1.4_arming.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ARMED
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>Console window:</strong> Shows "ARMED" status</p>
 <p><strong>What happens:</strong></p>
 <ul>
@@ -1512,7 +1541,6 @@ This is where you type commands.</p>
 <li>LEDs change (on real hardware)</li>
 </ul>
 <p>✅ <strong>Success:</strong> Status shows ARMED</p>
-<hr />
 <h3 id="important-30-second-rule">Important: 30-Second Rule<a class="headerlink" href="#important-30-second-rule" title="Permanent link">&para;</a></h3>
 <p><strong>After arming, you have 30 seconds to takeoff.</strong></p>
 <p>If you don't send takeoff command within 30 seconds:</p>
@@ -1539,6 +1567,7 @@ This is where you type commands.</p>
 </ul>
 <p><strong>This takes:</strong> 10-20 seconds to reach altitude.</p>
 <p><strong>Watch console window:</strong> Altitude (Alt) climbs to ~10m</p>
+<p><img alt="Takeoff Command" src="../images/1.4_takeoff.png" /></p>
 <p>✅ <strong>Success:</strong> Altitude reaches 10 meters, drone hovers</p>
 <hr />
 <h2 id="basic-navigation">🧭 Basic Navigation<a class="headerlink" href="#basic-navigation" title="Permanent link">&para;</a></h2>
@@ -1556,6 +1585,7 @@ This is where you type commands.</p>
 <li>Observe drone icon following your commands</li>
 <li>Map updates position continuously</li>
 </ul>
+<p><img alt="Takeoff Command" src="../images/1.4_Basic%20Navigation.gif" /></p>
 <p>✅ <strong>This is the recommended way for beginners!</strong></p>
 <hr />
 <h3 id="hold-position-loiter-mode">Hold Position (LOITER Mode)<a class="headerlink" href="#hold-position-loiter-mode" title="Permanent link">&para;</a></h3>
@@ -1663,7 +1693,10 @@ This is where you type commands.</p>
 </span></code></pre></div></p>
 <hr />
 <h2 id="complete-flight-example">🎯 Complete Flight Example<a class="headerlink" href="#complete-flight-example" title="Permanent link">&para;</a></h2>
-<p>Let's do a complete flight sequence:</p>
+<h3 id="video-demonstration">Video Demonstration<a class="headerlink" href="#video-demonstration" title="Permanent link">&para;</a></h3>
+<p>Watch the complete flight sequence in action:</p>
+<p><a href="https://www.youtube.com/watch?v=QG02aWvP6fw"><img alt="Complete Flight Demo" src="https://img.youtube.com/vi/QG02aWvP6fw/0.jpg" /></a></p>
+<hr />
 <h3 id="step-by-step-flight">Step-by-Step Flight<a class="headerlink" href="#step-by-step-flight" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 1. Start SITL with map</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sim_vehicle.py<span class="w"> </span>-v<span class="w"> </span>ArduCopter<span class="w"> </span>--map<span class="w"> </span>--console
@@ -1684,8 +1717,8 @@ This is where you type commands.</p>
 </span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="c1"># Watch drone move to selected position</span>
 </span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>
 </span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="c1"># 6. Try LOITER mode</span>
-</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>mode<span class="w"> </span>LOITER
-</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>rc<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>mode<span class="w"> </span>LOITER
 </span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>
 </span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="c1"># 7. Try CIRCLE mode</span>
 </span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>mode<span class="w"> </span>CIRCLE

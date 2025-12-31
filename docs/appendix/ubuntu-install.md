@@ -10,31 +10,35 @@ Complete guide for installing Ubuntu 22.04 LTS for SimToFly tutorials.
 
 ---
 
-## 🖥️ Virtual Machine Installation
+## Virtual Machine Installation
 
 **Best for:** Beginners, trying before committing, keeping current OS
 
 **Pros:**
-- ✅ Safe - doesn't modify your current system
-- ✅ Easy to snapshot and restore
-- ✅ Can run alongside Windows/macOS
-- ✅ Easy to delete if you change your mind
+
+- Safe - doesn't modify your current system
+- Easy to snapshot and restore
+- Can run alongside Windows/macOS
+- Easy to delete if you change your mind
 
 **Cons:**
-- ⚠️ Slower performance (especially Gazebo)
-- ⚠️ Requires powerful host computer
-- ⚠️ Shared resources with host OS
+
+- Slower performance (especially Gazebo)
+- Requires powerful host computer
+- Shared resources with host OS
 
 ---
 
 ### Step 1: Install VirtualBox
 
 **Download VirtualBox:**
+
 - Visit: https://www.virtualbox.org/wiki/Downloads
 - Download for your OS (Windows, macOS, or Linux)
 - Install VirtualBox
 
 **Verify installation:**
+
 - Open VirtualBox
 - Should see main window with no VMs
 
@@ -43,6 +47,7 @@ Complete guide for installing Ubuntu 22.04 LTS for SimToFly tutorials.
 ### Step 2: Download Ubuntu 22.04 ISO
 
 **Download:**
+
 - Visit: https://ubuntu.com/download/desktop
 - Click "Download Ubuntu 22.04.x LTS"
 - Save ISO file (~4GB download)
@@ -130,6 +135,7 @@ Click "OK"
 ### Step 5: Install Ubuntu
 
 **Start VM:**
+
 - Select VM → Click "Start"
 - VM boots from Ubuntu ISO
 
@@ -139,13 +145,16 @@ Click "OK"
 2. **Install Ubuntu:** Click "Install Ubuntu"
 3. **Keyboard layout:** Select your layout
 4. **Updates:** 
+
    - ☑ Normal installation
    - ☑ Download updates while installing
    - ☑ Install third-party software
+
 5. **Installation type:** 
    - ☑ Erase disk and install Ubuntu (safe - only affects VM disk)
 6. **Time zone:** Select your location
 7. **User setup:**
+
    - Your name: (your name)
    - Computer name: simtofly-vm
    - Username: (your username)
@@ -180,6 +189,7 @@ sudo reboot
 ```
 
 **Benefits:**
+
 - Better screen resolution
 - Shared clipboard
 - Drag and drop files
@@ -206,17 +216,21 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 **If VM is slow:**
 
 1. **Allocate more resources:**
+
    - More RAM (if host allows)
    - More CPU cores
    - More video memory
 
 2. **Enable 3D acceleration:**
+
    - Settings → Display → Enable 3D Acceleration
 
 3. **Use SSD for VM:**
+
    - Store VM on SSD, not HDD
 
 4. **Close other applications:**
+
    - On host OS while running VM
 
 5. **Disable visual effects in Ubuntu:**
@@ -228,20 +242,20 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 
 ---
 
-## 💿 Dual Boot Installation
+## Dual Boot Installation
 
 **Best for:** Users wanting better performance while keeping current OS
 
 **Pros:**
-- ✅ Full hardware performance
-- ✅ Native GPU acceleration
-- ✅ Better Gazebo performance
-- ✅ Keep existing OS
+
+- Full hardware performance
+- Native GPU acceleration
+- Better Gazebo performance
+- Keep existing OS
 
 **Cons:**
-- ⚠️ Requires disk partitioning (some risk)
-- ⚠️ Need to reboot to switch OS
-- ⚠️ More complex setup
+- Requires disk partitioning (some risk)
+- More complex setup
 
 **⚠️ Warning:** Back up important data before proceeding!
 
@@ -262,6 +276,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 ### Step 1: Create Ubuntu USB
 
 **On Windows:**
+
 1. Download Rufus: https://rufus.ie/
 2. Insert USB drive (will be erased!)
 3. Open Rufus
@@ -271,6 +286,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 7. Wait for completion (~5-10 minutes)
 
 **On macOS/Linux:**
+
 1. Download Etcher: https://etcher.balena.io/
 2. Insert USB drive
 3. Select Ubuntu ISO
@@ -282,6 +298,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 ### Step 2: Free Up Disk Space
 
 **Windows:**
+
 1. Open "Disk Management" (search in Start menu)
 2. Right-click your largest partition (usually C:)
 3. Select "Shrink Volume"
@@ -290,6 +307,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 6. Should see "Unallocated" space
 
 **macOS:**
+
 1. Open "Disk Utility"
 2. Select main disk
 3. Click "Partition"
@@ -302,6 +320,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 ### Step 3: Boot from USB
 
 **Enter BIOS/UEFI:**
+
 - Restart computer
 - Press key during startup:
   - Dell/HP: F2 or F12
@@ -310,11 +329,13 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
   - Acer: F2 or Del
 
 **Change boot order:**
+
 1. Find "Boot" menu
 2. Move USB drive to top
 3. Save and exit (usually F10)
 
 **Computer boots from USB:**
+
 - Shows Ubuntu logo
 - Select "Try or Install Ubuntu"
 
@@ -330,15 +351,18 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 2. **Install Ubuntu:** Click Install
 3. **Keyboard:** Select layout
 4. **Updates:** 
+
    - Normal installation
    - Download updates
    - Install third-party software
 5. **Installation type:**
+
    - **☑ Install Ubuntu alongside [your OS]** ← Important!
    - Ubuntu will use free space created earlier
 6. **Review partition changes**
 7. **Time zone:** Select location
 8. **User setup:**
+
    - Name, username, password
    - Computer name: simtofly
 
@@ -351,6 +375,7 @@ Description: Clean Ubuntu 22.04 before SimToFly setup
 ### Step 5: Configure Bootloader
 
 **After reboot:**
+
 - Should see GRUB menu
 - Options: Ubuntu, Windows (or macOS)
 - Default: Ubuntu
@@ -377,10 +402,12 @@ sudo update-grub
 ### Step 6: Verify Both OS Work
 
 **Test Ubuntu:**
+
 - Boot into Ubuntu
 - Verify everything works
 
 **Test other OS:**
+
 - Reboot → Select Windows/macOS from GRUB
 - Verify it still works
 
@@ -391,6 +418,7 @@ sudo update-grub
 ### Dual Boot Tips
 
 **Switch between OS:**
+
 - Restart → Choose from GRUB menu
 - Default selection after 10 seconds
 
@@ -409,22 +437,24 @@ sudo update-grub
 
 ---
 
-## 💻 Native Installation
+## Native Installation
 
 **Best for:** Dedicated machine for drone development, best performance
 
 **Pros:**
-- ✅ Maximum performance
-- ✅ Full hardware access
-- ✅ No compromises
-- ✅ Best for serious development
+
+- Maximum performance
+- Full hardware access
+- No compromises
+- Best for serious development
 
 **Cons:**
-- ⚠️ Erases existing OS
-- ⚠️ Requires dedicated hardware
-- ⚠️ Can't easily switch to other OS
+
+- Erases existing OS
+- Requires dedicated hardware
 
 **Use this if:**
+
 - You have spare computer
 - You don't need Windows/macOS on this machine
 - You want best performance
@@ -436,10 +466,12 @@ sudo update-grub
 **Same as dual-boot, but:**
 
 **At "Installation type":**
+
 - **Choose:** "Erase disk and install Ubuntu"
 - **Warning:** This deletes everything on disk!
 
 **Make absolutely sure:**
+
 - You backed up important data
 - You selected correct disk (if multiple disks)
 - You're okay losing current OS
@@ -484,13 +516,14 @@ All working? ✅ Ready for [Phase 1!](../phase-1-simulation/1.1-prerequisites.md
 
 ---
 
-## 🐛 Common Issues
+## Common Issues
 
 ### VirtualBox: "VT-x is not available"
 
 **Cause:** Virtualization disabled in BIOS
 
 **Solution:**
+
 1. Restart computer → Enter BIOS
 2. Find "Virtualization Technology" or "VT-x" or "AMD-V"
 3. Enable it
@@ -520,6 +553,7 @@ Follow prompts.
 **Cause:** GRUB installed over Windows bootloader
 
 **Solution:**
+
 1. Use Boot Repair (above)
 2. Or: Boot from Windows recovery USB
 3. Run: `bootrec /fixmbr` and `bootrec /fixboot`
@@ -541,6 +575,7 @@ Install Guest Additions (see VM Step 6 above)
 **Cause:** Bad ISO or USB
 
 **Solution:**
+
 1. Verify ISO checksum
 2. Re-download ISO
 3. Re-flash USB drive
@@ -548,26 +583,30 @@ Install Guest Additions (see VM Step 6 above)
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 **Official Ubuntu Guides:**
+
 - Installation: https://ubuntu.com/tutorials/install-ubuntu-desktop
 - Dual boot Windows: https://help.ubuntu.com/community/WindowsDualBoot
 - VirtualBox: https://www.virtualbox.org/manual/
 
 **Video Tutorials:**
+
 - Search YouTube: "Install Ubuntu 22.04"
 - Filter: Last year
 
 **Community Help:**
+
 - Ubuntu Forums: https://ubuntuforums.org/
 - Ask Ubuntu: https://askubuntu.com/
 
 ---
 
-## 🎯 Quick Decision Guide
+## Quick Decision Guide
 
 **Choose installation method:**
+
 ```
 Do you have spare computer?
   YES → Native installation (best performance)

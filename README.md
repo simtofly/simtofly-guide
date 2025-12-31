@@ -43,7 +43,7 @@ Learn autonomous drone development from simulation to real hardware deployment u
 
 ## Documentation
 
-📖 **[Visit Documentation Website](https://simtofly.github.io/simtofly-guide/)**
+**[Visit Documentation Website](https://simtofly.github.io/simtofly-guide/)**
 
 Professional documentation with search, dark mode, mobile support, and video tutorials.
 
@@ -68,7 +68,7 @@ Master drone fundamentals in safe virtual environment.
 
 ---
 
-### Phase 2: ROS2 Integration 🚧
+### Phase 2: ROS2 Integration
 
 Connect ArduPilot to Robot Operating System.
 
@@ -84,7 +84,7 @@ Connect ArduPilot to Robot Operating System.
 
 ---
 
-### Phase 3: Companion Computer 📋
+### Phase 3: Companion Computer
 
 Deploy ROS2 on Raspberry Pi for onboard processing.
 
@@ -100,7 +100,7 @@ Deploy ROS2 on Raspberry Pi for onboard processing.
 
 ---
 
-### Phase 4: Real Hardware 📋
+### Phase 4: Real Hardware
 
 Deploy complete system on actual drone.
 
@@ -169,8 +169,8 @@ simtofly-guide/
 │   ├── phase-2-ros2/            # ROS2 integration guides
 │   ├── phase-3-companion/       # Raspberry Pi setup
 │   ├── phase-4-hardware/        # Real drone deployment
-│   └── assets/
-│       └── images/              # Screenshots and diagrams
+│   ├── appendix/                # Ubuntu install, terminal setup
+│   └── images/                  # Logos and shared assets
 ├── mkdocs.yml                   # Documentation configuration
 └── README.md                    # This file
 ```
@@ -265,7 +265,7 @@ Special thanks to everyone who contributes to open-source robotics and drone sof
 
 <p align="center">
   <b>Ready to start your journey?</b><br>
-  <a href="docs/phase-1-simulation/README.md">📚 Begin Phase 1: Simulation Mastery</a>
+  <a href="docs/phase-1-simulation/README.md"> Begin Phase 1: Simulation Mastery</a>
 </p>
 
 <p align="center">

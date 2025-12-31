@@ -14,7 +14,7 @@ Complete tutorials for autonomous drones with ROS2 and ArduPilot.
 Learn autonomous drone development from simulation to real hardware using modern robotics tools.
 
 **What you'll learn:**
-- ArduPilot SITL simulation and Gazebo 3D visualization
+- ArduPilot SITL simulation and Gazebo Harmonic 3D visualization
 - ROS2 integration with MAVROS for advanced control
 - Companion computer setup on Raspberry Pi
 - Complete hardware deployment and real flight testing

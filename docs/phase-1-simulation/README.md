@@ -8,11 +8,11 @@ Master autonomous drone fundamentals in a safe, virtual environment.
 
 In Phase 1, you'll learn:
 
-- ✅ Setup complete simulation environment
-- ✅ Understand ArduPilot SITL
-- ✅ Control drones via command line
-- ✅ Visualize in Gazebo 3D simulator
-- ✅ Run your first autonomous mission
+- Setup complete simulation environment
+- Understand ArduPilot SITL
+- Control drones via command line
+- Visualize in Gazebo 3D simulator
+- Run your first autonomous mission
 
 **No hardware needed** — everything runs on your computer.
 
@@ -99,16 +99,16 @@ Follow these in order:
 
 By the end of Phase 1, you will:
 
-- ✅ Have working SITL + Gazebo simulation
-- ✅ Understand basic ArduPilot concepts
-- ✅ Successfully fly autonomous missions in simulation
-- ✅ Feel confident proceeding to ROS2 integration
+- Have working SITL + Gazebo simulation
+- Understand basic ArduPilot concepts
+- Successfully fly autonomous missions in simulation
+- Feel confident proceeding to ROS2 integration
 
 ---
 
 ## Ready to Start?
 
-👉 **[Begin with 1.1 Prerequisites and Setup](1.1-prerequisites.md)**
+ **[Begin with 1.1 Prerequisites and Setup](1.1-prerequisites.md)**
 
 ---
 

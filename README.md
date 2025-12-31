@@ -4,7 +4,7 @@
 
 <p align="center">
   <b>From Simulation to Flight</b><br>
-  Complete tutorials for autonomous drones with ROS2 and ArduPilot
+ Complete beginner-friendly tutorials for autonomous drones using ROS2 Humble, ArduPilot, and Gazebo Harmonic
 </p>
 
 <p align="center">
@@ -15,6 +15,9 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/ROS2-Humble-blue" alt="ROS2 Humble">
+  <img src="https://img.shields.io/badge/Gazebo-Harmonic-orange" alt="Gazebo Harmonic">
+  <img src="https://img.shields.io/badge/ArduPilot-4.5.7-green" alt="ArduPilot">
   <a href="https://github.com/simtofly/simtofly-guide/stargazers"><img src="https://img.shields.io/github/stars/simtofly/simtofly-guide?style=social" alt="GitHub Stars"></a>
   <a href="https://github.com/simtofly/simtofly-guide/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <a href="https://simtofly.github.io/simtofly-guide/"><img src="https://img.shields.io/badge/docs-live-brightgreen" alt="Documentation"></a>

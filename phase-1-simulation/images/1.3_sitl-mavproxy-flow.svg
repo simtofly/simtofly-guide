@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420">
+  <defs>
+    <linearGradient id="termGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d3748"/>
+      <stop offset="100%" style="stop-color:#1a202c"/>
+    </linearGradient>
+    <linearGradient id="sitlGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3182ce"/>
+      <stop offset="100%" style="stop-color:#2b6cb0"/>
+    </linearGradient>
+    <linearGradient id="mavGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#38a169"/>
+      <stop offset="100%" style="stop-color:#2f855a"/>
+    </linearGradient>
+    <filter id="shadow2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#718096"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3182ce"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#38a169"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="420" fill="#f7fafc"/>
+  
+  <!-- Title -->
+  <text x="425" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#2d3748" text-anchor="middle">sim_vehicle.py Execution Flow</text>
+  <text x="425" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#718096" text-anchor="middle">What happens when you launch SITL</text>
+  
+  <!-- Step 1: Terminal Command -->
+  <rect x="40" y="70" width="180" height="70" rx="6" fill="url(#termGrad)" filter="url(#shadow2)"/>
+  <text x="130" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">Step 1: You Run</text>
+  <text x="130" y="120" font-family="Consolas, monospace" font-size="10" fill="#68d391" text-anchor="middle">sim_vehicle.py</text>
+  <text x="130" y="132" font-family="Consolas, monospace" font-size="9" fill="#a0aec0" text-anchor="middle">-v ArduCopter --map</text>
+  
+  <!-- Arrow 1 to 2 -->
+  <path d="M 220 105 L 260 105" stroke="#718096" stroke-width="2" marker-end="url(#arrow2)"/>
+  
+  <!-- Step 2: Build/Compile -->
+  <rect x="270" y="70" width="180" height="70" rx="6" fill="#edf2f7" stroke="#cbd5e0" stroke-width="1" filter="url(#shadow2)"/>
+  <text x="360" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#2d3748" text-anchor="middle">Step 2: Build SITL</text>
+  <text x="360" y="112" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">Compiles ArduCopter</text>
+  <text x="360" y="125" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">firmware for x86</text>
+  
+  <!-- Arrow 2 to 3 -->
+  <path d="M 450 105 L 490 105" stroke="#718096" stroke-width="2" marker-end="url(#arrow2)"/>
+  
+  <!-- Step 3: Start SITL Process -->
+  <rect x="500" y="70" width="180" height="70" rx="6" fill="url(#sitlGrad2)" filter="url(#shadow2)"/>
+  <text x="590" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Step 3: Start SITL</text>
+  <text x="590" y="112" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#bee3f8" text-anchor="middle">ArduCopter process</text>
+  <text x="590" y="125" font-family="Consolas, monospace" font-size="9" fill="#90cdf4" text-anchor="middle">Port: 5760</text>
+  
+  <!-- Arrow 3 to 4 -->
+  <path d="M 680 105 L 720 105" stroke="#718096" stroke-width="2" marker-end="url(#arrow2)"/>
+  
+  <!-- Step 4: Start MAVProxy -->
+  <rect x="730" y="70" width="100" height="70" rx="6" fill="url(#mavGrad2)" filter="url(#shadow2)"/>
+  <text x="780" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Step 4:</text>
+  <text x="780" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">MAVProxy</text>
+  <text x="780" y="125" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#c6f6d5" text-anchor="middle">Connects</text>
+  
+  <!-- Main Process Boxes -->
+  <!-- SITL Box -->
+  <rect x="80" y="180" width="300" height="200" rx="8" fill="#ffffff" stroke="#3182ce" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="80" y="180" width="300" height="35" rx="8" fill="url(#sitlGrad2)"/>
+  <rect x="80" y="207" width="300" height="8" fill="url(#sitlGrad2)"/>
+  <text x="230" y="203" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">ArduPilot SITL Process</text>
+  
+  <!-- SITL Internal -->
+  <text x="100" y="240" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">Simulates:</text>
+  <text x="110" y="258" font-family="Consolas, monospace" font-size="9" fill="#718096">• Flight controller logic</text>
+  <text x="110" y="273" font-family="Consolas, monospace" font-size="9" fill="#718096">• Sensor data (GPS, IMU, Baro)</text>
+  <text x="110" y="288" font-family="Consolas, monospace" font-size="9" fill="#718096">• Motor mixing algorithms</text>
+  <text x="110" y="303" font-family="Consolas, monospace" font-size="9" fill="#718096">• Flight mode logic</text>
+  
+  <rect x="100" y="320" width="260" height="45" rx="4" fill="#ebf8ff"/>
+  <text x="230" y="338" font-family="Consolas, monospace" font-size="9" fill="#2b6cb0" text-anchor="middle">Listening on: tcp:127.0.0.1:5760</text>
+  <text x="230" y="355" font-family="Consolas, monospace" font-size="9" fill="#2b6cb0" text-anchor="middle">Protocol: MAVLink v2.0</text>
+  
+  <!-- MAVProxy Box -->
+  <rect x="470" y="180" width="300" height="200" rx="8" fill="#ffffff" stroke="#38a169" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="470" y="180" width="300" height="35" rx="8" fill="url(#mavGrad2)"/>
+  <rect x="470" y="207" width="300" height="8" fill="url(#mavGrad2)"/>
+  <text x="620" y="203" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">MAVProxy Process</text>
+  
+  <!-- MAVProxy Internal -->
+  <text x="490" y="240" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">Provides:</text>
+  <text x="500" y="258" font-family="Consolas, monospace" font-size="9" fill="#718096">• Command-line interface</text>
+  <text x="500" y="273" font-family="Consolas, monospace" font-size="9" fill="#718096">• 2D map window (--map)</text>
+  <text x="500" y="288" font-family="Consolas, monospace" font-size="9" fill="#718096">• Console telemetry (--console)</text>
+  <text x="500" y="303" font-family="Consolas, monospace" font-size="9" fill="#718096">• Mission upload/download</text>
+  
+  <rect x="490" y="320" width="260" height="45" rx="4" fill="#f0fff4"/>
+  <text x="620" y="338" font-family="Consolas, monospace" font-size="9" fill="#276749" text-anchor="middle">Connected to: tcp:127.0.0.1:5760</text>
+  <text x="620" y="355" font-family="Consolas, monospace" font-size="9" fill="#276749" text-anchor="middle">Prompt: STABILIZE></text>
+  
+  <!-- Bidirectional arrows between boxes -->
+  <path d="M 380 270 L 470 270" stroke="#3182ce" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="425" y="262" font-family="Consolas, monospace" font-size="8" fill="#3182ce" text-anchor="middle">Telemetry</text>
+  
+  <path d="M 470 300 L 380 300" stroke="#38a169" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="425" y="318" font-family="Consolas, monospace" font-size="8" fill="#38a169" text-anchor="middle">Commands</text>
+  
+  <!-- Legend -->
+  <rect x="60" y="395" width="12" height="12" rx="2" fill="url(#sitlGrad2)"/>
+  <text x="78" y="405" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">SITL (Simulated Flight Controller)</text>
+  
+  <rect x="280" y="395" width="12" height="12" rx="2" fill="url(#mavGrad2)"/>
+  <text x="298" y="405" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">MAVProxy (Ground Control)</text>
+  
+  <line x1="510" y1="401" x2="535" y2="401" stroke="#3182ce" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="543" y="405" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">Telemetry (SITL → GCS)</text>
+  
+  <line x1="690" y1="401" x2="715" y2="401" stroke="#38a169" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="723" y="405" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568">Commands (GCS → SITL)</text>
+</svg>

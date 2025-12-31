@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
+  <defs>
+    <linearGradient id="headerGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4a5568"/>
+      <stop offset="100%" style="stop-color:#2d3748"/>
+    </linearGradient>
+    <filter id="shadow6" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="480" fill="#f7fafc"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#2d3748" text-anchor="middle">ArduCopter Flight Modes</text>
+  <text x="450" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#718096" text-anchor="middle">Common modes used in SimToFly tutorials</text>
+  
+  <!-- Table Container -->
+  <rect x="30" y="65" width="840" height="395" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow6)"/>
+  
+  <!-- Header Row -->
+  <rect x="30" y="65" width="840" height="40" rx="8" fill="url(#headerGrad2)"/>
+  <rect x="30" y="97" width="840" height="8" fill="url(#headerGrad2)"/>
+  
+  <!-- Header text -->
+  <text x="100" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Mode</text>
+  <text x="260" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Purpose</text>
+  <text x="440" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Position Hold</text>
+  <text x="580" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Accepts Commands</text>
+  <text x="760" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">When to Use</text>
+  
+  <!-- Column dividers -->
+  <line x1="170" y1="105" x2="170" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="350" y1="105" x2="350" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="510" y1="105" x2="510" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="660" y1="105" x2="660" y2="460" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Row 1: STABILIZE -->
+  <rect x="30" y="105" width="840" height="50" fill="#ffffff"/>
+  <rect x="40" y="115" width="120" height="30" rx="4" fill="#e2e8f0"/>
+  <text x="100" y="135" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#4a5568" text-anchor="middle">STABILIZE</text>
+  <text x="260" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Manual control</text>
+  <text x="260" y="143" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">Self-leveling only</text>
+  <text x="440" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#e53e3e" text-anchor="middle">No</text>
+  <text x="580" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#e53e3e" text-anchor="middle">RC only</text>
+  <text x="580" y="143" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">(no auto commands)</text>
+  <text x="760" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Default / Manual flying</text>
+  
+  <line x1="30" y1="155" x2="870" y2="155" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 2: GUIDED -->
+  <rect x="30" y="155" width="840" height="50" fill="#f0fff4"/>
+  <rect x="40" y="165" width="120" height="30" rx="4" fill="#c6f6d5"/>
+  <text x="100" y="185" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#276749" text-anchor="middle">GUIDED</text>
+  <text x="260" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Computer control</text>
+  <text x="260" y="193" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">via GCS commands</text>
+  <text x="440" y="185" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">Yes (GPS)</text>
+  <text x="580" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">takeoff, land</text>
+  <text x="580" y="193" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">position, velocity</text>
+  <text x="760" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Arming, takeoff</text>
+  <text x="760" y="193" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#38a169" text-anchor="middle">★ Used in tutorials</text>
+  
+  <line x1="30" y1="205" x2="870" y2="205" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 3: AUTO -->
+  <rect x="30" y="205" width="840" height="50" fill="#fffaf0"/>
+  <rect x="40" y="215" width="120" height="30" rx="4" fill="#feebc8"/>
+  <text x="100" y="235" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#c05621" text-anchor="middle">AUTO</text>
+  <text x="260" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Execute mission</text>
+  <text x="260" y="243" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">waypoints automatically</text>
+  <text x="440" y="235" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">Yes (GPS)</text>
+  <text x="580" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#dd6b20" text-anchor="middle">Mission commands</text>
+  <text x="580" y="243" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">(from loaded file)</text>
+  <text x="760" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Autonomous missions</text>
+  <text x="760" y="243" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#dd6b20" text-anchor="middle">★ Section 1.6</text>
+  
+  <line x1="30" y1="255" x2="870" y2="255" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 4: LOITER -->
+  <rect x="30" y="255" width="840" height="50" fill="#ffffff"/>
+  <rect x="40" y="265" width="120" height="30" rx="4" fill="#bee3f8"/>
+  <text x="100" y="285" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#2b6cb0" text-anchor="middle">LOITER</text>
+  <text x="260" y="280" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Hold position</text>
+  <text x="260" y="293" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">GPS-locked hover</text>
+  <text x="440" y="285" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">Yes (GPS)</text>
+  <text x="580" y="280" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#3182ce" text-anchor="middle">RC adjustments</text>
+  <text x="580" y="293" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">+ rc 3 1500 for alt</text>
+  <text x="760" y="280" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Pause / Hold position</text>
+  <text x="760" y="293" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">during flight</text>
+  
+  <line x1="30" y1="305" x2="870" y2="305" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 5: RTL -->
+  <rect x="30" y="305" width="840" height="50" fill="#fff5f5"/>
+  <rect x="40" y="315" width="120" height="30" rx="4" fill="#fed7d7"/>
+  <text x="100" y="335" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#c53030" text-anchor="middle">RTL</text>
+  <text x="260" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Return to Launch</text>
+  <text x="260" y="343" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">Fly home + land</text>
+  <text x="440" y="335" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">Yes (GPS)</text>
+  <text x="580" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#e53e3e" text-anchor="middle">Automatic</text>
+  <text x="580" y="343" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">(climbs to 15m first)</text>
+  <text x="760" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Emergency return</text>
+  <text x="760" y="343" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#e53e3e" text-anchor="middle">★ End of mission</text>
+  
+  <line x1="30" y1="355" x2="870" y2="355" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 6: LAND -->
+  <rect x="30" y="355" width="840" height="50" fill="#ffffff"/>
+  <rect x="40" y="365" width="120" height="30" rx="4" fill="#e2e8f0"/>
+  <text x="100" y="385" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#4a5568" text-anchor="middle">LAND</text>
+  <text x="260" y="380" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Land immediately</text>
+  <text x="260" y="393" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">At current position</text>
+  <text x="440" y="385" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#718096" text-anchor="middle">Descending</text>
+  <text x="580" y="380" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#718096" text-anchor="middle">Automatic descent</text>
+  <text x="580" y="393" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">(auto-disarms)</text>
+  <text x="760" y="380" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Controlled landing</text>
+  <text x="760" y="393" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">at current spot</text>
+  
+  <line x1="30" y1="405" x2="870" y2="405" stroke="#edf2f7" stroke-width="1"/>
+  
+  <!-- Row 7: CIRCLE -->
+  <rect x="30" y="405" width="840" height="50" fill="#faf5ff"/>
+  <rect x="40" y="415" width="120" height="30" rx="4" fill="#e9d8fd"/>
+  <text x="100" y="435" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#6b46c1" text-anchor="middle">CIRCLE</text>
+  <text x="260" y="430" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Fly in circles</text>
+  <text x="260" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">Around point (10m radius)</text>
+  <text x="440" y="435" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#38a169" text-anchor="middle">Yes (GPS)</text>
+  <text x="580" y="430" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#805ad5" text-anchor="middle">Automatic pattern</text>
+  <text x="580" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">+ rc 3 1500 for alt</text>
+  <text x="760" y="430" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">Practice / Testing</text>
+  <text x="760" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">autonomous flight</text>
+  
+  <!-- Footer note -->
+  <text x="450" y="472" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Tip: Use "mode MODE_NAME" command to switch modes. E.g., mode GUIDED</text>
+</svg>

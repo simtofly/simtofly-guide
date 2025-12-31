@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500">
+  <defs>
+    <linearGradient id="homeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#48bb78"/>
+      <stop offset="100%" style="stop-color:#38a169"/>
+    </linearGradient>
+    <linearGradient id="wpGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ed8936"/>
+      <stop offset="100%" style="stop-color:#dd6b20"/>
+    </linearGradient>
+    <linearGradient id="rtlGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e53e3e"/>
+      <stop offset="100%" style="stop-color:#c53030"/>
+    </linearGradient>
+    <filter id="shadow5" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrowPath" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ed8936"/>
+    </marker>
+    <marker id="arrowRTL2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e53e3e"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="500" fill="#f7fafc"/>
+  
+  <!-- Title -->
+  <text x="350" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#2d3748" text-anchor="middle">Square Mission Waypoints</text>
+  <text x="350" y="46" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#718096" text-anchor="middle">Top-down view — square_mission.txt</text>
+  
+  <!-- Grid background -->
+  <rect x="50" y="70" width="400" height="400" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow5)"/>
+  
+  <!-- Grid lines -->
+  <g stroke="#edf2f7" stroke-width="1">
+    <line x1="50" y1="170" x2="450" y2="170"/>
+    <line x1="50" y1="270" x2="450" y2="270"/>
+    <line x1="50" y1="370" x2="450" y2="370"/>
+    <line x1="150" y1="70" x2="150" y2="470"/>
+    <line x1="250" y1="70" x2="250" y2="470"/>
+    <line x1="350" y1="70" x2="350" y2="470"/>
+  </g>
+  
+  <!-- Compass indicator -->
+  <g transform="translate(415, 105)">
+    <circle cx="0" cy="0" r="25" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <line x1="0" y1="-20" x2="0" y2="20" stroke="#cbd5e0" stroke-width="1"/>
+    <line x1="-20" y1="0" x2="20" y2="0" stroke="#cbd5e0" stroke-width="1"/>
+    <polygon points="0,-18 -5,-8 5,-8" fill="#e53e3e"/>
+    <text x="0" y="-25" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#e53e3e" text-anchor="middle">N</text>
+  </g>
+  
+  <!-- Scale indicator -->
+  <line x1="80" y1="450" x2="180" y2="450" stroke="#4a5568" stroke-width="2"/>
+  <line x1="80" y1="445" x2="80" y2="455" stroke="#4a5568" stroke-width="2"/>
+  <line x1="180" y1="445" x2="180" y2="455" stroke="#4a5568" stroke-width="2"/>
+  <text x="130" y="442" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568" text-anchor="middle">~30m</text>
+  
+  <!-- Flight path - dashed lines -->
+  <!-- Takeoff path (vertical line conceptually, shown as starting marker) -->
+  
+  <!-- Home to WP2 (North) -->
+  <line x1="150" y1="330" x2="150" y2="190" stroke="#ed8936" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowPath)"/>
+  
+  <!-- WP2 to WP3 (East) -->
+  <line x1="170" y1="170" x2="330" y2="170" stroke="#ed8936" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowPath)"/>
+  
+  <!-- WP3 to WP4 (South) -->
+  <line x1="350" y1="190" x2="350" y2="350" stroke="#ed8936" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowPath)"/>
+  
+  <!-- WP4 to WP5 (West - back to start column) -->
+  <line x1="330" y1="370" x2="190" y2="370" stroke="#ed8936" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowPath)"/>
+  
+  <!-- RTL path (back to home) - shown slightly offset -->
+  <path d="M 150 370 Q 100 320 150 370" stroke="#e53e3e" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  
+  <!-- Home/Start point (WP0) -->
+  <circle cx="150" cy="370" r="20" fill="url(#homeGrad)" filter="url(#shadow5)"/>
+  <text x="150" y="375" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">H</text>
+  <text x="150" y="415" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#38a169" text-anchor="middle">Home/Start</text>
+  <text x="150" y="428" font-family="Consolas, monospace" font-size="8" fill="#718096" text-anchor="middle">WP0 (Alt: 0m)</text>
+  
+  <!-- Takeoff indicator -->
+  <circle cx="150" cy="370" r="30" fill="none" stroke="#48bb78" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="185" y="345" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#38a169">Takeoff</text>
+  <text x="187" y="356" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#38a169">to 10m</text>
+  
+  <!-- WP2 (North) -->
+  <circle cx="150" cy="170" r="18" fill="url(#wpGrad)" filter="url(#shadow5)"/>
+  <text x="150" y="175" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="150" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#dd6b20" text-anchor="middle">WP2 (North)</text>
+  <text x="150" y="147" font-family="Consolas, monospace" font-size="8" fill="#718096" text-anchor="middle">Alt: 20m</text>
+  
+  <!-- WP3 (East) -->
+  <circle cx="350" cy="170" r="18" fill="url(#wpGrad)" filter="url(#shadow5)"/>
+  <text x="350" y="175" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="350" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#dd6b20" text-anchor="middle">WP3 (East)</text>
+  <text x="350" y="147" font-family="Consolas, monospace" font-size="8" fill="#718096" text-anchor="middle">Alt: 20m</text>
+  
+  <!-- WP4 (South) -->
+  <circle cx="350" cy="370" r="18" fill="url(#wpGrad)" filter="url(#shadow5)"/>
+  <text x="350" y="375" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="350" y="405" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#dd6b20" text-anchor="middle">WP4 (South)</text>
+  <text x="350" y="417" font-family="Consolas, monospace" font-size="8" fill="#718096" text-anchor="middle">Alt: 20m</text>
+  
+  <!-- WP5 (West - same position as Home but WP5) -->
+  <circle cx="150" cy="370" r="28" fill="none" stroke="#dd6b20" stroke-width="2"/>
+  <text x="98" y="390" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#dd6b20">WP5</text>
+  
+  <!-- RTL indicator -->
+  <circle cx="150" cy="370" r="36" fill="none" stroke="#e53e3e" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="95" y="345" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#e53e3e">RTL</text>
+  <text x="90" y="355" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#e53e3e">(WP6)</text>
+  
+  <!-- Legend Box -->
+  <rect x="480" y="70" width="200" height="400" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow5)"/>
+  <text x="580" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#2d3748" text-anchor="middle">Mission Details</text>
+  <line x1="495" y1="108" x2="665" y2="108" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Waypoint list -->
+  <text x="500" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#4a5568">Sequence:</text>
+  
+  <circle cx="510" cy="150" r="6" fill="url(#homeGrad)"/>
+  <text x="525" y="154" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">0: Home position</text>
+  
+  <rect x="504" y="165" width="12" height="12" rx="2" fill="#edf2f7"/>
+  <text x="510" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#4a5568" text-anchor="middle">1</text>
+  <text x="525" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">Takeoff to 10m</text>
+  
+  <circle cx="510" cy="195" r="6" fill="url(#wpGrad)"/>
+  <text x="525" y="199" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">2: Fly North (20m alt)</text>
+  
+  <circle cx="510" cy="215" r="6" fill="url(#wpGrad)"/>
+  <text x="525" y="219" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">3: Fly East (20m alt)</text>
+  
+  <circle cx="510" cy="235" r="6" fill="url(#wpGrad)"/>
+  <text x="525" y="239" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">4: Fly South (20m alt)</text>
+  
+  <circle cx="510" cy="255" r="6" fill="url(#wpGrad)"/>
+  <text x="525" y="259" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">5: Fly West (20m alt)</text>
+  
+  <circle cx="510" cy="275" r="6" fill="url(#rtlGrad2)"/>
+  <text x="525" y="279" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">6: RTL (Return home)</text>
+  
+  <!-- Divider -->
+  <line x1="495" y1="295" x2="665" y2="295" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Path legend -->
+  <text x="500" y="315" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#4a5568">Path Legend:</text>
+  
+  <line x1="500" y1="335" x2="540" y2="335" stroke="#ed8936" stroke-width="3" stroke-dasharray="8,4"/>
+  <text x="550" y="339" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">Flight path</text>
+  
+  <line x1="500" y1="355" x2="540" y2="355" stroke="#e53e3e" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="550" y="359" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">RTL path</text>
+  
+  <!-- Divider -->
+  <line x1="495" y1="375" x2="665" y2="375" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Stats -->
+  <text x="500" y="395" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#4a5568">Mission Stats:</text>
+  <text x="510" y="415" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096">• Total waypoints: 7</text>
+  <text x="510" y="430" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096">• Square size: ~30m × 30m</text>
+  <text x="510" y="445" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096">• Max altitude: 20m</text>
+  <text x="510" y="460" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096">• Est. flight time: 2-3 min</text>
+</svg>

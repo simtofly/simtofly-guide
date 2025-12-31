@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <defs>
+    <linearGradient id="stateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#5a67d8"/>
+    </linearGradient>
+    <linearGradient id="activeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#48bb78"/>
+      <stop offset="100%" style="stop-color:#38a169"/>
+    </linearGradient>
+    <linearGradient id="missionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ed8936"/>
+      <stop offset="100%" style="stop-color:#dd6b20"/>
+    </linearGradient>
+    <linearGradient id="rtlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e53e3e"/>
+      <stop offset="100%" style="stop-color:#c53030"/>
+    </linearGradient>
+    <filter id="shadow3" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="550" fill="#f7fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#2d3748" text-anchor="middle">Mission Execution State Flow</text>
+  <text x="400" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#718096" text-anchor="middle">From arming to autonomous mission completion</text>
+  
+  <!-- State 1: Disarmed -->
+  <rect x="60" y="80" width="140" height="60" rx="30" fill="#e2e8f0" stroke="#a0aec0" stroke-width="2" filter="url(#shadow3)"/>
+  <text x="130" y="115" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#4a5568" text-anchor="middle">DISARMED</text>
+  
+  <!-- Arrow 1 to 2 -->
+  <path d="M 200 110 L 260 110" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="205" y="85" width="50" height="15" rx="3" fill="#edf2f7"/>
+  <text x="230" y="95" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">mode</text>
+  <text x="230" y="130" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">GUIDED</text>
+  
+  <!-- State 2: GUIDED Mode -->
+  <rect x="270" y="80" width="140" height="60" rx="8" fill="url(#stateGrad)" filter="url(#shadow3)"/>
+  <text x="340" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">GUIDED</text>
+  <text x="340" y="123" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#c3dafe" text-anchor="middle">Ready to arm</text>
+  
+  <!-- Arrow 2 to 3 -->
+  <path d="M 410 110 L 470 110" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="415" y="85" width="50" height="15" rx="3" fill="#edf2f7"/>
+  <text x="440" y="95" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">arm</text>
+  <text x="440" y="130" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">throttle</text>
+  
+  <!-- State 3: Armed -->
+  <rect x="480" y="80" width="140" height="60" rx="8" fill="url(#activeGrad)" filter="url(#shadow3)"/>
+  <text x="550" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">ARMED</text>
+  <text x="550" y="123" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#c6f6d5" text-anchor="middle">Motors ready</text>
+  
+  <!-- Arrow 3 to 4 -->
+  <path d="M 620 110 L 680 110" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <text x="650" y="95" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">takeoff</text>
+  <text x="650" y="120" font-family="Consolas, monospace" font-size="8" fill="#4a5568" text-anchor="middle">10</text>
+  
+  <!-- State 4: Hovering -->
+  <rect x="690" y="80" width="90" height="60" rx="8" fill="url(#activeGrad)" filter="url(#shadow3)"/>
+  <text x="735" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">HOVERING</text>
+  <text x="735" y="123" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#c6f6d5" text-anchor="middle">@ 10m</text>
+  
+  <!-- Arrow 4 down to AUTO -->
+  <path d="M 735 140 L 735 170" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <text x="745" y="160" font-family="Consolas, monospace" font-size="8" fill="#4a5568">mode AUTO</text>
+  
+  <!-- State 5: AUTO Mode -->
+  <rect x="650" y="180" width="130" height="55" rx="8" fill="url(#missionGrad)" filter="url(#shadow3)"/>
+  <text x="715" y="203" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">AUTO MODE</text>
+  <text x="715" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#feebc8" text-anchor="middle">Mission executing</text>
+  
+  <!-- Mission Waypoints Box -->
+  <rect x="180" y="180" width="420" height="130" rx="8" fill="#ffffff" stroke="#ed8936" stroke-width="2" stroke-dasharray="5,3" filter="url(#shadow3)"/>
+  <text x="390" y="200" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#c05621" text-anchor="middle">Mission Waypoints</text>
+  
+  <!-- Waypoint circles -->
+  <circle cx="230" cy="260" r="22" fill="#feebc8" stroke="#ed8936" stroke-width="2"/>
+  <text x="230" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#c05621" text-anchor="middle">WP1</text>
+  <text x="230" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#c05621" text-anchor="middle">North</text>
+  
+  <circle cx="330" cy="260" r="22" fill="#feebc8" stroke="#ed8936" stroke-width="2"/>
+  <text x="330" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#c05621" text-anchor="middle">WP2</text>
+  <text x="330" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#c05621" text-anchor="middle">East</text>
+  
+  <circle cx="430" cy="260" r="22" fill="#feebc8" stroke="#ed8936" stroke-width="2"/>
+  <text x="430" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#c05621" text-anchor="middle">WP3</text>
+  <text x="430" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#c05621" text-anchor="middle">South</text>
+  
+  <circle cx="530" cy="260" r="22" fill="#feebc8" stroke="#ed8936" stroke-width="2"/>
+  <text x="530" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#c05621" text-anchor="middle">WP4</text>
+  <text x="530" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#c05621" text-anchor="middle">West</text>
+  
+  <!-- Arrows between waypoints -->
+  <path d="M 252 260 L 308 260" stroke="#ed8936" stroke-width="2" marker-end="url(#arrow3)"/>
+  <path d="M 352 260 L 408 260" stroke="#ed8936" stroke-width="2" marker-end="url(#arrow3)"/>
+  <path d="M 452 260 L 508 260" stroke="#ed8936" stroke-width="2" marker-end="url(#arrow3)"/>
+  
+  <!-- Arrow from AUTO to waypoints -->
+  <path d="M 650 207 L 600 207  " stroke="#ed8936" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow3)"/>
+  
+  <!-- Arrow from last waypoint to RTL -->
+  <path d="M 530 282 L 530 340" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <text x="560" y="320" font-family="Consolas, monospace" font-size="8" fill="#4a5568">RTL</text>
+  <text x="560" y="332" font-family="Consolas, monospace" font-size="8" fill="#4a5568">command</text>
+  
+  <!-- State 6: RTL -->
+  <rect x="460" y="350" width="140" height="55" rx="8" fill="url(#rtlGrad)" filter="url(#shadow3)"/>
+  <text x="530" y="373" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">RTL</text>
+  <text x="530" y="390" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fed7d7" text-anchor="middle">Return to Home</text>
+  
+  <!-- Arrow RTL to Descending -->
+  <path d="M 460 377 L 380 377" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  <text x="420" y="368" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#4a5568" text-anchor="middle">Climbs to 15m</text>
+  
+  <!-- State 7: Descending -->
+  <rect x="240" y="350" width="130" height="55" rx="8" fill="#e2e8f0" stroke="#a0aec0" stroke-width="2" filter="url(#shadow3)"/>
+  <text x="305" y="373" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#4a5568" text-anchor="middle">DESCENDING</text>
+  <text x="305" y="390" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">At home position</text>
+  
+  <!-- Arrow Descending to Landed -->
+  <path d="M 240 377 L 160 377" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow3)"/>
+  
+  <!-- State 8: Landed/Disarmed -->
+  <rect x="40" y="350" width="110" height="55" rx="30" fill="#e2e8f0" stroke="#a0aec0" stroke-width="2" filter="url(#shadow3)"/>
+  <text x="95" y="373" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#4a5568" text-anchor="middle">LANDED</text>
+  <text x="95" y="388" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096" text-anchor="middle">Auto-disarm</text>
+  
+  <!-- Circle back to disarmed indicator -->
+  <path d="M 95 350 L 95 150 L 130 140" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+  <text x="2" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#a0aec0" transform="rotate(-90, 60, 250)">Ready for next mission</text>
+  
+  <!-- Legend -->
+  <rect x="60" y="430" width="680" height="100" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="80" y="450" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#4a5568">Legend:</text>
+  
+  <rect x="80" y="465" width="40" height="20" rx="10" fill="#e2e8f0" stroke="#a0aec0" stroke-width="1"/>
+  <text x="130" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">Inactive State</text>
+  
+  <rect x="230" y="465" width="40" height="20" rx="4" fill="url(#stateGrad)"/>
+  <text x="280" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">GUIDED Mode</text>
+  
+  <rect x="380" y="465" width="40" height="20" rx="4" fill="url(#activeGrad)"/>
+  <text x="430" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">Active Flight</text>
+  
+  <rect x="530" y="465" width="40" height="20" rx="4" fill="url(#missionGrad)"/>
+  <text x="580" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">AUTO Mission</text>
+  
+  <rect x="665" y="465" width="40" height="20" rx="4" fill="url(#rtlGrad)"/>
+  <text x="715" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#4a5568">RTL</text>
+  
+  <text x="80" y="510" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#718096">Commands shown in monospace boxes: mode GUIDED → arm throttle → takeoff 10 → mode AUTO</text>
+</svg>

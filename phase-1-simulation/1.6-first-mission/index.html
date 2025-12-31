@@ -329,6 +329,28 @@
   
 
       
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../appendix/ubuntu-install/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -746,6 +768,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mission-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mission Execution Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#execute-mission-in-sitl" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1133,6 +1166,127 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/ubuntu-install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/terminal-customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminal Customization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1208,6 +1362,17 @@
     <span class="md-ellipsis">
       
         Create Your First Mission
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mission-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mission Execution Flow
       
     </span>
   </a>
@@ -1580,7 +1745,7 @@
 <li><strong>Return to Launch</strong> (RTL at 15m, then land)</li>
 </ol>
 <p><strong>Flight path:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Start/Land
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Start/Land
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    ↓
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    1 (Takeoff 10m)
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ↓
@@ -1594,6 +1759,7 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    ↓
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    6 (RTL - Return home)
 </span></code></pre></div>
+<img alt="Square Mission Waypoints - Top Down View" src="../images/1.6_square-mission-waypoints.svg" /></p>
 <hr />
 <h3 id="create-mission-file">Create Mission File<a class="headerlink" href="#create-mission-file" title="Permanent link">&para;</a></h3>
 <p>The missions directory was created in Section 1.2. Create the mission file:</p>
@@ -1647,6 +1813,10 @@
 <li>Returns to home and lands</li>
 </ul>
 <hr />
+<h2 id="mission-execution-flow">Mission Execution Flow<a class="headerlink" href="#mission-execution-flow" title="Permanent link">&para;</a></h2>
+<p>Before executing, understand the state transitions:</p>
+<p><img alt="Mission Execution State Flow" src="../images/1.6_mission-state-flow.svg" /></p>
+<hr />
 <h2 id="execute-mission-in-sitl">Execute Mission in SITL<a class="headerlink" href="#execute-mission-in-sitl" title="Permanent link">&para;</a></h2>
 <h3 id="video-demonstration">Video Demonstration<a class="headerlink" href="#video-demonstration" title="Permanent link">&para;</a></h3>
 <p>Watch the complete mission execution in SITL:</p>
@@ -1665,6 +1835,12 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>wp<span class="w"> </span>load<span class="w"> </span>/home/YOUR_USERNAME/simtofly_ws/missions/square_mission.txt
 </span></code></pre></div>
 <p><strong>Important:</strong> Replace <code>YOUR_USERNAME</code> with your actual username.</p>
+<blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Full Absolute Path Required</p>
+<p>MAVProxy does <strong>not</strong> expand <code>~</code> or <code>$HOME</code> variables. You must use the complete path.</p>
+</div>
+</blockquote>
 <p><strong>To find your username:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div></p>
@@ -1928,18 +2104,18 @@
 <h3 id="safety-guidelines">Safety Guidelines<a class="headerlink" href="#safety-guidelines" title="Permanent link">&para;</a></h3>
 <p><strong>Always:</strong></p>
 <ul>
-<li>✅ Test missions in SITL before real hardware</li>
-<li>✅ Include takeoff command as first action</li>
-<li>✅ Include RTL or LAND as last command</li>
-<li>✅ Keep waypoints within safe distance</li>
-<li>✅ Check altitude limits (not too high)</li>
+<li>Test missions in SITL before real hardware</li>
+<li>Include takeoff command as first action</li>
+<li>Include RTL or LAND as last command</li>
+<li>Keep waypoints within safe distance</li>
+<li>Check altitude limits (not too high)</li>
 </ul>
 <p><strong>Never:</strong></p>
 <ul>
-<li>❌ Skip home position (line 0)</li>
-<li>❌ Use absolute altitude without understanding MSL</li>
-<li>❌ Create waypoints too close together (minimum ~5m)</li>
-<li>❌ Forget autocontinue flag (missions won't progress)</li>
+<li>Skip home position (line 0)</li>
+<li>Use absolute altitude without understanding MSL</li>
+<li>Create waypoints too close together (minimum ~5m)</li>
+<li>Forget autocontinue flag (missions won't progress)</li>
 </ul>
 <hr />
 <h3 id="mission-design-tips">Mission Design Tips<a class="headerlink" href="#mission-design-tips" title="Permanent link">&para;</a></h3>
@@ -1966,19 +2142,19 @@
 <h2 id="verification-checklist">Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
 <p>Before moving to Phase 2, verify you can:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Launch SITL from any directory (PATH set)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Create mission file with correct format</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Load mission using full path</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Verify mission with <code>wp list</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Execute mission in SITL (GUIDED → AUTO)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Execute mission in Gazebo with 3D visualization</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Monitor mission progress via map and console</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Understand RTL behavior</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Pause and resume mission if needed</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Find and view flight logs</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ✅ Create custom mission files</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Launch SITL from any directory (PATH set)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create mission file with correct format</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load mission using full path</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify mission with <code>wp list</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Execute mission in SITL (GUIDED → AUTO)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Execute mission in Gazebo with 3D visualization</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Monitor mission progress via map and console</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Understand RTL behavior</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pause and resume mission if needed</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Find and view flight logs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create custom mission files</li>
 </ul>
-<p><strong>All checked?</strong> Congratulations! Phase 1 complete! 🎉</p>
+<p><strong>All checked?</strong> Congratulations! Phase 1 complete! </p>
 <hr />
 <h2 id="what-you-accomplished-in-phase-1">What You Accomplished in Phase 1<a class="headerlink" href="#what-you-accomplished-in-phase-1" title="Permanent link">&para;</a></h2>
 <p><strong>Simulation Environment:</strong></p>
@@ -2188,7 +2364,7 @@ In this exact order.</p>
 <p><a href="../1.5-gazebo-simulation/">← Back: 1.5 Gazebo Simulation</a> | <a href="../../phase-2-ros2/">Next: Phase 2 Overview →</a></p>
 <hr />
 <p align="center">
-  <b>🎊 Phase 1 Complete! 🎊</b><br>
+  <b> Phase 1 Complete! </b><br>
   <i>You've mastered simulation. Now let's integrate ROS2.</i><br><br>
   <a href="../phase-2-ros2/README.md">Continue to Phase 2 →</a>
 </p>

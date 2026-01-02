@@ -54,7 +54,7 @@ Before starting Phase 2:
 
 | Section | Title | Time |
 |---------|-------|------|
-| [2.1](2.1-ros2-installation.md) | ROS2 Installation and Core Concepts | 45 min |
+| [2.1](2.1-ros2-installation.md) | ROS2 Installation and Core Concepts | 60 min |
 | [2.2](2.2-mavros-setup.md) | MAVROS Setup | 45 min |
 | [2.3](2.3-reading-drone-data.md) | Reading Drone Data | 60 min |
 | [2.4](2.4-controlling-drone.md) | Controlling the Drone | 90 min |
@@ -88,24 +88,24 @@ Before starting Phase 2:
 ```
 ┌────────────────────────────────────────────────────┐
 │                                                    │
-│  ┌──────────┐       ┌──────────┐                  │
-│  │  Gazebo  │◄─────►│   SITL   │                  │
-│  │ (opt.)   │       │ ArduPilot│                  │
-│  └──────────┘       └────┬─────┘                  │
+│  ┌──────────┐       ┌──────────┐                   │
+│  │  Gazebo  │◄─────►│   SITL   │                   │
+│  │ (opt.)   │       │ ArduPilot│                   │
+│  └──────────┘       └────┬─────┘                   │
 │                          │                         │
 │                     MAVLink                        │
 │                          │                         │
-│                    ┌─────▼─────┐                  │
-│                    │  MAVROS   │                  │
-│                    └─────┬─────┘                  │
+│                    ┌─────▼─────┐                   │
+│                    │  MAVROS   │                   │
+│                    └─────┬─────┘                   │
 │                          │                         │
 │                   ROS2 Topics                      │
-│            ┌─────────────┼─────────────┐          │
-│            ▼             ▼             ▼          │
-│     ┌──────────┐  ┌──────────┐  ┌──────────┐     │
-│     │ Your     │  │  RViz    │  │  rosbag  │     │
-│     │ Nodes    │  │          │  │          │     │
-│     └──────────┘  └──────────┘  └──────────┘     │
+│            ┌─────────────┼─────────────┐           │
+│            ▼             ▼             ▼           │
+│     ┌──────────┐  ┌──────────┐  ┌──────────┐       │
+│     │ Your     │  │  RViz    │  │  rosbag  │       │
+│     │ Nodes    │  │          │  │          │       │
+│     └──────────┘  └──────────┘  └──────────┘       │
 │                                                    │
 └────────────────────────────────────────────────────┘
 ```

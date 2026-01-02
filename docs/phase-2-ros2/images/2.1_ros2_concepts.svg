@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38a169"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="#f7fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1a202c">ROS2 Core Concepts</text>
+  <text x="400" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#718096">Understanding through drone control examples</text>
+  
+  <!-- TOPICS Section -->
+  <rect x="40" y="80" width="340" height="160" rx="8" fill="white" stroke="#3182ce" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="80" width="340" height="35" rx="8" fill="#3182ce"/>
+  <rect x="40" y="107" width="340" height="133" fill="white" rx="0 0 8 8"/>
+  <text x="210" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">TOPICS — Data Streams</text>
+  
+  <!-- Topic diagram -->
+  <rect x="60" y="130" width="80" height="40" rx="6" fill="#48bb78"/>
+  <text x="100" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Publisher</text>
+  
+  <rect x="170" y="135" width="90" height="30" rx="15" fill="#ebf8ff" stroke="#3182ce" stroke-width="2"/>
+  <text x="215" y="155" text-anchor="middle" font-family="monospace" font-size="9" fill="#2b6cb0">/mavros/state</text>
+  
+  <rect x="290" y="130" width="80" height="40" rx="6" fill="#805ad5"/>
+  <text x="330" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Subscriber</text>
+  
+  <line x1="140" y1="150" x2="162" y2="150" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="260" y1="150" x2="282" y2="150" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <text x="60" y="200" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Continuous data flow</text>
+  <text x="60" y="215" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Many-to-many communication</text>
+  <text x="60" y="230" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Example: Position, velocity, state</text>
+  
+  <!-- SERVICES Section -->
+  <rect x="420" y="80" width="340" height="160" rx="8" fill="white" stroke="#38a169" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="420" y="80" width="340" height="35" rx="8" fill="#38a169"/>
+  <rect x="420" y="107" width="340" height="133" fill="white" rx="0 0 8 8"/>
+  <text x="590" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">SERVICES — Request/Response</text>
+  
+  <!-- Service diagram -->
+  <rect x="440" y="130" width="80" height="40" rx="6" fill="#48bb78"/>
+  <text x="480" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Client</text>
+  
+  <rect x="550" y="125" width="90" height="50" rx="6" fill="#f0fff4" stroke="#38a169" stroke-width="2"/>
+  <text x="595" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#276749">/mavros/</text>
+  <text x="595" y="158" text-anchor="middle" font-family="monospace" font-size="8" fill="#276749">cmd/arming</text>
+  
+  <rect x="670" y="130" width="80" height="40" rx="6" fill="#805ad5"/>
+  <text x="710" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Server</text>
+  
+  <line x1="520" y1="142" x2="542" y2="142" stroke="#38a169" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <line x1="640" y1="142" x2="662" y2="142" stroke="#38a169" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <line x1="662" y1="158" x2="640" y2="158" stroke="#718096" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+  <line x1="542" y1="158" x2="520" y2="158" stroke="#718096" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
+  
+  <text x="535" y="133" font-family="Arial, sans-serif" font-size="8" fill="#38a169">request</text>
+  <text x="535" y="175" font-family="Arial, sans-serif" font-size="8" fill="#718096">response</text>
+  
+  <text x="440" y="200" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• One-time actions</text>
+  <text x="440" y="215" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Wait for result</text>
+  <text x="440" y="230" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Example: Arm, set mode, takeoff</text>
+  
+  <!-- NODES Section -->
+  <rect x="40" y="260" width="340" height="160" rx="8" fill="white" stroke="#805ad5" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="260" width="340" height="35" rx="8" fill="#805ad5"/>
+  <rect x="40" y="287" width="340" height="133" fill="white" rx="0 0 8 8"/>
+  <text x="210" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">NODES — Programs</text>
+  
+  <!-- Node boxes -->
+  <rect x="60" y="310" width="90" height="50" rx="6" fill="#ebf4ff" stroke="#805ad5" stroke-width="1"/>
+  <text x="105" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#553c9a">mavros</text>
+  <text x="105" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#718096">Bridge node</text>
+  
+  <rect x="165" y="310" width="90" height="50" rx="6" fill="#ebf4ff" stroke="#805ad5" stroke-width="1"/>
+  <text x="210" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#553c9a">telemetry</text>
+  <text x="210" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#718096">Your node</text>
+  
+  <rect x="270" y="310" width="90" height="50" rx="6" fill="#ebf4ff" stroke="#805ad5" stroke-width="1"/>
+  <text x="315" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#553c9a">mission</text>
+  <text x="315" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#718096">Your node</text>
+  
+  <text x="60" y="385" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Independent processes</text>
+  <text x="60" y="400" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Communicate via topics/services</text>
+  <text x="60" y="415" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Crash isolation</text>
+  
+  <!-- MESSAGES Section -->
+  <rect x="420" y="260" width="340" height="160" rx="8" fill="white" stroke="#d69e2e" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="420" y="260" width="340" height="35" rx="8" fill="#d69e2e"/>
+  <rect x="420" y="287" width="340" height="133" fill="white" rx="0 0 8 8"/>
+  <text x="590" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">MESSAGES — Data Format</text>
+  
+  <!-- Message example -->
+  <rect x="440" y="305" width="300" height="95" rx="4" fill="#fffff0" stroke="#d69e2e" stroke-width="1"/>
+  <text x="450" y="322" font-family="monospace" font-size="9" fill="#744210">geometry_msgs/PoseStamped:</text>
+  <text x="460" y="338" font-family="monospace" font-size="9" fill="#718096">header:</text>
+  <text x="470" y="352" font-family="monospace" font-size="9" fill="#718096">frame_id: "map"</text>
+  <text x="460" y="366" font-family="monospace" font-size="9" fill="#718096">pose:</text>
+  <text x="470" y="380" font-family="monospace" font-size="9" fill="#2b6cb0">position: {x: 1.0, y: 2.0, z: 10.0}</text>
+  <text x="470" y="394" font-family="monospace" font-size="9" fill="#2b6cb0">orientation: {w: 1.0}</text>
+  
+  <text x="440" y="418" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">• Structured data types • Defined interfaces</text>
+</svg>

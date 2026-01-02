@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/appendix/terminal-customization/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/appendix/ubuntu-install/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.1-prerequisites/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.2-environment-setup/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.3-ardupilot-sitl/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.4-mavproxy-basics/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.5-gazebo-simulation/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-1-simulation/1.6-first-mission/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-2-ros2/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
+    </url>
+    <url>
+         <loc>https://simtofly.github.io/simtofly-guide/phase-2-ros2/2.1-ros2-installation/</loc>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-3-companion/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
     <url>
          <loc>https://simtofly.github.io/simtofly-guide/phase-4-hardware/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-01-02</lastmod>
     </url>
 </urlset>

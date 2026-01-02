@@ -1,0 +1,2196 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete beginner-friendly guide from ArduPilot SITL simulation to real  drone flight with ROS2, MAVROS, and Gazebo">
+      
+      
+        <meta name="author" content="Sidharth Mohan Nair">
+      
+      
+        <link rel="canonical" href="https://simtofly.github.io/simtofly-guide/phase-2-ros2/2.1-ros2-installation/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/simtofly_logo_w.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>2.1 ROS2 Installation and Core Concepts - SimToFly</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-ros2-installation-and-core-concepts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SimToFly" class="md-header__button md-logo" aria-label="SimToFly" data-md-component="logo">
+      
+  <img src="../../images/simtofly_logo_w.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SimToFly
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.1 ROS2 Installation and Core Concepts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/simtofly/simtofly-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simtofly/simtofly-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../phase-1-simulation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Phase 1 - Simulation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Phase 2 - ROS2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../phase-3-companion/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Phase 3 - Companion
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../phase-4-hardware/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Phase 4 - Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../appendix/ubuntu-install/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SimToFly" class="md-nav__button md-logo" aria-label="SimToFly" data-md-component="logo">
+      
+  <img src="../../images/simtofly_logo_w.png" alt="logo">
+
+    </a>
+    SimToFly
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/simtofly/simtofly-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simtofly/simtofly-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phase-1-simulation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 - Simulation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phase 1 - Simulation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.1-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.2-environment-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.3-ardupilot-sitl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 ArduPilot SITL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.4-mavproxy-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 MAVProxy Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.5-gazebo-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Gazebo Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase-1-simulation/1.6-first-mission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 First Mission
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 2 - ROS2
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phase 2 - ROS2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phase-3-companion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 3 - Companion
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phase 3 - Companion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phase-4-hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 4 - Hardware
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phase 4 - Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/ubuntu-install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/terminal-customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminal Customization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-ros2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is ROS2?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ros2-humble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install ROS2 Humble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sudo-apt-update-sudo-apt-install-curl-y-export-ros_apt_source_versioncurl-s-httpsapigithubcomreposros-infrastructureros-apt-sourcereleaseslatest-grep-f-tag_name-awk-f-print-4-curl-l-o-tmpros2-apt-sourcedeb-httpsgithubcomros-infrastructureros-apt-sourcereleasesdownloadros_apt_source_versionros2-apt-source_ros_apt_source_version-etcos-release-echo-ubuntu_codename-version_codename_alldeb-sudo-dpkg-i-tmpros2-apt-sourcedeb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sudo apt update &amp;&amp; sudo apt install curl -y export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F &quot;tag_name&quot; | awk -F\&quot; &#39;{print $4}&#39;) curl -L -o /tmp/ros2-apt-source.deb &quot;https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release &amp;&amp; echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb&quot; sudo dpkg -i /tmp/ros2-apt-source.deb
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-some-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test some examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros2-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2 Core Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros2-workspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2 Workspaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-your-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Up Your Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-cli-tools-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential CLI Tools Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-accomplished" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Accomplished
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/simtofly/simtofly-guide/edit/main/docs/phase-2-ros2/2.1-ros2-installation.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="21-ros2-installation-and-core-concepts">2.1 ROS2 Installation and Core Concepts<a class="headerlink" href="#21-ros2-installation-and-core-concepts" title="Permanent link">&para;</a></h1>
+<h2 id="what-youll-learn">What You'll Learn<a class="headerlink" href="#what-youll-learn" title="Permanent link">&para;</a></h2>
+<p>Get ROS2 running and understand the fundamental concepts:</p>
+<ul>
+<li>What ROS2 is and why it matters for drones</li>
+<li>Install ROS2 Humble on Ubuntu 22.04</li>
+<li>Understand nodes, topics, messages, services, and interfaces</li>
+<li>Learn how ROS2 workspaces function</li>
+<li>Master essential command-line tools</li>
+<li>Set up your workspace for drone development</li>
+</ul>
+<p><strong>Time:</strong> 60-75 minutes</p>
+<hr />
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before starting, you must have completed:</p>
+<ul>
+<li>Phase 1 complete (SITL + Gazebo working)</li>
+<li>Ubuntu 22.04 LTS</li>
+<li><code>~/simtofly_ws/ros2_ws</code> directory exists</li>
+</ul>
+<hr />
+<h2 id="what-is-ros2">What is ROS2?<a class="headerlink" href="#what-is-ros2" title="Permanent link">&para;</a></h2>
+<h3 id="ros-is-not-an-operating-system">ROS is Not an Operating System<a class="headerlink" href="#ros-is-not-an-operating-system" title="Permanent link">&para;</a></h3>
+<p>Despite its name, <strong>ROS (Robot Operating System)</strong> is not an operating system like Ubuntu or Windows. It's a <strong>robotics middleware framework</strong> — a collection of tools, libraries, and conventions that help you build robot software.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Operating System (Ubuntu)</th>
+<th>ROS2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it does</td>
+<td>Manages hardware, files, processes</td>
+<td>Helps robot components communicate</td>
+</tr>
+<tr>
+<td>Runs on</td>
+<td>Bare metal / VM</td>
+<td>On top of an OS (Ubuntu)</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>Ubuntu, Windows, macOS</td>
+<td>ROS2 Humble, ROS2 Jazzy</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>General computing</td>
+<td>Robotics development</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Think of it this way:</strong></p>
+<ul>
+<li>Ubuntu = The foundation of your house</li>
+<li>ROS2 = The electrical wiring that connects all rooms</li>
+</ul>
+<hr />
+<h3 id="why-ros2-for-drones">Why ROS2 for Drones?<a class="headerlink" href="#why-ros2-for-drones" title="Permanent link">&para;</a></h3>
+<p>In Phase 1, you controlled drones through MAVProxy commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mode<span class="w"> </span>GUIDED
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>arm<span class="w"> </span>throttle
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>takeoff<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
+<p>This works, but has limitations:</p>
+<ul>
+<li><strong>Manual typing</strong> — Can't automate complex decisions</li>
+<li><strong>No sensor integration</strong> — Hard to add cameras, lidars</li>
+<li><strong>Limited logic</strong> — Can't easily do "if battery &lt; 20%, go home"</li>
+<li><strong>No standardization</strong> — Your code won't work with other robots</li>
+</ul>
+<p>ROS2 solves these problems:</p>
+<ul>
+<li><strong>Programmable</strong> — Write Python/C++ code for complex behaviors</li>
+<li><strong>Modular</strong> — Each component is independent, easy to swap</li>
+<li><strong>Standardized</strong> — Same patterns work for drones, arms, cars</li>
+<li><strong>Ecosystem</strong> — Thousands of ready-made packages</li>
+<li><strong>Industry standard</strong> — Used by NASA, Amazon, Boston Dynamics</li>
+</ul>
+<hr />
+<h3 id="why-ros2-not-ros1">Why ROS2, Not ROS1?<a class="headerlink" href="#why-ros2-not-ros1" title="Permanent link">&para;</a></h3>
+<p>ROS1 (original ROS) was created in 2007. ROS2 is a complete rewrite with:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ROS1</th>
+<th>ROS2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time support</td>
+<td>Limited</td>
+<td>Built-in</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>None</td>
+<td>Encryption, authentication</td>
+</tr>
+<tr>
+<td>Multi-robot</td>
+<td>Difficult</td>
+<td>Native support</td>
+</tr>
+<tr>
+<td>Platforms</td>
+<td>Linux only</td>
+<td>Linux, Windows, macOS</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>End of life (2025)</td>
+<td>Active development</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Always use ROS2 for new projects.</strong> ROS1 tutorials you find online won't work with our setup.</p>
+<hr />
+<h2 id="install-ros2-humble">Install ROS2 Humble<a class="headerlink" href="#install-ros2-humble" title="Permanent link">&para;</a></h2>
+<p>ROS2 Humble is the LTS (Long Term Support) release for Ubuntu 22.04, supported until 2027.</p>
+<h3 id="set-locale">Set Locale<a class="headerlink" href="#set-locale" title="Permanent link">&para;</a></h3>
+<p>ROS2 requires UTF-8 locale. Check yours:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>locale<span class="w"> </span><span class="c1"># check for UTF-8</span>
+</span></code></pre></div>
+<p>Look for <code>UTF-8</code> in the output. If you see it, skip ahead. If not:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>locales
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US<span class="w"> </span>en_US.UTF-8
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>update-locale<span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>locale<span class="w">  </span><span class="c1"># verify settings</span>
+</span></code></pre></div>
+<strong>Expected output:</strong></p>
+<p><img alt="Verify locale" src="../images/2.1_locale_verification.png" /></p>
+<hr />
+<h3 id="add-ros2-repository">Add ROS2 Repository<a class="headerlink" href="#add-ros2-repository" title="Permanent link">&para;</a></h3>
+<p>Ubuntu doesn't include ROS2 by default. We need to add the official repository.</p>
+<p>Enable Universe repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>universe
+</span></code></pre></div>
+<p>Add the ROS2 GPG key (verifies packages are authentic):</p>
+<h2 id="sudo-apt-update-sudo-apt-install-curl-y-export-ros_apt_source_versioncurl-s-httpsapigithubcomreposros-infrastructureros-apt-sourcereleaseslatest-grep-f-tag_name-awk-f-print-4-curl-l-o-tmpros2-apt-sourcedeb-httpsgithubcomros-infrastructureros-apt-sourcereleasesdownloadros_apt_source_versionros2-apt-source_ros_apt_source_version-etcos-release-echo-ubuntu_codename-version_codename_alldeb-sudo-dpkg-i-tmpros2-apt-sourcedeb"><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>-y
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;tag_name&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="se">\&quot;</span><span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>/tmp/ros2-apt-source.deb<span class="w"> </span><span class="s2">&quot;https://github.com/ros-infrastructure/ros-apt-source/releases/download/</span><span class="si">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="si">}</span><span class="s2">/ros2-apt-source_</span><span class="si">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="si">}</span><span class="s2">.</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">UBUNTU_CODENAME</span><span class="k">:-</span><span class="si">${</span><span class="nv">VERSION_CODENAME</span><span class="si">}}</span><span class="k">)</span><span class="s2">_all.deb&quot;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>/tmp/ros2-apt-source.deb
+</span></code></pre></div><a class="headerlink" href="#sudo-apt-update-sudo-apt-install-curl-y-export-ros_apt_source_versioncurl-s-httpsapigithubcomreposros-infrastructureros-apt-sourcereleaseslatest-grep-f-tag_name-awk-f-print-4-curl-l-o-tmpros2-apt-sourcedeb-httpsgithubcomros-infrastructureros-apt-sourcereleasesdownloadros_apt_source_versionros2-apt-source_ros_apt_source_version-etcos-release-echo-ubuntu_codename-version_codename_alldeb-sudo-dpkg-i-tmpros2-apt-sourcedeb" title="Permanent link">&para;</a></h2>
+<h3 id="install-ros2-humble_1">Install ROS2 Humble<a class="headerlink" href="#install-ros2-humble_1" title="Permanent link">&para;</a></h3>
+<p><strong>Update package list:</strong></p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div>
+<strong>Upgrade package list:</strong></p>
+<p>ROS 2 packages are built on frequently updated Ubuntu systems. It is always recommended that you ensure your system is up to date before installing new packages.</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</span></code></pre></div>
+<strong>Install ROS2 desktop</strong> (includes visualization tools):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-desktop<span class="w"> </span>-y
+</span></code></pre></div>
+<p><strong>This takes:</strong> 10-15 minutes depending on internet speed.</p>
+<p><strong>What's included:</strong></p>
+<ul>
+<li>Core ROS2 libraries</li>
+<li>RViz2 (visualization)</li>
+<li>Demo nodes for testing</li>
+<li>Common message types</li>
+</ul>
+<hr />
+<h3 id="install-development-tools">Install Development Tools<a class="headerlink" href="#install-development-tools" title="Permanent link">&para;</a></h3>
+<p>For building ROS2 packages:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-dev-tools<span class="w"> </span>python3-colcon-common-extensions<span class="w"> </span>-y
+</span></code></pre></div>
+<hr />
+<h3 id="source-ros2-setup">Source ROS2 Setup<a class="headerlink" href="#source-ros2-setup" title="Permanent link">&para;</a></h3>
+<p>ROS2 isn't available in your terminal until you "source" it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span></code></pre></div>
+<p><strong>What does sourcing do?</strong></p>
+<ul>
+<li>Adds ROS2 commands to your PATH</li>
+<li>Sets environment variables ROS2 needs</li>
+<li>Makes ROS2 tools available</li>
+</ul>
+<p><strong>Problem:</strong> You'd need to run this every time you open a terminal.</p>
+<p><strong>Solution:</strong> Add it to your bashrc (runs automatically):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source /opt/ros/humble/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<hr />
+<h3 id="check-the-ros_distro-environment-variable">Check the ROS_DISTRO Environment Variable<a class="headerlink" href="#check-the-ros_distro-environment-variable" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ROS_DISTRO</span>
+</span></code></pre></div>
+<p><strong>Expected output:</strong></p>
+<p><img alt="ROS_DISTRO Environment" src="../images/2.1_ROS_DISTRO_verification.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>humble
+</span></code></pre></div>
+<h2 id="test-some-examples">Test some examples<a class="headerlink" href="#test-some-examples" title="Permanent link">&para;</a></h2>
+<p>Test with demo nodes. Open <strong>two terminals</strong>:</p>
+<p><strong>Terminal 1 — Publisher (talker):</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker
+</span></code></pre></div></p>
+<p><strong>Terminal 2 — Subscriber (listener):</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>listener
+</span></code></pre></div></p>
+<p><strong>Expected:</strong> </p>
+<ul>
+<li>
+<p>Terminal 1 prints: <code>Publishing: 'Hello World: 1'</code>, <code>'Hello World: 2'</code>...</p>
+</li>
+<li>
+<p>Terminal 2 prints: <code>I heard: [Hello World: 1]</code>, <code>[Hello World: 2]</code>...</p>
+</li>
+</ul>
+<p>Press <code>Ctrl+C</code> in both terminals to stop.</p>
+<p>You should see the <code>talker</code> saying that it’s <code>Publishing</code> messages and the <code>listener</code> saying <code>I heard</code> those messages. This verifies both the C++ and Python APIs are working properly. If this works, ROS2 is installed correctly.</p>
+<hr />
+<h2 id="ros2-core-concepts">ROS2 Core Concepts<a class="headerlink" href="#ros2-core-concepts" title="Permanent link">&para;</a></h2>
+<p>This section explains the fundamental building blocks of ROS2. Understanding these is essential before working with MAVROS and drone control.</p>
+<hr />
+<h3 id="concept-1-nodes">Concept 1: Nodes<a class="headerlink" href="#concept-1-nodes" title="Permanent link">&para;</a></h3>
+<p>A <strong>node</strong> is a single executable program that does one specific job.</p>
+<p><strong>Real-world analogy:</strong></p>
+<p>Think of a drone as a company. Each employee (node) has one job:</p>
+<ul>
+<li>Receptionist — answers calls (receives commands)</li>
+<li>Accountant — tracks money (monitors battery)</li>
+<li>Pilot — flies the plane (controls motors)</li>
+<li>Navigator — plans routes (calculates waypoints)</li>
+</ul>
+<p>Each works independently, but they communicate to achieve the company's goals.</p>
+<p><strong>In ROS2:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mavros_node</code></td>
+<td>Translates ROS2 ↔ MAVLink</td>
+</tr>
+<tr>
+<td><code>telemetry_node</code></td>
+<td>Monitors drone state</td>
+</tr>
+<tr>
+<td><code>mission_node</code></td>
+<td>Executes waypoint missions</td>
+</tr>
+<tr>
+<td><code>camera_node</code></td>
+<td>Processes camera images</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why separate nodes?</strong></p>
+<ul>
+<li><strong>Isolation</strong> — If camera node crashes, drone keeps flying</li>
+<li><strong>Reusability</strong> — Same telemetry node works for any drone</li>
+<li><strong>Modularity</strong> — Swap components without rewriting everything</li>
+<li><strong>Distributed</strong> — Nodes can run on different computers</li>
+</ul>
+<p><strong>Node commands:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># List all running nodes</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Get details about a node</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/node_name
+</span></code></pre></div>
+<p><strong>Example output of <code>ros2 node info</code>:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>/mavros_node
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  Subscribers:
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    /mavros/setpoint_position/local: geometry_msgs/msg/PoseStamped
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  Publishers:
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    /mavros/state: mavros_msgs/msg/State
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    /mavros/local_position/pose: geometry_msgs/msg/PoseStamped
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>  Service Servers:
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    /mavros/cmd/arming: mavros_msgs/srv/CommandBool
+</span></code></pre></div></p>
+<p>This shows what data the node sends, receives, and what services it provides.</p>
+<hr />
+<h3 id="concept-2-topics">Concept 2: Topics<a class="headerlink" href="#concept-2-topics" title="Permanent link">&para;</a></h3>
+<p>A <strong>topic</strong> is a named channel for streaming data. Nodes publish data to topics, other nodes subscribe to receive it.</p>
+<p><strong>Real-world analogy:</strong>
+Think of topics like radio stations:</p>
+<ul>
+<li>Radio station "FM 101.5 Traffic" broadcasts traffic updates</li>
+<li>Anyone with a radio can tune in</li>
+<li>The station doesn't know (or care) who's listening</li>
+<li>Multiple people can listen simultaneously</li>
+</ul>
+<p><strong>In ROS2:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Publisher Node                Topic                    Subscriber Nodes
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>     │                          │                            │
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>     │    ┌─────────────────────┴──────────────────────┐     │
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>     │    │                                            │     │
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>   MAVROS ──publishes──► /mavros/local_position/pose   ──►  Your Node
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>                                                       ──►  RViz
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>                                                       ──►  Logger
+</span></code></pre></div>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li><strong>One-to-many</strong> — One publisher, unlimited subscribers</li>
+<li><strong>Anonymous</strong> — Publisher doesn't know who subscribes</li>
+<li><strong>Asynchronous</strong> — Publisher sends whenever ready, subscribers receive when available</li>
+<li><strong>Continuous</strong> — Data keeps flowing (unlike services)</li>
+</ul>
+<p><strong>Drone topics you'll use:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Direction</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mavros/state</code></td>
+<td>Drone → You</td>
+<td>Armed, mode, connected</td>
+</tr>
+<tr>
+<td><code>/mavros/local_position/pose</code></td>
+<td>Drone → You</td>
+<td>Position (x, y, z)</td>
+</tr>
+<tr>
+<td><code>/mavros/battery</code></td>
+<td>Drone → You</td>
+<td>Voltage, percentage</td>
+</tr>
+<tr>
+<td><code>/mavros/setpoint_position/local</code></td>
+<td>You → Drone</td>
+<td>Where to fly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Topic commands:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># List all topics</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># See data flowing on a topic</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/topic_name
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Check how fast data is published</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/topic_name
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># Get topic information</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/topic_name
+</span></code></pre></div>
+<p><strong>Example — watching drone state:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/mavros/state
+</span></code></pre></div></p>
+<p>Output:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">header</span><span class="p">:</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="nt">stamp</span><span class="p">:</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="nt">sec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1234567890</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">nanosec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">123456789</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nt">connected</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="nt">armed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nt">guided</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STABILIZE</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="nn">---</span>
+</span></code></pre></div></p>
+<p>The <code>---</code> separates each message. Data keeps flowing until you press <code>Ctrl+C</code>.</p>
+<hr />
+<h3 id="concept-3-messages">Concept 3: Messages<a class="headerlink" href="#concept-3-messages" title="Permanent link">&para;</a></h3>
+<p>A <strong>message</strong> defines the structure of data sent on a topic. It's like a form with specific fields.</p>
+<p><strong>Real-world analogy:</strong></p>
+<p>When you order food delivery, the order form has specific fields:</p>
+<ul>
+<li>Name</li>
+<li>Address</li>
+<li>Items</li>
+<li>Payment method</li>
+</ul>
+<p>You can't just write free text — the system expects structured data.</p>
+<p><strong>In ROS2:</strong></p>
+<p>The topic <code>/mavros/local_position/pose</code> uses message type <code>geometry_msgs/msg/PoseStamped</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>geometry_msgs/msg/PoseStamped
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>├── header
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>│   ├── stamp (time)
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>│   └── frame_id (string)
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>└── pose
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    ├── position
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    │   ├── x (float)
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    │   ├── y (float)
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    │   └── z (float)
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    └── orientation
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        ├── x (float)
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>        ├── y (float)
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>        ├── z (float)
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>        └── w (float)
+</span></code></pre></div>
+<p><strong>Common message packages:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Contains</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>std_msgs</code></td>
+<td>Basic types</td>
+<td>String, Int32, Float64, Bool</td>
+</tr>
+<tr>
+<td><code>geometry_msgs</code></td>
+<td>Geometry</td>
+<td>Point, Pose, Twist, Vector3</td>
+</tr>
+<tr>
+<td><code>sensor_msgs</code></td>
+<td>Sensors</td>
+<td>Image, LaserScan, NavSatFix</td>
+</tr>
+<tr>
+<td><code>mavros_msgs</code></td>
+<td>MAVROS specific</td>
+<td>State, Waypoint, CommandBool</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message commands:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># See message structure</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>geometry_msgs/msg/PoseStamped
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># List all available message types</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>msg
+</span></code></pre></div>
+<p><strong>Why does this matter?</strong></p>
+<p>When you write code to read drone position, you need to know the structure:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># You need to know that position is inside pose</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">x</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">z</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span>
+</span></code></pre></div>
+<p>Without understanding the message structure, you can't access the data.</p>
+<hr />
+<h3 id="concept-4-services">Concept 4: Services<a class="headerlink" href="#concept-4-services" title="Permanent link">&para;</a></h3>
+<p>A <strong>service</strong> is a request/response interaction. You ask for something, wait, and get an answer.</p>
+<p><strong>Real-world analogy:</strong></p>
+<ul>
+<li><strong>Topic</strong> = Radio broadcast (continuous, one-way)</li>
+<li><strong>Service</strong> = Phone call (you ask, they answer)</li>
+</ul>
+<p>When you call a restaurant to make a reservation:</p>
+<ol>
+<li>You call (request)</li>
+<li>They check availability (processing)</li>
+<li>They confirm or deny (response)</li>
+<li>Call ends</li>
+</ol>
+<p><strong>In ROS2:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Your Node                    Service                      MAVROS
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    │                           │                            │
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    │──── Request ────────────► │                            │
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    │     {value: true}         │ /mavros/cmd/arming         │
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    │                           │ ──────────────────────────►│
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    │                           │                            │ (arms motors)
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    │                           │ ◄──────────────────────────│
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    │◄─── Response ───────────  │                            │
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    │     {success: true}       │                            │
+</span></code></pre></div>
+<p><strong>Key characteristics:</strong>
+- <strong>Synchronous</strong> — You wait for the response
+- <strong>One-to-one</strong> — One client, one server
+- <strong>Blocking</strong> — Your code pauses until response arrives
+- <strong>For actions</strong> — Do something once, not continuously</p>
+<p><strong>When to use services vs topics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arm the drone</td>
+<td>Service (one-time action)</td>
+</tr>
+<tr>
+<td>Change flight mode</td>
+<td>Service (one-time action)</td>
+</tr>
+<tr>
+<td>Get drone position continuously</td>
+<td>Topic (streaming data)</td>
+</tr>
+<tr>
+<td>Send velocity commands</td>
+<td>Topic (continuous control)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Service commands:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># List all services</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>ros2<span class="w"> </span>service<span class="w"> </span>list
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Check service type</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>ros2<span class="w"> </span>service<span class="w"> </span><span class="nb">type</span><span class="w"> </span>/mavros/cmd/arming
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># Call a service from command line</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/mavros/cmd/arming<span class="w"> </span>mavros_msgs/srv/CommandBool<span class="w"> </span><span class="s2">&quot;{value: true}&quot;</span>
+</span></code></pre></div>
+<p><strong>Example — arming the drone:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/mavros/cmd/arming<span class="w"> </span>mavros_msgs/srv/CommandBool<span class="w"> </span><span class="s2">&quot;{value: true}&quot;</span>
+</span></code></pre></div>
+<p>Response:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">response</span><span class="p">:</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">success</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">result</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</span></code></pre></div></p>
+<hr />
+<h3 id="concept-5-interfaces">Concept 5: Interfaces<a class="headerlink" href="#concept-5-interfaces" title="Permanent link">&para;</a></h3>
+<p><strong>Interfaces</strong> is the collective term for message types, service types, and action types. They define the "contract" for communication.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Interfaces
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>├── Messages (.msg)     → Data structure for topics
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>├── Services (.srv)     → Request/Response structure
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>└── Actions (.action)   → Goal/Feedback/Result structure (advanced)
+</span></code></pre></div>
+<p><strong>Interface commands:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># List all interfaces</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Show a message interface</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>geometry_msgs/msg/Twist
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># Show a service interface</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>mavros_msgs/srv/CommandBool
+</span></code></pre></div>
+<p><strong>Service interface example:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>mavros_msgs/srv/CommandBool
+</span></code></pre></div>
+<p>Output:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>bool value
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>---
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>bool success
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>uint8 result
+</span></code></pre></div></p>
+<p>The <code>---</code> separates request (above) from response (below).</p>
+<ul>
+<li><strong>Request:</strong> <code>value</code> (true = arm, false = disarm)</li>
+<li><strong>Response:</strong> <code>success</code> (did it work?) and <code>result</code> (error code)</li>
+</ul>
+<hr />
+<h3 id="concept-6-actions-brief-overview">Concept 6: Actions (Brief Overview)<a class="headerlink" href="#concept-6-actions-brief-overview" title="Permanent link">&para;</a></h3>
+<p><strong>Actions</strong> are for long-running tasks with feedback. We won't use them directly in Phase 2, but you should know they exist.</p>
+<p><strong>Example:</strong> "Navigate to waypoint 5km away"
+- Takes minutes to complete
+- You want progress updates (50% there, 75% there...)
+- You might want to cancel mid-way</p>
+<p><strong>Structure:</strong>
+- <strong>Goal</strong> — What you want (go to position X)
+- <strong>Feedback</strong> — Progress updates (currently at position Y)
+- <strong>Result</strong> — Final outcome (reached / failed)</p>
+<p>We'll use services and topics which are simpler and sufficient for our needs.</p>
+<hr />
+<h3 id="concept-summary">Concept Summary<a class="headerlink" href="#concept-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>What It Is</th>
+<th>When to Use</th>
+<th>Drone Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node</strong></td>
+<td>A program</td>
+<td>Always — everything is a node</td>
+<td>MAVROS, your control code</td>
+</tr>
+<tr>
+<td><strong>Topic</strong></td>
+<td>Data stream</td>
+<td>Continuous data</td>
+<td>Position, velocity, state</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>Data structure</td>
+<td>Defines topic content</td>
+<td>PoseStamped, State</td>
+</tr>
+<tr>
+<td><strong>Service</strong></td>
+<td>Request/response</td>
+<td>One-time actions</td>
+<td>Arm, set mode, takeoff</td>
+</tr>
+<tr>
+<td><strong>Interface</strong></td>
+<td>Type definition</td>
+<td>Understanding data</td>
+<td><code>ros2 interface show</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ros2-workspaces">ROS2 Workspaces<a class="headerlink" href="#ros2-workspaces" title="Permanent link">&para;</a></h2>
+<p>A <strong>workspace</strong> is a folder where you develop ROS2 packages. Understanding workspaces prevents many common errors.</p>
+<h3 id="underlay-and-overlay">Underlay and Overlay<a class="headerlink" href="#underlay-and-overlay" title="Permanent link">&para;</a></h3>
+<p>ROS2 uses a layered system:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>┌─────────────────────────────────────┐
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>│           Your Workspace            │  ← Overlay (your code)
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>│        ~/simtofly_ws/ros2_ws        │
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>├─────────────────────────────────────┤
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>│          ROS2 Humble Base           │  ← Underlay (system packages)
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>│         /opt/ros/humble             │
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>└─────────────────────────────────────┘
+</span></code></pre></div>
+<p><strong>Underlay</strong> = Base ROS2 installation
+- Location: <code>/opt/ros/humble</code>
+- Contains: Core ROS2, standard messages, tools
+- You don't modify this</p>
+<p><strong>Overlay</strong> = Your workspace
+- Location: <code>~/simtofly_ws/ros2_ws</code>
+- Contains: Your packages, custom code
+- You build and modify here</p>
+<p><strong>Why layers?</strong>
+- Keep system packages safe from your experiments
+- Your packages can override system packages if needed
+- Multiple workspaces can stack</p>
+<h3 id="source-order-matters">Source Order Matters<a class="headerlink" href="#source-order-matters" title="Permanent link">&para;</a></h3>
+<p>You must source in the correct order:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># 1. First, source the underlay (base ROS2)</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1"># 2. Then, source your overlay (your workspace)</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="nb">source</span><span class="w"> </span>~/simtofly_ws/ros2_ws/install/setup.bash
+</span></code></pre></div>
+<p>If you source in wrong order or forget one, you'll get errors like:
+- "Package not found"
+- "Command not found"
+- Wrong version of package used</p>
+<p><strong>Our bashrc setup handles this automatically:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># These lines in ~/.bashrc ensure correct order</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="nb">source</span><span class="w"> </span>~/simtofly_ws/ros2_ws/install/setup.bash
+</span></code></pre></div>
+<h3 id="workspace-structure">Workspace Structure<a class="headerlink" href="#workspace-structure" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>~/simtofly_ws/ros2_ws/
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>├── src/              ← Your source code goes here
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>│   └── drone_control/    ← Your package
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>│       ├── package.xml
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>│       ├── setup.py
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>│       └── drone_control/
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>│           └── your_node.py
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>├── build/            ← Compiled files (auto-generated)
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>├── install/          ← Installed packages (auto-generated)
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>└── log/              ← Build logs (auto-generated)
+</span></code></pre></div>
+<p><strong>You only edit files in <code>src/</code></strong>. The other folders are created by <code>colcon build</code>.</p>
+<hr />
+<h2 id="set-up-your-workspace">Set Up Your Workspace<a class="headerlink" href="#set-up-your-workspace" title="Permanent link">&para;</a></h2>
+<p>Let's set up the ROS2 workspace properly.</p>
+<h3 id="create-workspace-structure">Create Workspace Structure<a class="headerlink" href="#create-workspace-structure" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ros2_ws
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>src
+</span></code></pre></div>
+<h3 id="build-empty-workspace">Build Empty Workspace<a class="headerlink" href="#build-empty-workspace" title="Permanent link">&para;</a></h3>
+<p>Even with no packages, verify the build system works:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">cd</span><span class="w"> </span>~/simtofly_ws/ros2_ws
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>colcon<span class="w"> </span>build
+</span></code></pre></div>
+<p><strong>Expected output:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>Starting &gt;&gt;&gt; (empty workspace)
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>Summary: 0 packages finished
+</span></code></pre></div></p>
+<h3 id="source-your-workspace">Source Your Workspace<a class="headerlink" href="#source-your-workspace" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nb">source</span><span class="w"> </span>~/simtofly_ws/ros2_ws/install/setup.bash
+</span></code></pre></div>
+<p>Add to bashrc for automatic sourcing:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source ~/simtofly_ws/ros2_ws/install/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<h3 id="verify-setup">Verify Setup<a class="headerlink" href="#verify-setup" title="Permanent link">&para;</a></h3>
+<p>Open a <strong>new terminal</strong> and test:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+</span></code></pre></div>
+<p>If this works without errors, your workspace is configured correctly.</p>
+<hr />
+<h2 id="essential-cli-tools-summary">Essential CLI Tools Summary<a class="headerlink" href="#essential-cli-tools-summary" title="Permanent link">&para;</a></h2>
+<p>These commands will be your daily tools:</p>
+<h3 id="node-commands">Node Commands<a class="headerlink" href="#node-commands" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">                    </span><span class="c1"># List running nodes</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/node_name<span class="w">         </span><span class="c1"># Node details (publishers, subscribers, services)</span>
+</span></code></pre></div>
+<h3 id="topic-commands">Topic Commands<a class="headerlink" href="#topic-commands" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w">                   </span><span class="c1"># List all topics</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/topic_name<span class="w">       </span><span class="c1"># Show live data</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/topic_name<span class="w">       </span><span class="c1"># Show message type, publishers, subscribers</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/topic_name<span class="w">         </span><span class="c1"># Show publish rate</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/topic<span class="w"> </span>--once<span class="w">     </span><span class="c1"># Show one message and exit</span>
+</span></code></pre></div>
+<h3 id="service-commands">Service Commands<a class="headerlink" href="#service-commands" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>list<span class="w">                 </span><span class="c1"># List all services</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>ros2<span class="w"> </span>service<span class="w"> </span><span class="nb">type</span><span class="w"> </span>/service_name<span class="w">   </span><span class="c1"># Show service type</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/service_name<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;{data}&quot;</span><span class="w">  </span><span class="c1"># Call a service</span>
+</span></code></pre></div>
+<h3 id="interface-commands">Interface Commands<a class="headerlink" href="#interface-commands" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w">               </span><span class="c1"># List all message/service types</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>type_name<span class="w">     </span><span class="c1"># Show structure of a type</span>
+</span></code></pre></div>
+<h3 id="package-commands">Package Commands<a class="headerlink" href="#package-commands" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w">                     </span><span class="c1"># List installed packages</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>package_name<span class="w">      </span><span class="c1"># Show package install location</span>
+</span></code></pre></div>
+<hr />
+<h2 id="verification-checklist">Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
+<p>Before moving on, verify:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>ros2 --version</code> shows version number</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Demo talker/listener test passes</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Understand difference: node, topic, message, service</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Understand underlay vs overlay workspaces</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>~/simtofly_ws/ros2_ws/src</code> directory exists</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>colcon build</code> runs without errors</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ROS2 is sourced in bashrc (new terminal works)</li>
+</ul>
+<hr />
+<h2 id="what-you-accomplished">What You Accomplished<a class="headerlink" href="#what-you-accomplished" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Understood what ROS2 is and why it matters for drones</li>
+<li>Installed ROS2 Humble on Ubuntu 22.04</li>
+<li>Learned core concepts: nodes, topics, messages, services, interfaces</li>
+<li>Understood workspace structure and underlay/overlay system</li>
+<li>Set up your ROS2 workspace for drone development</li>
+<li>Learned essential CLI tools</li>
+</ul>
+<hr />
+<h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>In the next section, we'll install MAVROS — the bridge between ROS2 and ArduPilot. You'll see these concepts come alive with real drone data flowing through topics, and services that arm and control the drone.</p>
+<hr />
+<h2 id="common-questions">Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
+<h3 id="q-whats-the-difference-between-ros-and-os">Q: What's the difference between ROS and OS?<a class="headerlink" href="#q-whats-the-difference-between-ros-and-os" title="Permanent link">&para;</a></h3>
+<p><strong>OS (Operating System):</strong> Manages your computer's hardware, files, and processes. Examples: Ubuntu, Windows, macOS.</p>
+<p><strong>ROS (Robot Operating System):</strong> A middleware framework that helps robot software components communicate. It runs <em>on top of</em> an OS, not instead of it.</p>
+<p>You need Ubuntu (OS) installed first, then ROS2 runs as software on Ubuntu.</p>
+<hr />
+<h3 id="q-why-humble-specifically">Q: Why Humble specifically?<a class="headerlink" href="#q-why-humble-specifically" title="Permanent link">&para;</a></h3>
+<p>ROS2 releases are named alphabetically. Humble is the current LTS (Long Term Support) for Ubuntu 22.04:</p>
+<table>
+<thead>
+<tr>
+<th>ROS2 Version</th>
+<th>Ubuntu Version</th>
+<th>Support Until</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Humble</td>
+<td>22.04</td>
+<td>2027</td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>22.04</td>
+<td>2024 (ended)</td>
+</tr>
+<tr>
+<td>Jazzy</td>
+<td>24.04</td>
+<td>2029</td>
+</tr>
+</tbody>
+</table>
+<p>Humble is the stable choice for Ubuntu 22.04.</p>
+<hr />
+<h3 id="q-do-i-need-to-understand-dds">Q: Do I need to understand DDS?<a class="headerlink" href="#q-do-i-need-to-understand-dds" title="Permanent link">&para;</a></h3>
+<p><strong>No.</strong> DDS (Data Distribution Service) is the underlying communication layer, but ROS2 abstracts it away. You'll never interact with DDS directly for drone work. Think of it like TCP/IP — you use the internet without knowing the protocol details.</p>
+<hr />
+<h3 id="q-can-i-use-both-mavproxy-and-ros2">Q: Can I use both MAVProxy and ROS2?<a class="headerlink" href="#q-can-i-use-both-mavproxy-and-ros2" title="Permanent link">&para;</a></h3>
+<p><strong>Yes!</strong> MAVROS connects to SITL, and MAVProxy can connect simultaneously. Useful for debugging:
+- Monitor in MAVProxy console
+- Test ROS2 code
+- See both perspectives</p>
+<hr />
+<h3 id="q-what-if-i-have-ros1-installed">Q: What if I have ROS1 installed?<a class="headerlink" href="#q-what-if-i-have-ros1-installed" title="Permanent link">&para;</a></h3>
+<p>ROS1 and ROS2 can coexist, but not simultaneously in the same terminal. Don't source both. If you have ROS1, ensure your bashrc only sources ROS2:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># ONLY this line, not any ROS1 sources</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span></code></pre></div>
+<hr />
+<h3 id="q-why-do-i-need-to-source-setupbash">Q: Why do I need to source setup.bash?<a class="headerlink" href="#q-why-do-i-need-to-source-setupbash" title="Permanent link">&para;</a></h3>
+<p>Sourcing sets up environment variables that tell your terminal:
+- Where ROS2 commands are located
+- Where to find packages
+- What libraries to use</p>
+<p>Without sourcing, your terminal doesn't know ROS2 exists.</p>
+<hr />
+<h3 id="q-whats-colcon">Q: What's colcon?<a class="headerlink" href="#q-whats-colcon" title="Permanent link">&para;</a></h3>
+<p><strong>colcon</strong> is the build tool for ROS2 workspaces. It:
+- Finds all packages in <code>src/</code>
+- Compiles them in correct dependency order
+- Installs them to <code>install/</code></p>
+<p>Similar to <code>make</code> or <code>cmake</code>, but designed for ROS2 multi-package builds.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="ros2-command-not-found">"ros2: command not found"<a class="headerlink" href="#ros2-command-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> ROS2 not sourced</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span></code></pre></div></p>
+<p>Then add to bashrc as shown earlier.</p>
+<hr />
+<h3 id="colcon-command-not-found">"colcon: command not found"<a class="headerlink" href="#colcon-command-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Development tools not installed</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-colcon-common-extensions<span class="w"> </span>-y
+</span></code></pre></div></p>
+<hr />
+<h3 id="package-installation-fails-with-gpg-error">Package installation fails with GPG error<a class="headerlink" href="#package-installation-fails-with-gpg-error" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> GPG key not added correctly</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div></p>
+<hr />
+<h3 id="demo-nodes-dont-communicate">Demo nodes don't communicate<a class="headerlink" href="#demo-nodes-dont-communicate" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Different ROS_DOMAIN_ID or network issues</p>
+<p><strong>Solution:</strong> 
+1. Ensure both terminals have same environment (run <code>source ~/.bashrc</code> in both)
+2. Check <code>echo $ROS_DOMAIN_ID</code> is same in both (default is empty)
+3. Restart both nodes</p>
+<hr />
+<h3 id="package-not-found-after-building">"Package not found" after building<a class="headerlink" href="#package-not-found-after-building" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Workspace not sourced after build</p>
+<p><strong>Solution:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nb">source</span><span class="w"> </span>~/simtofly_ws/ros2_ws/install/setup.bash
+</span></code></pre></div></p>
+<p>You must re-source after every <code>colcon build</code>.</p>
+<hr />
+<h3 id="multiple-ros-versions-conflicting">Multiple ROS versions conflicting<a class="headerlink" href="#multiple-ros-versions-conflicting" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Both ROS1 and ROS2 sourced, or multiple ROS2 versions</p>
+<p><strong>Solution:</strong> Check your <code>~/.bashrc</code> for conflicting source lines:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>grep<span class="w"> </span><span class="s2">&quot;source.*ros&quot;</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div></p>
+<p>Keep only:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="nb">source</span><span class="w"> </span>~/simtofly_ws/ros2_ws/install/setup.bash
+</span></code></pre></div></p>
+<hr />
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.ros.org/en/humble/">ROS2 Humble Documentation</a></li>
+<li><a href="https://docs.ros.org/en/humble/Concepts.html">ROS2 Concepts Overview</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials.html">ROS2 Tutorials</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools.html">ROS2 CLI Tools</a></li>
+</ul>
+<hr />
+<p><a href="../">← Back to Phase 2 Overview</a> | <a href="2.2-mavros-setup.md">Next: 2.2 MAVROS Setup →</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 SimToFly - Created by Sidharth Mohan Nair
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/simtofly" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@sidharthmohannair9351" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
